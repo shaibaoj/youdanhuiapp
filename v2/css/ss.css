@@ -1,0 +1,59 @@
+
+ol,ul,li {
+    list-style: none;
+}
+.fl {
+    float: left
+}
+.fr {
+    float: right
+}
+
+.tickets,.goods{
+	margin-left:10px;
+}
+.sqt_common_top{
+	margin:10px 10px 11px 0;
+	color:#757380;
+	font-size:13px;
+}
+.sqt_common_top .change{
+	position:relative;
+	padding:0 6px;
+	font-size:12px;
+}
+.change span{
+	line-height:23px;
+}
+.sqt_common_top .fl{
+	line-height:23px;
+}
+.sqt_common_top .change:before{
+	border:1px solid #a6a4b2;
+	border-radius:6px;
+}
+.goods .sqt_common_top{
+	margin-top:7px;
+}
+.icon_change{
+	width:13px;
+	height:11px;
+	margin-right:4px;
+	background-position:0 -37px;
+	background-size:160px auto;
+}
+.tickets_list{
+	height:126px;
+	overflow:hidden;
+	color:#59595c;
+}
+.tickets_list a{
+	display:block;
+}
+.tickets_list li{
+	float:left;
+	margin:0 10px 10px 0;
+	padding:9px 13px;
+	background-color:#f2f4f5;
+	border-radius:5px;
+}

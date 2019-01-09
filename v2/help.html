@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/app.css"/>
+	<link rel="stylesheet" type="text/css" href="css/u.css"/>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav ">
+		    <a class="mui-action-back mui-icon mui-icon-closeempty mui-pull-left"></a>
+		    <h1 id="web-title" class="mui-title">帮助中心</h1>
+		    <a id="link-feedback" class="mui-icon mui-pull-right"><span>反馈</span></a>
+		</header>
+		<nav class="mui-bar mui-bar-footer">
+			<button id="btn-feedback" type="button" class="mui-btn mui-btn-danger mui-btn-block">意见反馈</button>
+		</nav>
+		<script src="js/mui.min.js"></script>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+    		app_cn.set_txt('help');
+			mui.init()
+			
+			var ws = null;
+			var url_web = null;
+			var url = app_config.domain+"/help.php";
+			mui.plusReady(function () {
+			    open_url(url);
+			})
+			
+			function load_url(url){
+				if(url_web){
+					plus.nativeUI.showWaiting("加载中");
+					url_web.clear();
+					url_web.loadURL(url);
+				}
+			}
+			
+			function open_url(url){
+				if(!url_web){
+					ws = plus.webview.currentWebview();
+					plus.nativeUI.showWaiting("加载中");
+					url_web = plus.webview.create(url, "web_url",{
+						top:"44px",
+						bottom:"51px"
+					});
+					url_web.onloaded=embedLoaded;
+					ws.append(url_web);
+				}else{
+					load_url(url);
+				}
+			}
+			
+			// 页面加载完成事件回调函数
+			function embedLoaded(e){
+				plus.nativeUI.closeWaiting();
+			}
+			
+			function open_feedback(){
+				mui.openWindow({
+					url: 'html/member/feedback.html',
+					id: 'html/member/feedback.html',
+					show: {
+						aniShow: 'slide-in-right'
+					},
+					waiting: {
+						autoShow: false
+					}
+				});   
+			}
+			
+			document.getElementById('link-feedback').addEventListener('tap',function () {
+			     open_feedback();
+			})
+			document.getElementById('btn-feedback').addEventListener('tap',function () {
+			     open_feedback();
+			})
+			
+			mui.back = function() {
+				plus.webview.currentWebview().hide("auto", 300);
+				//动画结束后，恢复默认值
+				setTimeout(function() {
+					window.scrollTo(0, 0);
+				}, 300);
+			}
+		</script>
+	</body>
+
+</html>

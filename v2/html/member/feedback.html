@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/app.css"/>
+		<link rel="stylesheet" href="../../css/u.css" />
+		<style type="text/css">
+			.feedback textarea {
+				height: 100px;
+				margin-bottom: 0 !important;
+				padding-bottom: 0 !important;
+			}
+			.feedback .row {
+				width: 100%;
+				background-color: #fff;
+			}
+			.feedback .image-list {
+				width: 100%;
+				height: 85px;
+				background-size: cover;
+				padding: 10px 10px;
+				overflow: hidden;
+			}
+			.feedback .image-item {
+				width: 65px;
+				height: 65px;
+				background-image: url(../images/iconfont-tianjia.png);
+				background-size: 100% 100%;
+				display: inline-block;
+				position: relative;
+				border-radius: 5px;
+				margin-right: 10px;
+				margin-bottom: 10px;
+				border: solid 1px #e8e8e8;
+			}
+			.feedback .image-item input[type="file"] {
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+				cursor: pointer;
+				z-index: 0;
+			}
+			.feedback .image-item.space {
+				border: none;
+			}
+			.feedback .image-item .image-close {
+				position: absolute;
+				display: inline-block;
+				right: -6px;
+				top: -6px;
+				width: 20px;
+				height: 20px;
+				text-align: center;
+				line-height: 20px;
+				border-radius: 12px;
+				background-color: #FF5053;
+				color: #f3f3f3;
+				border: solid 1px #FF5053;
+				font-size: 9px;
+				font-weight: 200;
+				z-index: 1;
+			}
+			.feedback .image-item.space .image-close {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav ">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">问题反馈</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-content-padded feedback">
+				<p>问题和意见</p>
+				<div class="row mui-input-row">
+					<textarea id='question' class="mui-input-clear question" placeholder="请详细描述你的问题和意见..."></textarea>
+				</div>
+				<!--<p>图片(选填,提供问题截图)</p>
+				<div id='image-list' class="row image-list">
+					
+				</div>-->
+				<p>QQ/邮箱</p>
+				<div class="mui-input-row">
+						<input id='contact' type="text" class="mui-input-clear  contact" placeholder="(选填,方便我们联系你 )" />
+				</div>
+				<button id='submit' type="button" class="mui-btn mui-btn-green" data-loading-text="提交中">提交</button>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/app.js" type="text/javascript" charset="utf-8"></script><script src="../../js/cn.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+    		app_cn.set_txt('member/feedback');
+			mui.init()
+			mui.plusReady(function () {
+			    
+			})
+			
+			document.getElementById('submit').addEventListener('tap',function () {
+			     if(UserInfo.has_login()){
+			     	var _this = this;
+			     	mui(this).button('loading');
+			     	var question = document.getElementById("question").value;
+			     	var contact = document.getElementById("contact").value;
+			     	mui.web_query('input_feedback', {
+			     		question:question,
+			     		contact:contact
+			     	}, function(data){
+						plus.nativeUI.toast(data.info.status_err, {verticalAlign: 'center'});
+						mui(_this).button('reset');
+						init_();
+					}, function(status,status_err){
+						mui(_this).button('reset');
+						 switch(status){
+						    case 2:
+						        plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+						        break;
+						    default:
+						    		plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+						        break;
+					    }
+					}, 3);   
+			     }else{
+			     	plus.webview.show('login.html',"slide-in-bottom",300);
+			     }
+			})
+			
+			function init_(){
+				document.getElementById("question").value="";
+				document.getElementById("contact").value="";
+			}
+			
+			mui.back = function() {
+				init_();
+				plus.webview.currentWebview().hide("auto", 300);
+				//动画结束后，恢复默认值
+				setTimeout(function() {
+					window.scrollTo(0, 0);
+				}, 300);
+			}
+		</script>
+	</body>
+
+</html>

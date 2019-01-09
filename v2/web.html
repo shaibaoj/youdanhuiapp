@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/app.css"/>
+	<link rel="stylesheet" type="text/css" href="css/u.css"/>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav ">
+		    <a class="mui-action-back mui-icon mui-icon-closeempty mui-pull-left"></a>
+		    <h1 id="web-title" class="mui-title">粉丝福利购</h1>
+		    <a class="mui-icon mui-pull-right btn-reload"><span>刷新</span></a>
+		</header>
+		<script src="js/mui.min.js"></script>
+		<script src="js/config.js" ></script>
+		<script src="js/app.js" ></script><script src="js/cn.js" ></script>
+		<script type="text/javascript">
+    		app_cn.set_txt('web');
+			mui.init();
+			mui.plusReady(function () {
+			    
+			});
+			
+			var ws = null;
+			var url_web = null;
+			var url = null;
+			function load_url(url){
+				if(url_web){
+					plus.nativeUI.showWaiting("加载中");
+					url_web.clear();
+					url_web.loadURL(url);
+				}
+			}
+			
+			function open_url(url){
+				if(!url_web){
+					ws = plus.webview.currentWebview();
+					plus.nativeUI.showWaiting("加载中");
+					url_web = plus.webview.create(url, "web_url",{
+						top:"44px",
+						bottom:"0px"
+					});
+					url_web.onloaded=embedLoaded;
+					ws.append(url_web);
+				}else{
+					load_url(url);
+				}
+			}
+
+			document.addEventListener('open_url',function (event) {
+			    url = event.detail.url;
+			    if(!url) {
+					return;
+				}
+			    document.getElementById("web-title").innerHTML = event.detail.title;
+			    open_url(url);
+			});
+			
+			document.querySelector('.btn-reload').addEventListener('tap',function () {
+			    open_url(url);
+			})
+			
+			// 页面加载完成事件回调函数
+			function embedLoaded(e){
+				plus.nativeUI.closeWaiting();
+			}
+			
+			//重写返回逻辑
+			mui.back = function() {
+				plus.webview.currentWebview().hide("auto", 300);
+				//动画结束后，恢复默认值
+				setTimeout(function() {
+					window.scrollTo(0, 0);
+				}, 300);
+			}
+		</script>
+	</body>
+</html>

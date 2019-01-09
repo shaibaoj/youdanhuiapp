@@ -1,0 +1,125 @@
+
+.mui-bar-tab .mui-tab-item.mui-active {
+  color: #5eb95e;
+}
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active{
+	color: #5eb95e;
+    border-bottom: 1px solid #5eb95e;
+}
+.mui-slider .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+    border-bottom: 1px solid #5eb95e;
+}
+.mui-bar-nav .mui-title{
+	color:#ffffff;
+}
+
+.mui-bar-nav{
+	background-color:#5eb95e;
+	box-shadow: 0 0px 1px #5eb95e;
+}
+.mui-bar-nav .mui-icon{
+	color: #ffffff;
+}
+
+.mui-bar{
+	color: #ffffff;
+}
+.mui-search input[type='search']
+{
+    color: #ffffff;
+}
+.mui-search .mui-placeholder
+{
+	color: #ffffff;
+}
+.mui-search input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #ffffff;
+}
+
+.mui-btn-negative,
+.mui-btn-danger,
+.mui-btn-red
+{
+    border: 1px solid #208d4e;
+    background-color: #208d4e;
+}
+
+.mui-bar-footer{
+	background-color:#ffffff;
+}
+
+
+.quan_item_price{
+    color:#5eb95e;
+}
+
+.app-btn{
+	background-color:#208d4e;
+	  border: 0px solid #208d4e;
+}
+
+.detail-wrapper .recommend-wrapper {
+    color: #5eb95e;
+}
+.detail-wrapper  .goods-jq .goods-price b {
+    color: #5eb95e;
+}
+.detail-wrapper  .goods-jq .shoufa-quan b {
+    color:#5eb95e;
+    border: #5eb95e 1px solid;
+}
+
+.detail-wrapper  .goods-jq .goods-num b {
+    color: #5eb95e;
+}
+.detail-wrapper .goods-tag {
+    color:#5eb95e;
+}
+
+.detail-wrapper .goods-tag span {
+    border-color: #5eb95e;
+}
+
+
+.detail-wrapper  .goods-jq .shoufa-quan span {
+    background:#5eb95e;
+}
+.detail-wrapper  .goods-jq .shoufa-quan b {
+    color:#5eb95e;
+    border: #5eb95e 1px solid;
+}
+.mui-bar-footer .mui-tab-item-buy {
+	background-color:#5eb95e;
+}
+
+.list-wrap .list-info h4 em{
+	color:#5eb95e;
+}
+.list-wrap .list-info-tips{
+    color:#5eb95e;
+}
+
+.mui-bar-footer .mui-tab-item
+{
+	color:#000000;
+}
+.mui-bar-footer .mui-tab-item-buy {
+	background-color:#5eb95e;
+	color:#FFFFFF;
+}
+.mui-content-invite{
+	background-color: #ff672d;
+}
+.act_contain{
+	background-color: #6d55ff;
+}
+
+.img-container .coupon-wrapper{
+	background-color:#208d4e;
+}
+.img-container .top_icon{
+	background-color:#208d4e;
+}
+.search_box{
+	box-shadow: 0 0 1px #5eb95e;
+}

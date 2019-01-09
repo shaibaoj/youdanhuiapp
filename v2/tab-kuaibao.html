@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="css/app.css"/>
+		<link rel="stylesheet" href="css/kuaibao.css" />
+	<link rel="stylesheet" type="text/css" href="css/u.css"/>
+	</head>
+	<body>
+		<div id="pullrefresh" class="mui-content">
+			<ul class="mui-table-view mui-table-view-chevron"></ul>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="libs/arttmpl.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/config.js"></script>
+	<script src="js/app.js"></script><script src="js/cn.js"></script>
+	<script id="tpl-deal" type="text/html">	            
+        {{each list as value i}}
+	        <li class="border_b app-deal">
+				<div class="list-wrap">
+					<a data-id="{{value.id}}" href="javascript:;" >
+						<div class="list-pic mui-pull-left">
+							<img src="{{value.pic_url}}">		
+                        </div>
+						<div class="list-info">
+							<div class="list-info-mall">
+								<span>{{value.create_time_str}}</span>
+								{{value.shopName}}
+							</div>
+							<h4 class="com_ell">{{value.title}}<em>{{value.subTitle}}</em></h4>
+							<div class="list-info-tips">
+								<i class="icon_look icons"></i><em>{{value.views}}</em><i class="icon_comment icons"></i><em>{{value.comments}}</em>
+							</div>
+						</div>
+					</a>
+				</div>
+			</li>
+	    {{/each}}
+	</script>
+	<script>
+    		app_cn.set_txt('tab-kuaibao');
+		mui.init({
+			swipeBack:true, //启用右滑关闭功能
+			pullRefresh: {
+				container: '#pullrefresh',
+				down: {
+					style:'circle',
+					callback: pulldownRefresh
+				},
+				up: {
+					auto:true,
+					contentrefresh: '正在加载...',
+					callback: pullupRefresh
+				}
+			}
+		});
+		
+		var webview_detail = null; //详情页webview
+		
+		var count = 0;
+		function pullupRefresh() {
+			var scroll_data =  document.querySelector(".mui-table-view");
+			var min_date = scroll_data.getAttribute("data-min-date");
+			var max_date = scroll_data.getAttribute("data-max-date");
+				
+			mui.web_query('deal_list', {min_date:min_date?min_date:''}, function(data){
+				if(data && data.data.items.length > 0) {
+					var datas = {
+					    list: data.data.items
+					};
+					var html = template('tpl-deal', datas);
+					document.querySelector(".mui-table-view").insertAdjacentHTML("beforeEnd",html);
+					mui('#pullrefresh').pullRefresh().endPullup(false);
+					
+					min_date = scroll_data.getAttribute("data-min-date");
+					max_date = scroll_data.getAttribute("data-max-date");
+					scroll_data.setAttribute("data-min-date",dateUtils.get_min(min_date,data.data.min_time));
+					scroll_data.setAttribute("data-max-date",dateUtils.get_max(max_date,data.data.max_time));
+					
+				}else{
+					mui('#pullrefresh').pullRefresh().endPullup(true);
+				}
+			}, function(tatus,status_err){
+				 switch(status){
+				    case 2:
+				        plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+				        break;
+				    default:
+				    		plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+				        break;
+			    }
+			}, 3);
+		}
+		
+		/**
+		 * 下拉刷新具体业务实现
+		 */
+		function pulldownRefresh() {
+			var scroll_data =  document.querySelector(".mui-table-view");
+			var min_date = scroll_data.getAttribute("data-min-date");
+			var max_date = scroll_data.getAttribute("data-max-date");
+			
+			mui.web_query('deal_list', {max_date:max_date?max_date:''}, function(data){
+				if(data && data.data.items.length > 0) {
+					var datas = {
+					    list: data.data.items
+					};
+					var html = template('tpl-deal', datas);
+					document.querySelector(".mui-table-view").insertAdjacentHTML("afterBegin",html);
+//					mui.toast("更新了"+data.data.items.length+"条优惠线报");
+					
+					min_date = scroll_data.getAttribute("data-min-date");
+					max_date = scroll_data.getAttribute("data-max-date");
+					scroll_data.setAttribute("data-min-date",dateUtils.get_min(min_date,data.data.min_time));
+					scroll_data.setAttribute("data-max-date",dateUtils.get_max(max_date,data.data.max_time));
+				}
+				mui('#pullrefresh').pullRefresh().endPulldown();
+			}, function(tatus,status_err){
+				 switch(status){
+				    case 2:
+				        plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+				        break;
+				    default:
+				    		plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+				        break;
+			    }
+			}, 3);
+		}
+		
+		mui.plusReady(function () {
+		    webview_detail = mui.preload({
+			    url:'deal.html',
+			    id:'deal.html',
+			    styles:{},//窗口参数
+			    extras:{}//自定义扩展参数
+			});
+		});
+		
+		mui('.mui-content').on('tap', '[data-id]', function() {
+			var id = this.getAttribute('data-id');
+			var detail_json = {
+				id:id
+			};
+			open_detail(detail_json);
+		});
+		
+		function open_detail(detail_json) {
+			if(!webview_detail) {
+				setTimeout(function() {
+					open_detail(detail_json);
+				}, 100);
+			}
+			mui.fire(webview_detail, 'get_detail', {
+				id: detail_json.id,
+				pic_url:detail_json.pic_url,
+				title:detail_json.title,
+			});
+
+			//更改详情页原生导航条信息
+//			titleNView.titleText = title;
+//			webview_detail.setStyle({
+//				"titleNView": titleNView
+//			});
+			setTimeout(function () {
+				webview_detail.show("slide-in-right", 300);
+			},150);
+		}
+		
+		document.addEventListener('scroll_top',function (event) {
+//			mui('#pullrefresh').scroll().scrollTo(0,0,1000);
+//			window.scrollTo(0, 1000);
+			mui.scrollTo(0,100);
+		})
+	</script>
+</html>

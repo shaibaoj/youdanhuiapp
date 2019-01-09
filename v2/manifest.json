@@ -1,0 +1,299 @@
+{
+	"@platforms": [
+		"android",
+		"iPhone",
+		"iPad"
+	],
+	"id": "com.youdanhui.hui",
+	"name": "优单汇",
+	"version": {
+		"name": "1.0.115",
+		"code": "200"
+	},
+	"description": "优单汇-网购优惠券信息汇聚地，专注商品精选推荐.以及时、高效获得广大用户的认可比肩什么值得买，惠惠购物助手，口袋购物，折800，九块九包邮，美丽说，蘑菇街，北美省钱快报，楚楚街等电商导购推荐平台。",
+	"icons": {
+		"72": "icon.png"
+	},
+	"launch_path": "index.html",
+	"developer": {
+		"name": "987939309@qq.com",
+		"email": "987939309@qq.com",
+		"url": "https://www.haopintui.net"
+	},
+	"permissions": {
+		"Audio": {
+			"description": "访问麦克风"
+		},
+		"Cache": {
+			"description": "管理应用缓存"
+		},
+		"Camera": {
+			"description": "访问摄像头"
+		},
+		"Console": {
+			"description": "跟踪调试输出日志"
+		},
+		"Device": {
+			"description": "访问设备信息"
+		},
+		"Downloader": {
+			"description": "文件下载管理"
+		},
+		"Events": {
+			"description": "应用扩展事件"
+		},
+		"File": {
+			"description": "访问本地文件系统"
+		},
+		"Gallery": {
+			"description": "访问系统相册"
+		},
+		"Geolocation": {
+			"description": "访问位置信息"
+		},
+		"Orientation": {
+			"description": "访问方向感应器"
+		},
+		"Storage": {
+			"description": "管理应用本地数据"
+		},
+		"Uploader": {
+			"description": "管理文件上传任务"
+		},
+		"Runtime": {
+			"description": "访问运行期环境"
+		},
+		"XMLHttpRequest": {
+			"description": "跨域网络访问"
+		},
+		"Zip": {
+			
+		},
+		"Barcode": {
+			"description": "管理二维码扫描插件"
+		},
+		"Speech": {
+			"description": "管理语音识别插件"
+		},
+		"Webview": {
+			"description": "窗口管理"
+		},
+		"NativeUI": {
+			"description": "原生UI控件"
+		},
+		"Navigator": {
+			"description": "浏览器信息"
+		},
+		"NativeObj": {
+			"description": "原生对象"
+		},
+		"Statistic": {
+			
+		},
+		"OAuth": {
+			
+		},
+		"Invocation": {
+			
+		},
+		"Share": {
+			
+		},
+		"Push": {
+			
+		},"Contacts":{
+			"description": "通讯录"
+		}
+	},
+	"plus": {
+		"splashscreen": {
+			"autoclose": false,
+			"waiting": false
+		},
+		"statusbar": {
+			"background": "#f54e54"
+		},
+		"runmode": "normal",
+		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",
+		"distribute": {
+			"plugins": {
+				"push": {
+					"igexin": {
+						"appid": "JfC3SSZWR199W0200D9V33",
+						"appkey": "iG6NINWcGy8ZaTIni8ubw1",
+						"appsecret": "O8deUB6Ubv5DJ0fTnYzgO1"
+					},
+					"description": "管理消息推送能力"
+				},
+				"maps": {
+					
+				},
+				"share": {
+					"qq": {
+						"appid": "a1",
+						"description": "QQ分享"
+					},
+					"sina": {
+						"appkey": "a1",
+						"appsecret": "1",
+						"redirect_uri": "1",
+						"description": "可选，新浪微博分享"
+					},
+					"weixin": {
+						"appid": "wx57017f765240a5e8",
+						"appsecret": "bdc9ed24bc2788413497726dd1fd2feb",
+						"description": "可选，微信分享"
+					}
+				},
+				"oauth": {
+					"qq": {
+						"appid": "a1"
+					},
+					"sina": {
+						"appkey": "a1",
+						"appsecret": "1",
+						"redirect_uri": "1"
+					},
+					"weixin": {
+						"appid": "wx57017f765240a5e8",
+						"appsecret": "bdc9ed24bc2788413497726dd1fd2feb"
+					}
+				},
+				"statics": {
+					"umeng": {
+						"appkey_ios": "59591baa2ae85b6414000f01",
+						"channelid_ios": "59591baa2ae85b6414000f01",
+						"appkey_android": "59591baa2ae85b6414000f01",
+						"channelid_android": "59591baa2ae85b6414000f01"
+					},
+					"description": "管理消息推送能力"
+				}
+			},
+			"apple": {
+				"appid": "com.youdanhui.hui2",
+				"mobileprovision": "",
+				"password": "xiaoxue66",
+				"p12": "",
+				"devices": "universal",
+				"urltypes": [
+					{
+						"urlidentifier": "hui2.youdanhui.com",
+						"urlschemes": [
+							"youdanhui2"
+						]
+					}
+				],
+				"frameworks": []
+			},
+			"google": {
+				"packagename": "com.youdanhui.hui2",
+				"keystore": "app.keystore",
+				"password": "xiaoxue66",
+				"aliasname": "youdanhui",
+				"schemes": [
+					"youdanhui2"
+				],
+				"permissions": [
+					"<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+					"<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
+					"<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
+					"<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>",
+					"<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
+					"<uses-permission android:name=\"android.permission.GET_TASKS\"/>",
+					"<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.VIBRATE\"/>",
+					"<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
+					"<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
+					"<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
+					"<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
+					"<uses-feature android:name=\"android.hardware.camera\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
+					"<uses-permission android:name=\"android.permission.RECEIVE_USER_PRESENT\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>",
+					"<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>",
+					"<uses-permission android:name=\"android.permission.CAMERA\"/>"
+				],
+				"custompermissions": true
+			},
+			"orientation": [
+				"portrait-primary",
+				"portrait-secondary"
+			],
+			"icons": {
+				"ios": {
+					"prerendered": "true",
+					"iphone": {
+						"app@2x": "icon-iphone-app@2x.png",
+						"app@3x": "icon-iphone-app@3x.png",
+						"spotlight@2x": "icon-iphone-spotlight@2x.png",
+						"spotlight@3x": "icon-iphone-spotlight@3x.png",
+						"settings@2x": "icon-iphone-settings@2x.png",
+						"settings@3x": "icon-iphone-settings@3x.png",
+						"notification@2x": "icon-iphone-notification@2x.png",
+						"notification@3x": "icon-iphone-notification@3x.png"
+					},
+					"ipad": {
+						"app": "icon-ipad-app.png",
+						"app@2x": "icon-ipad-app@2x.png",
+						"proapp@2x": "icon-ipad-proapp@2x.png",
+						"spotlight": "icon-ipad-spotlight.png",
+						"spotlight@2x": "icon-ipad-spotlight@2x.png",
+						"settings": "icon-ipad-settings.png",
+						"settings@2x": "icon-ipad-settings@2x.png",
+						"notification": "icon-ipad-notification.png",
+						"notification@2x": "icon-ipad-notification@2x.png"
+					},
+					"appstore": "appstore.png"
+				},
+				"android": {
+					"mdpi": "icon-android-mdpi.png",
+					"ldpi": "icon-android-ldpi.png",
+					"hdpi": "icon-android-hdpi.png",
+					"xhdpi": "icon-android-xhdpi.png",
+					"xxhdpi": "icon-android-xxhdpi.png",
+					"xxxhdpi": "icon-android-xxxhdpi.png"
+				}
+			},
+			"splashscreen": {
+				"ios": {
+					"iphone": {
+						"default": "",
+						"retina35": "splash-iphone-retina35.png",
+						"retina40": "splash-iphone-retina40.png",
+						"retina55": "splash-iphone-retina55.png",
+						"retina47": "splash-iphone-retina47.png",
+						"retina55l": "splash-iphone-retina55l.png",
+						"iphonex": "splash-iphone-iphonex.png",
+						"iphonexl": "splash-iphone-iphonexl.png"
+					},
+					"ipad": {
+						"portrait": "splash-ipad-portrait.png",
+						"portrait-retina": "splash-ipad-portrait_retina.png",
+						"landscape": "splash-ipad-landscape.png",
+						"landscape-retina": "splash-ipad-landscape_retina.png",
+						"portrait7": "splash-ipad-portrait7.png",
+						"portrait-retina7": "splash-ipad-portrait-retina7.png",
+						"landscape7": "splash-ipad-landscape7.png",
+						"landscape-retina7": "splash-ipad-landscape-retina7.png"
+					}
+				},
+				"android": {
+					"hdpi": "splash-android-hdpi.png",
+					"xhdpi": "splash-android-xhdpi.png",
+					"xxhdpi": "splash-android-xxhdpi.png"
+				}
+			},
+			"debug": false
+		},
+		"ads": {
+			"rp": false,
+			"splash": false,
+			"push": false,
+			"spot": false
+		},
+		"adid": ""
+	}
+}

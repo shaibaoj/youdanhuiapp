@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/app.css"/>
+	<link rel="stylesheet" type="text/css" href="css/u.css"/>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav ">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">排行榜</h1>
+		</header>
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul class="mui-table-view coupon-items result_list"></ul>
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="libs/arttmpl.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/app.js"></script><script src="js/cn.js"></script>
+		<script id="tpl-goods" type="text/html">	            
+	        {{each list as value i}}
+		        <li class="mui-table-view-cell app-media-coupon-goods">
+		            <a data-id="{{value.num_iid}}" href="javascript:;" 
+		            		data-query_cache="{{value.query_cache}}" 
+	        				data-comment="{{value.comment}}" 
+	        				data-volume="{{value.volume}}" 
+	        				data-coupon_money="{{value.coupon_money}}" 
+	        				data-buy_price="{{value.buy_price}}" 
+	        				data-app_url="{{value.app_url}}" 
+	        				data-pid="{{value.pid}}" 
+	        				data-click_url="{{value.click_url}}" 
+		            		data-pic="{{value.pic_url}}" data-title="{{value.title}}" data-price="{{value.buy_price}}">
+		                <i class="icon_hot icons icon_tip"></i>
+		                <img class="mui-pull-left" src="{{value.pic_url}}" alt="">
+		                <div class="goods_info border_b">
+		                    <p class="goods_title com_ell">{{value.title}}</p>
+		                    <p class="goods_price ano_color">￥<span>{{value.buy_price}}</span><span class="goods_price_tip">券后价</span></p>
+		                    <div class="goods_box cf">
+		                        <div class="goods_box_left mui-pull-left">
+		                            <p class="goods_coupon"><span class="goods_tip">券</span><span class="goods_text">{{value.coupon_money}}元券</span></p>
+		                            <p class="goods_num"><span class="goods_tip">抢</span><span class="goods_text">{{value.volume}}人已买</span></p>
+		                        </div>
+		                        <span class="goods_btn mui-pull-right ano_bg com_btn">领券抢购</span>
+		                    </div>
+		                </div>
+		            </a>
+		        </li>
+		    {{/each}}
+		</script>
+		<script type="text/javascript">
+    		app_cn.set_txt('top');
+			mui.init({
+				swipeBack:true, //启用右滑关闭功能
+				pullRefresh: {
+					container: '#pullrefresh',
+//					down: {
+//						style:'circle',
+//						callback: pulldownRefresh
+//					},
+					up: {
+						auto:true,
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+			
+			var webview_detail_goods = null; //详情页webview
+			var webview_detail_deal = null; //详情页webview
+			var titleNView = { //详情页原生导航配置
+				backgroundColor: '#ffffff', //导航栏背景色
+				titleText: '', //导航栏标题
+				titleColor: '#999', //文字颜色
+				type: 'transparent', //透明渐变样式
+				autoBackButton: true, //自动绘制返回箭头
+				splitLine: { //底部分割线
+					color: '#ffffff'
+				}
+			};
+			
+			var count = 0;
+			function pullupRefresh() {
+				var scroll_data =  document.querySelector(".mui-table-view");
+				var ipage = scroll_data.getAttribute("data-ipage");
+					
+				mui.web_query('top', {ipage:ipage?ipage:'',pic_size:'300'}, function(data){
+					if(data && data.data.items.length > 0) {
+						var datas = {
+						    list: data.data.items
+						};
+						var html = template('tpl-goods', datas);
+						document.querySelector(".mui-table-view").insertAdjacentHTML("beforeEnd",html);
+						mui('#pullrefresh').pullRefresh().endPullupToRefresh(false);
+						
+						scroll_data.setAttribute("data-ipage",data.data.ipage);
+						
+					}else{
+						mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
+					}
+				}, function(tatus,status_err){
+					 switch(status){
+					    case 2:
+					        plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+					        break;
+					    default:
+					    		plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+					        break;
+				    }
+				}, 3);
+			}
+			
+			mui.plusReady(function () {
+				//预加载详情页
+				webview_detail_goods = mui.preload({
+					url: 'coupon_goods.html',
+					id: 'coupon_goods.html',
+					styles: {
+						"render": "always",
+						"popGesture": "hide",
+						"bounce": "vertical",
+						"bounceBackground": "#efeff4",
+						"titleNView": titleNView
+					}
+				});
+			});
+			
+			mui('.mui-content').on('tap', '[data-id]', function() {
+				var id = this.getAttribute('data-id');
+				var title = this.getAttribute("data-title").trim();
+				var pic_url = this.getAttribute("data-pic").trim();
+				var click_url = this.getAttribute("data-click_url").trim();
+				var comment = this.getAttribute("data-comment").trim();
+				var volume = this.getAttribute("data-volume").trim();
+				var coupon_money = this.getAttribute("data-coupon_money").trim();
+				var buy_price = this.getAttribute("data-buy_price").trim();
+				var app_url = this.getAttribute("data-app_url").trim();
+				var query_cache = this.getAttribute("data-query_cache").trim();
+				var pid = this.getAttribute("data-pid").trim();
+				var json_detail = {
+					id:id,
+					title:title,
+					pic_url:pic_url,
+					click_url:click_url,
+					comment:comment,
+					volume:volume,
+					coupon_money:coupon_money,
+					buy_price:buy_price,
+					app_url:app_url,
+					query_cache:query_cache,
+					pid:pid,
+				};
+				open_detail(json_detail);
+			});
+			
+			function open_detail(json_detail) {
+				if(!webview_detail_goods) {
+					setTimeout(function() {
+						open_detail(json_detail);
+					}, 100);
+				}
+				mui.fire(webview_detail_goods, 'get_detail', {
+					id: json_detail.id,
+					title:json_detail.title,
+					click_url:json_detail.click_url,
+					pic_url:json_detail.pic_url,
+					comment:json_detail.comment,
+					volume:json_detail.volume,
+					coupon_money:json_detail.coupon_money,
+					buy_price:json_detail.buy_price,
+					app_url:json_detail.app_url,
+					query_cache:json_detail.query_cache,
+					pid:json_detail.pid,
+				});
+				
+				//更改详情页原生导航条信息
+				titleNView.titleText = json_detail.title;
+				webview_detail_goods.setStyle({
+					"titleNView": titleNView
+				});
+	
+				setTimeout(function () {
+					webview_detail_goods.show("slide-in-right", 300);
+				},150);
+			}
+			
+			function init_(){
+				mui('#pullrefresh').pullRefresh().scrollTo(0, 0, 1000);//滚动到顶部
+				window.scrollTo(0, 1000);
+			}
+			
+			//重写返回逻辑
+			mui.back = function() {
+				init_();
+				plus.webview.currentWebview().hide("auto", 300);
+				//动画结束后，恢复默认值
+				setTimeout(function() {
+					window.scrollTo(0, 0);
+				}, 300);
+			}
+		</script>
+	</body>
+
+</html>

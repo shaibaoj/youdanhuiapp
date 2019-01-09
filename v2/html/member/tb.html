@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/app.css"/>
+		<link rel="stylesheet" href="../../css/u.css" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav ">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">晒单拿奖励</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-content-padded">
+				<p>请在下单15-30分钟后,复制淘宝订单号提交</p>
+			</div>
+		    <form id='login-form' class="mui-input-group">
+				<div class="mui-input-row">
+					<label>淘宝订单</label>
+					<input id='order_no' type="text" class="mui-input-clear mui-input" placeholder="请输入淘宝订单号">
+				</div>
+			</form>
+			<div class="mui-content-padded">
+				<button id='btn-apply' class="mui-btn mui-btn-block  app-btn"  data-loading-text="提交中">晒单提交</button>
+			</div>
+			<div class="mui-content-padded">
+				<p>以下情况无法参与下单返积分活动：</p>
+				<p>1、未使用App内链接直接购买</p>
+				<p>2、打开商品后没有直接下单</p>
+				<p>3、同一个淘宝订单号提交多次</p>
+				<p>本活动解释权归本平台所有，如有疑问请联系客服</p>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/app.js" type="text/javascript" charset="utf-8"></script><script src="../../js/cn.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+    		app_cn.set_txt('member/tb');
+			mui.init()//重写返回逻辑
+			
+			document.getElementById('btn-apply').addEventListener('tap',function () {
+				var _this = this;
+			    mui(this).button('loading');
+			    var order_no = document.getElementById("order_no");
+			    mui.web_query('input_taobao_order', {
+				    	order_no:order_no.value,
+			    }, function(data){
+					plus.nativeUI.toast(data.info.status_err);
+					order_no.value = "";
+					mui.fire(plus.webview.getWebviewById('tab-member.html'), 'show_user', {});
+					mui(_this).button('reset');
+				}, function(status,status_err){
+					mui(_this).button('reset');
+					switch(status){
+					    case 2:
+					        plus.nativeUI.toast(status_err);
+					        break;
+					    default:
+					    		plus.nativeUI.toast(status_err);
+					        break;
+				    }
+				}, 3);   
+			})
+			
+			function init_(){
+				document.getElementById("order_no").value="";
+			}
+			mui.back = function() {
+				init_();
+				plus.webview.currentWebview().hide("auto", 300);
+				//动画结束后，恢复默认值
+				setTimeout(function() {
+					window.scrollTo(0, 0);
+				}, 300);
+			}
+		</script>
+	</body>
+
+</html>

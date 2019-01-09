@@ -1,0 +1,284 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/app.css"/>
+		<link rel="stylesheet" type="text/css" href="css/member.css"/>
+	<link rel="stylesheet" type="text/css" href="css/u.css"/>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav not-box-shadow">
+		    <a id="my_xiaoxi_icon" class="mui-icon customiconfont icon-xiaoxi mui-pull-left" href="html/member/message.html" data-user='user' data-from="message"></a>
+		    <h1 id="web-title" class="mui-title"></h1>
+		    <a id="my_shezhi_icon" class="mui-icon customiconfont icon-iconshezhi01 mui-pull-right" href="setting.html"></a>
+		</header>
+		<div class="mui-content">
+			<div id="my-account" class="my-account">
+		        <a class="avater" href="html/member/member_setting.html" data-user='user'>
+		        		<img id="headimgurl" src="images/member/user.png">
+		        </a>
+		        <a id="user_name" class="uname" href="html/member/member_setting.html" data-user='user'>未登录</a>
+		   </div>
+	        <ul class="order-act mb5">
+		        <li>
+			        <a href="html/member/cash.html" data-user='user'>
+				        	<span class="p">
+				        		<span id="money_available_value">-</span>
+					        	<span class="sub" id="yuer_txt">余额</span>
+				        	</span>
+			        	</a>
+		        </li>
+		        <li>
+			        <a href="html/member/point.html" data-user='user' data-from="point">
+			        		<span class="p">
+			        			<span id="points_available_value">-</span>
+			        			<span class="sub" id="jifen_keyong_txt">可用积分</span>
+			        		</span>
+			        	</a>
+		        </li>
+		        <li>
+			        <a href="html/member/point.html" data-user='user' data-from="point">
+			        		<span class="p">
+			        			<span id="points_value">-</span>
+			        			<span class="sub" id="jifen_txt">预估积分</span>
+			        		</span>
+			        	</a>
+		        </li>
+		        <li>
+			       <a href="html/member/order.html" data-user='user' data-from="order">
+			        		<span class="p">
+			        			<span id="money_value">-</span>
+				        		<span class="sub" id="leijiyugu_txt">累计预估</span>
+			        		</span>
+			        	</a>
+		        </li>
+		    </ul>
+		    
+		    <ul class="mui-table-view mb5">
+		        <li class="mui-table-view-cell">
+					<a  class="mui-navigate-right" href="html/member/order.html" data-user='user'>
+						<span class="customiconfont icon-wodedingdan app-custom-icon" id="my_order_icon"></span>
+						<span id="my_order_txt">订单</span></span>
+					</a>
+				</li>
+			</ul>
+	    		
+	        <ul class="mui-table-view">
+	        		<li class="mui-table-view-cell mui-hidden" id="fun_input_order">
+					<a class="mui-navigate-right" href="html/member/tb.html" data-user='user'>
+						<span class="customiconfont icon-shaidan app-custom-icon" id="my_shaidan_icon"></span>
+						<span id="my_shaidan_txt">晒单奖励</span>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+			        <a class="mui-navigate-right" href="html/member/gift.html" data-user='user' data-from="gift">
+			        		<span class="customiconfont icon-jifenduihuan app-custom-icon" id="my_jifenduihuan_icon"></span>
+			        		<span id="my_jifenduihuan_txt">积分兑换</span>
+			        	</a>
+		        </li>
+		       <li class="mui-table-view-cell">
+			       <a class="mui-navigate-right" href="html/member/favorite.html" data-user='user'>
+			       		<span class="customiconfont icon-mxsoucangxuanzhong app-custom-icon" id="my_soucang_icon"></span>
+			        		<span id="my_soucang_txt">收藏</span>
+			        	</a>
+		       </li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" href="html/member/invite.html" data-user='user' data-from="invite">
+						<span class="customiconfont icon-yaoqing app-custom-icon" id="my_yaoqing_icon"></span>
+						<span id="my_yaoqing_txt">邀请奖励</span>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" href="html/member/agent.html" data-user='user' data-from="agent_apply">
+						<span class="customiconfont icon-hehuoren app-custom-icon" id="my_hehuoren_icon"></span>
+						<span id="my_hehuoren_txt">合伙人</span>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" href="https://h5.m.taobao.com/mlapp/olist.html" data-user='tb'>
+						<span class="customiconfont icon-gouwucheman app-custom-icon" id="my_gouwuche_icon"></span>
+						<span id="my_gouwuche_txt">淘宝购物车</span>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-chevron mui-hidden">
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" href="help.html">
+						<span class="iconfont icon-bangzhu app-custom-icon mui-hidden"></span>帮助与反馈
+					</a>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/config.js" ></script>
+	<script src="js/app.js" ></script><script src="js/cn.js" ></script>
+	<script type="text/javascript">
+    		app_cn.set_txt('tab-member');
+		mui.init({
+			pullRefresh: {
+				container: '.mui-content',
+				down: {
+					style:'circle',
+					callback: pulldownRefresh
+				}
+			}
+		});
+		var webview_web = null;
+		
+		var page_setting = null;
+		mui.plusReady(function () {
+		    show_user();
+		    
+		    document.addEventListener('show_user',function () {
+			    show_user();
+			})
+		    webview_web = mui.preload({
+			    url:'web.html',
+			    id:'web.html',
+			    styles:{},//窗口参数
+			    extras:{}//自定义扩展参数
+			});
+		})
+		
+		function pulldownRefresh() {
+			show_user_detail();
+			mui('.mui-content').pullRefresh().endPulldown();
+		}
+		
+		function show_user(){
+			if(UserInfo.has_login()){
+			   	document.getElementById("user_name").innerHTML = dateUtils.hide_tel(UserInfo.username());
+			   	if(UserInfo.imgurl()&&UserInfo.imgurl()!=''){
+			   		document.getElementById("headimgurl").src = UserInfo.imgurl();
+			   	}
+		    }
+		    init_setting();
+		    show_user_detail();
+		    show_user_function();
+		}
+		
+		function show_user_detail(){
+			mui.web_query('get_info', {}, function(data){
+				if(data.data.user_data){
+					document.getElementById("money_available_value").innerHTML = data.data.user_data.money_available;
+					document.getElementById("points_available_value").innerHTML = data.data.user_data.points_available;
+					document.getElementById("money_value").innerHTML = data.data.user_data.money;
+					document.getElementById("points_value").innerHTML = data.data.user_data.points;
+				}
+			}, function(status,status_err){
+
+			}, 3);
+		}
+		
+		function show_user_function(){
+			mui.web_query('config_data', {}, function(data){
+				if(data.data.config_data&&data.data.config_data.fun_input_order=='1'){
+					document.getElementById("fun_input_order").classList.remove("mui-hidden");
+				}else{
+					document.getElementById("fun_input_order").classList.add("mui-hidden");
+				}
+			}, function(status,status_err){
+
+			}, 3);
+		}
+		
+		function init_setting(){
+			if(!page_setting){
+				page_setting = plus.webview.getWebviewById('setting.html')
+			}
+			if(page_setting){
+				 mui.fire(page_setting, 'init', {});
+			}
+		}
+		
+		mui('.login-register').on('tap', 'a', function(e) {
+			var targetTab = this.getAttribute('href');
+			if (!targetTab) {
+				return;
+			}
+			//若为iOS平台或非首次显示，则直接显示
+			if(mui.os.ios){
+				plus.webview.show(targetTab);
+			}else{
+				//否则，使用fade-in动画，且保存变量
+				plus.webview.show(targetTab,"fade-in",300);
+			}
+		});
+		
+		mui('.mui-content,.mui-bar-nav').on('tap', 'a', function() {
+			var targetTab = this.getAttribute("href");
+			if(!targetTab){
+				return;
+			}
+			var data_user = this.getAttribute("data-user");
+			if(data_user=='user'
+				&&!UserInfo.has_login()){
+				plus.webview.show('login.html',"slide-in-bottom",300);
+			}
+			else if(data_user=='tb'){
+				dateUtils.open_tb(targetTab,function(){
+					open_web({
+						title:'购物车',
+						url:targetTab,
+						click_url:targetTab
+					});
+				});	
+			}else{
+				mui.openWindow({
+					url: targetTab,
+					id: targetTab,
+					show: {
+						aniShow: 'pop-in'
+					},
+					waiting: {
+						autoShow: false
+					}
+				});
+				var data_from = this.getAttribute("data-from");
+				if(data_from){
+					trigger_event(targetTab,data_from);
+				}
+			}
+		});
+		
+		function open_web(json_detail) {
+			if(!webview_web) {
+				setTimeout(function() {
+					open_web(json_detail);
+				}, 100);
+			}
+			
+			mui.fire(webview_web, 'open_url', {
+				title: json_detail.title,
+				url: json_detail.url
+			});
+
+			setTimeout(function () {
+				webview_web.show("slide-in-right", 300);
+			},150);
+		}
+		
+		function trigger_event(targetTab,data_from){
+			if(data_from&&data_from=='message'){
+				mui.fire( plus.webview.getWebviewById('html/member/message.html'), 'init', {});
+			}
+			else if(data_from&&data_from=='agent_apply'){
+				mui.fire( plus.webview.getWebviewById('html/member/agent.html'), 'init', {});
+			}
+			else if(data_from&&data_from=='invite'){
+				mui.fire( plus.webview.getWebviewById('html/member/invite.html'), 'init', {});
+			}
+			else {
+				mui.fire( plus.webview.getWebviewById(targetTab), 'init', {});
+			}
+		}
+		
+	</script>
+</html>

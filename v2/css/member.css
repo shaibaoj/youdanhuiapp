@@ -1,0 +1,272 @@
+.ucenter-top {
+	background-color: #f54e54;
+	width: 100%;
+	/*height: 5.41867rem;*/
+	padding: 1.0rem;
+	background-size: 16rem 5.41867rem;
+	position: relative;
+	overflow: hidden;
+}
+
+.ucenter-top .ucenter-title {
+	margin: .704rem 0 1.06667rem;
+	font-size: 1.068rem;
+	line-height: 1.232rem;
+	color: #fff;
+	font-family: '微软雅黑';
+	display: block;
+	text-align: center;
+}
+
+.ucenter-top .login-register {
+	margin: 2.704rem 0 1.06667rem;
+	/*display: none;*/
+	color: #FFFFFF;
+	display: block;
+	height: 2.49333rem;
+	width: 8.18667rem;
+	line-height: 2.49333rem;
+	border: .04267rem #fff solid;
+	font-size: 1.25333rem;
+	margin: 30px auto;
+	text-align: center;
+	border-radius: .81067rem;
+}
+
+.ucenter-top .login-register a {
+	color: #FFFFFF;
+}
+
+.user_photo {
+	width: 60px;
+	height: 60px;
+	border-radius: 30px;
+	-webkit-box-sizing: border-box;
+	text-align: center;
+	overflow: hidden;
+	margin: 0 auto;
+	/*padding: 17px 0 0;*/
+}
+
+.user_photo img {
+	width: 60px;
+}
+
+.app-setting-bg {
+	background-color: #FFFFFF;
+}
+
+.app-setting-bg .iconfont {
+	color: #f54e54;
+	/*font-size:28px;*/
+}
+
+.my-account {
+	color: #333;
+	position: relative;
+	background-color: #ffffff;
+	display: block;
+	height: 90px;
+	position: relative;
+	padding-right: 10px;
+	border-bottom: 1px solid #f2f2f2;
+	margin-bottom: 5px;
+}
+
+.my-account .backimg {
+	background: #f54e54;
+	width: 100%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 0;
+	height: 40px;
+}
+
+.my-account .avater {
+	position: absolute;
+	top: 10px;
+	left: 20px;
+	width: 60px;
+	height: 60px;
+	border-radius: 60px;
+	border: 2px solid #ffffff;
+	background-color: #ffffff;
+	z-index: 99;
+}
+
+.my-account .avater img {
+	width: 100%;
+	height: 100%;
+	border-radius: 60px;
+}
+
+.my-account .user-info {
+	z-index: 1;
+	position: relative;
+	height: 100%;
+	padding: 11px 10px;
+	margin-right: 10px;
+	box-sizing: border-box;
+	font-size: 12px;
+	color: #666;
+}
+
+.my-account .user-info .number {
+	color: #ff5000;
+}
+
+.my-account .uname {
+	font-size: 15px;
+	color: #999;
+	margin-top: 1px;
+	margin-bottom: 10px;
+	padding-left: 100px;
+	position: absolute;
+  	top: 30px;
+}
+
+.my-account ul {
+	color: #333;
+	text-align: center;
+	display: -webkit-box;
+	margin: 0 auto;
+	box-sizing: border-box;
+	padding-left: 90px;
+	padding-top: 5px;
+	list-style: none;
+}
+
+.my-account ul li {
+	color: #999;
+	-webkit-box-flex: 1;
+	border-left: 1px solid #f2f2f2;
+}
+
+.my-account ul li:first-child {
+	border: 0;
+}
+
+.user-info ul li .tittle {
+	font-size: 14px;
+	color: #333;
+	margin-bottom: 0px;
+}
+
+.my-account .sub {
+	color: #999;
+	margin-bottom: 0px;
+}
+
+.label-act {
+	position: relative;
+	font-size: 14px;
+}
+
+.label-act:after {
+	position: absolute;
+	right: 0;
+	left: 0;
+	height: 1px;
+	content: '';
+	-webkit-transform: scaleY(.5);
+	transform: scaleY(.5);
+	background-color: #c8c7cc;
+	top: -1px;
+}
+
+.order-act {
+	color: #333;
+	background-color: #ffffff;
+	height: 70px;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-box;
+	display: -o-box;
+	display: box;
+	border-bottom: 1px solid #f2f2f2;
+	font-size: 14px;
+}
+
+.order-act {
+	color: #333;
+	background-color: #ffffff;
+	height: 70px;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-box;
+	display: -o-box;
+	display: box;
+	border-bottom: 1px solid #f2f2f2;
+}
+
+.order-act li {
+	width: 100%;
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	-ms-box-flex: 1;
+	-o-box-flex: 1;
+	box-flex: 1;
+	-webkit-box-pack: center;
+	-moz-box-pack: center;
+	-ms-box-pack: center;
+	-o-box-pack: center;
+	box-pack: center;
+	-webkit-box-align: center;
+	-moz-box-align: center;
+	-ms-box-align: center;
+	-o-box-align: center;
+	box-align: center;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-box;
+	display: -o-box;
+	display: box;
+}
+
+.order-act li a {
+	display: block;
+	width: 100%;
+	height: 70px;
+}
+
+.order-act li .p {
+	text-align: center;
+	margin: 0 auto;
+	display: block;
+	position: relative;
+	/*width:40px;*/
+	height: 60px;
+	margin-top: 12px;
+}
+
+.order-act span {
+	font-size:14px;
+	color: #999;
+	line-height: 29px;
+}
+
+.order-act .sub {
+	font-size: 11px;
+	display: block;
+	margin-top: -3px;
+}
+
+.order-act .number {
+	position: absolute;
+	top: -3px;
+	right: 0;
+	min-width: 6px;
+	height: 16px;
+	line-height: 16px;
+	padding: 0 4px;
+	border: 1px solid #ff5000;
+	border-radius: 12px;
+	color: #ff5000;
+	font-weight: 700;
+	font-size: 12px;
+	background: #fff;
+	overflow: hidden;
+	opacity: 1;
+	-webkit-transition: all .4s ease-out;
+}

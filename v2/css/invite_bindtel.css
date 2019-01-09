@@ -1,0 +1,95 @@
+/* 绑定手机号 */
+input:-moz-placeholder {
+  color: #a6a4b2;
+}
+input::-moz-placeholder {
+  color: #a6a4b2;
+}
+input:-ms-input-placeholder{
+  color: #a6a4b2;
+}
+input::-webkit-input-placeholder{
+  color: #a6a4b2;
+}
+.ui_popbox .popbox_close{
+	top: 10px;
+    right: 10px;
+}
+.ui_popbox{
+    width:300px;
+    height:240px;
+    margin:-120px 0 0 -150px;
+    background-color:#fff;
+}
+.show_bindphone_cot{
+    margin:25px 20px;
+}
+.show_bindphone_cot .title{
+    color:#333;
+    font-size:15px;
+}
+.show_bindphone_cot .bphone_input{
+    display:block;
+    width:100%;
+    margin:12px 0 10px 0;
+    height:45px;
+    text-indent:10px;
+    color:#46454d;
+    font-size:14px;
+    background-color:#fff;
+}
+.show_bindphone_cot .code_box{
+    margin:5px 0 15px 0;
+}
+.show_bindphone_cot .code_input{
+    float:left;
+    display:block;
+    width:50%;    
+    height:45px;
+    text-indent:10px;
+    color:#46454d;
+    font-size:14px;
+    background-color:#fff;
+}
+.show_bindphone_cot .get_code_box{
+    float:right;
+    display:block;
+    width:46%;
+    height:45px;
+    line-height:45px;
+    text-align:center;
+    color:#666666;
+    font-size:15px;
+}
+.show_bindphone_cot .get_code_btn{
+    display:block;
+    margin:1px;
+    height:43px;
+    font-size:14px;
+    color:#757380;
+    background-image: -moz-linear-gradient( 90deg, rgb(235,235,235) 0%, rgb(255,255,255) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(235,235,235) 0%, rgb(255,255,255) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(235,235,235) 0%, rgb(255,255,255) 100%);
+}
+.show_bindphone_cot .get_code_btn:active{
+    background-image: -moz-linear-gradient( 90deg, rgb(220,220,220) 0%, rgb(250,250,250) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(220,220,220) 0%, rgb(250,250,250) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(220,220,220) 0%, rgb(250,250,250) 100%);
+}
+
+.show_bindphone_cot a.get_code_btn.waiting{
+    background-color:#fcfcfc;
+    background-image:none;
+}
+.show_bindphone_cot .get_btn{
+    font-size:16px; 
+    display:block; 
+    line-height:45px; 
+    color: #fff; 
+    text-align: center; 
+    border-radius:3px;
+    background-color:#f54e54;
+}
+.show_bindphone_cot a.get_btn:active{
+    background-color:#f2494e;
+}

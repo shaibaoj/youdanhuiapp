@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/app.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/duihuan.css"/>
+		<link rel="stylesheet" href="../../css/u.css" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav ">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 id='title' class="mui-title">礼品兑换</h1>
+		</header>
+		<div class="mui-content">
+		    <div class="gift_pic">
+			    <img :src="pic_url">
+			    <p class="gift_tit">{{title}}</p>
+			</div>
+			<div class="exchage_info border_b">
+			    <div class="exchage_filter border_b">
+			        <p class="filter_god">兑换所需: <span>{{points}}积分</span></p>
+			    </div>
+			    <div class="exchage_doc border_b">
+			        <p class="doc_tit">兑换礼品介绍说明</p>
+			        <div class="doc_cot">
+			        {{content}}
+			        </div>
+			    </div>
+			</div>
+			<div class="exchage_btn">
+			    <a class="btn btn1 btn2" href="javascript:void(0)" id="exchange_btn" data-id="{{id}}">立即兑换</a>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/app.js"></script><script src="../../js/cn.js"></script>
+		<script type="text/javascript">
+    		app_cn.set_txt('member/gift_item');
+			mui.init()
+			function getDefaultData() {
+				return {
+					pic_url: '',
+					title: '',
+					points: '',
+					id: '',
+					content: ''
+				}
+			}
+			var vm = new Vue({
+				el: '.mui-content',
+				data: getDefaultData(),
+				methods: {
+					resetData: function() {//重置数据
+						Object.assign(this.$data, getDefaultData());
+					}
+				}
+			});
+			
+			var id = null;
+			
+			//监听自定义事件
+			document.addEventListener('get_detail', function(event) {
+				
+				view_goods = 0;
+				id = event.detail.id;
+				if(!id) {
+					return;
+				}
+				
+				mui.web_query('gift_item', {id:id,pic_size:'400'}, function(data){
+					if(data && data.data.item) {
+						vm.pic_url = data.data.item.pic_url;
+						vm.title = data.data.item.title;
+						vm.content = data.data.item.content;
+						vm.id = data.data.item.id;
+						vm.points = data.data.item.points;
+					}
+				}, function(tatus,status_err){
+					 switch(status){
+					    case 2:
+					        plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+					        break;
+					    default:
+					    		plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+					        break;
+				    }
+				}, 3);
+			});
+			
+			document.getElementById('exchange_btn').addEventListener('tap',function () {
+			     if(UserInfo.has_login()){
+			     	mui.web_query('input_exchange_points', {gift_id:id}, function(data){
+						plus.nativeUI.toast(data.info.status_err, {verticalAlign: 'center'});
+					}, function(status,status_err){
+						 switch(status){
+						    case 2:
+						        plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+						        break;
+						    default:
+						    		plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+						        break;
+					    }
+					}, 3);   
+			     }else{
+			     	plus.webview.show('login.html',"slide-in-bottom",300);
+			     }
+			})
+			
+			//重写返回逻辑
+			mui.back = function() {
+				plus.webview.currentWebview().hide("auto", 300);
+				//动画结束后，恢复默认值
+				setTimeout(function() {
+					window.scrollTo(0, 0);
+				}, 300);
+			}
+		</script>
+	</body>
+
+</html>

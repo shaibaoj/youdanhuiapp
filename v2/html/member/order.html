@@ -1,0 +1,257 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/app.css"/>
+		<link rel="stylesheet" href="../../css/u.css" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav ">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">订单明细</h1>
+		</header>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider mui-fullscreen">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item mui-active" href="#item0mobile">全部</a>
+					<a class="mui-control-item" href="#item1mobile">结算</a>
+					<a class="mui-control-item" href="#item2mobile">未结算</a>
+					<a class="mui-control-item" href="#item3mobile">失效</a>
+				</div>
+				<div class="mui-slider-group">
+					<div id="item0mobile" class="mui-slider-item mui-control-content mui-active">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll" data-status="0">
+								<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed"></ul>
+							</div>
+						</div>
+					</div>
+					<div id="item1mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll" data-status="1">
+								<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed"></ul>
+							</div>
+						</div>
+					</div>
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll" data-status="2">
+								<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed"></ul>
+							</div>
+						</div>
+					</div>
+					<div id="item3mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll" data-status="3">
+								<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed"></ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../libs/arttmpl.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/mui.pullToRefresh.js"></script>
+		<script src="../../js/mui.pullToRefresh.material.js"></script>
+		<script src="../../js/mui.lazyload.js"></script>
+		<script src="../../js/mui.lazyload.img.js"></script>
+		<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/app.js" type="text/javascript" charset="utf-8"></script><script src="../../js/cn.js" type="text/javascript" charset="utf-8"></script>
+		<script id="tpl-entity" type="text/html">	            
+	        {{each list as value i}}
+	        <li class="mui-table-view-cell">
+		            <div class="mui-table">
+		                <div class="mui-table-cell mui-col-xs-10">
+		                    <h4 class="mui-ellipsis-2">{{value.money}}元</h4>
+		                    {{if value.order}}
+		                    <h5>订单:{{value.order.order_no}}</h5>
+		                    <h5>商品：{{value.order.prod_name}}</h5>
+		                    {{/if}}
+		                    <h5>{{value.create_date}}</h5>
+		                    <p class="mui-h6 mui-ellipsis">{{value.memo}}</p>
+		                </div>
+		                <div class="mui-table-cell mui-col-xs-2 mui-text-right">
+		                    <span class="mui-h5">{{value.status_name}}</span>
+		                </div>
+		            </div>
+		       </li>
+		    {{/each}}
+		</script>
+		<script type="text/javascript">
+    		app_cn.set_txt('member/order');
+			mui.init()//重写返回逻辑
+			
+			var query_cid_items = {"item0":1};
+			
+			document.querySelector('.mui-slider').addEventListener('slide', function(event) {
+				var slideNumber  = event.detail.slideNumber;
+				if(!query_cid_items.hasOwnProperty("item"+slideNumber)){
+					query_cid_items["item"+slideNumber] = "1";
+					if(slideNumber!=0){
+						plus.nativeUI.showWaiting("加载中");
+					}
+					var scroll_data =  document.querySelector("#item"+slideNumber+"mobile .mui-scroll");
+					var min_date = scroll_data.getAttribute("data-min-date");
+					var max_date = scroll_data.getAttribute("data-max-date");
+					query_items({
+						status:slideNumber,
+						min_date:min_date,
+						max_date:max_date,
+					});
+				}
+			});
+			
+			function query_items(conditon_detail){
+				var status = conditon_detail.status?conditon_detail.status:'';
+				var min_date = conditon_detail.min_date?conditon_detail.min_date:'';
+				var max_date = conditon_detail.max_date?conditon_detail.max_date:'';
+				mui.web_query('order', {max_money:0.01,status:status,min_date:min_date,max_date:max_date,price2:'9.99',pic_size:'300'}, function(data){
+					plus.nativeUI.closeWaiting();
+					if(data && data.data.items.length > 0) {
+						var datas = {
+						    list: data.data.items
+						};
+						var html = template('tpl-entity', datas);
+
+						document.querySelector("#item"+status+"mobile .mui-table-view").innerHTML=html;
+						
+						var scroll_data =  document.querySelector("#item"+status+"mobile .mui-scroll");
+						min_date = scroll_data.getAttribute("data-min-date");
+						max_date = scroll_data.getAttribute("data-max-date");
+						scroll_data.setAttribute("data-min-date",dateUtils.get_min(min_date,data.data.min_time));
+						scroll_data.setAttribute("data-max-date",dateUtils.get_max(max_date,data.data.max_time));
+					}
+				}, function(tatus,status_err){
+					plus.nativeUI.closeWaiting();
+					 switch(status){
+					    case 2:
+					        plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+					        break;
+					    default:
+					    		plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+					        break;
+				    }
+				}, 3);
+			}
+			
+			mui.plusReady(function () {
+				(function($) {
+					//阻尼系数
+					var deceleration = mui.os.ios?0.003:0.0009;
+					$('.mui-scroll-wrapper').scroll({
+						bounce: false,
+						indicators: false, //是否显示滚动条
+						deceleration:deceleration
+					});
+					$.ready(function() {
+						//循环初始化所有下拉刷新，上拉加载。
+						$.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
+							$(pullRefreshEl).pullToRefresh({
+								down: {
+									contentdown: "下拉可以刷新", //可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+									callback: function() {
+										var self = this;
+										var status = self.element.getAttribute("data-status");
+										var max_date = self.element.getAttribute("data-max-date");
+										$.web_query('order', {
+											max_money:0.01,
+											status:status?status:'',
+											max_date:max_date?max_date:'',
+											pic_size:'300'}, function(data){
+											self.endPullDownToRefresh(false);
+											if(data && data.data.items.length > 0) {
+												var datas = {
+												    title: '标签',
+												    list: data.data.items
+												};
+												var html = template('tpl-entity', datas);
+												self.element.querySelector('.mui-table-view').insertAdjacentHTML("afterBegin",html);
+												self.element.setAttribute("data-max-date",dateUtils.get_max(max_date,data.data.max_time));
+//												plus.nativeUI.toast("更新了"+data.data.items.length+"条优惠信息", {verticalAlign: 'center'});
+											}
+										}, function(tatus,status_err){
+											 switch(status){
+											    case 2:
+											        plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+											        break;
+											    default:
+											    		plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+											        break;
+										    }
+										}, 3);
+										
+									}
+								},
+								up: {
+		//							auto: true,
+									contentinit: '',
+		//		                    contentdown: '优质宝贝一波波来袭',
+				                    contentrefresh: '正在加载...',
+				                    contentnomore: '',
+									callback: function() {
+										var self = this;
+										var status= self.element.getAttribute("data-status");
+										var min_date = self.element.getAttribute("data-min-date");
+										$.web_query('order', {
+											max_money:0.01,
+											status:status?status:'',
+											min_date:min_date?min_date:'',
+											pic_size:'300'
+										}, function(data){
+											self.endPullUpToRefresh(false);
+											if(data && data.data.items.length > 0) {
+												var datas = {
+												    list: data.data.items
+												};
+												var html = template('tpl-entity', datas);
+												self.element.querySelector('.mui-table-view').insertAdjacentHTML("beforeEnd",html);
+												self.element.setAttribute("data-min-date",dateUtils.get_min(min_date,data.data.min_time));
+											}else{
+												self.endPullUpToRefresh(true);
+											}
+										}, function(tatus,status_err){
+											 switch(status){
+											    case 2:
+											        plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+											        break;
+											    default:
+											    		plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+											        break;
+										    }
+										}, 3);
+									}
+								}
+							});
+						});
+					});
+					query_items({
+						status:'0'
+					});
+				})(mui);
+				
+				document.addEventListener('init',function () {
+				      init();
+				})
+				
+				function init(){
+					mui('#slider').slider().gotoItem(0);
+				}
+				
+			})		
+			mui.back = function() {
+				plus.webview.currentWebview().hide("auto", 300);
+				//动画结束后，恢复默认值
+				setTimeout(function() {
+					window.scrollTo(0, 0);
+				}, 300);
+			}
+		</script>
+	</body>
+
+</html>
