@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/app.css"/>
+		<link rel="stylesheet" type="text/css" href="css/deal.css"/>
+	<link rel="stylesheet" type="text/css" href="css/u.css"/>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav ">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left"></a>
+		    <h1 class="mui-title">精选详情</h1>
+		    <a class="mui-icon mui-pull-right btn-reload"><span>刷新</span></a>
+		</header>
+		<div class="mui-content detail_contain app-page">
+		    <div class="pic_box">
+		        <img class="main_pic" :src="pic_url" alt="">
+		    </div>
+		    <div class="det_box">
+		        <h3 class="det_title">{{title}}<span class="ano_color">{{subTitle}}</span></h3>
+		        <div class="det_other cf">
+		            <span class="fl">京东</span><span class="fr">{{comments}}人浏览 | 08:55</span>
+		        </div>
+		        <div class="det_content" v-html="content">
+		            
+		        </div>
+		    </div>
+		</div>
+		<nav class="mui-bar mui-bar-footer app-deal-bar">
+		    <a id="btn-collect" class="mui-tab-item">
+		        <span class="mui-icon iconfont icon-mxsoucangweixuanzhong">收藏</span>
+		    </a>
+		    <a id="btn-comment" class="mui-tab-item">
+		        <span class="mui-icon iconfont icon-pinglun">评论</span>
+		    </a>
+		    <a id="btn-buy-goods" class="mui-tab-item mui-tab-item-buy">
+		        <span class="mui-icon iconfont icon-gouwu">前往购买</span>
+		    </a>
+		</nav>
+		<script src="js/mui.min.js"></script>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/config.js" ></script>
+		<script src="js/app.js" ></script><script src="js/cn.js" ></script>
+		<script type="text/javascript">
+    		app_cn.set_txt('deal');
+			mui.init({
+				swipeBack: true,
+			});
+			function getDefaultData() {
+				return {
+					pic_url: '',
+					title: '',
+					subTitle: '',
+					volume:'',
+					app_url:'',
+					comments: '',
+					views: '',
+					content: '',
+					shopName: '',
+				}
+			}
+
+			var vm = new Vue({
+				el: '.mui-content',
+				data: getDefaultData(),
+				methods: {
+					resetData: function() {//重置数据
+						Object.assign(this.$data, getDefaultData());
+					}
+				}
+			});
+			
+			var webview_web = null;
+			var id = null;
+			var app_url = null;			
+			var view_goods = 0;
+
+			//监听自定义事件
+			document.addEventListener('get_detail', function(event) {
+				
+//				document.getElementById("btn-view-goods").classList.remove("mui-active");
+//				document.getElementById("btn-buy-goods").classList.add("mui-hidden");
+				id = event.detail.id;				
+				get_detail();
+			});
+			
+			function get_detail(){
+				if(!id) {
+					return;
+				}
+				plus.nativeUI.showWaiting("加载中");
+				view_goods = 0;
+				
+				mui.web_query('deal', {id:id,pic_size:'400'}, function(data){
+					plus.nativeUI.closeWaiting();
+					if(data && data.data.item) {
+						vm.pic_url = data.data.item.pic_url;
+						vm.title = data.data.item.title;
+						vm.subTitle = data.data.item.subTitle;
+						vm.shopName = data.data.item.shopName;
+						vm.comments = data.data.item.comments;
+						vm.views = data.data.item.views;
+						vm.content = data.data.item.content;
+						vm.app_url = data.data.item.click_url;
+						app_url = data.data.item.click_url;
+//						document.getElementById("btn-buy-goods").classList.remove("mui-hidden");
+					}
+				}, function(tatus,status_err){
+					plus.nativeUI.closeWaiting();
+					 switch(status){
+					    case 2:
+					        plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+					        break;
+					    default:
+					    		plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+					        break;
+				    }
+				}, 3);
+			}
+			
+			mui.plusReady(function () {
+			    webview_web = mui.preload({
+				    url:'web.html',
+				    id:'web.html',
+				    styles:{},//窗口参数
+				    extras:{}//自定义扩展参数
+				});
+			});
+			
+			document.getElementById('btn-buy-goods').addEventListener('tap',function () {
+				var json_detail = {
+					title:'优惠线报',
+					url:app_url
+				};
+				open_web(json_detail);
+			})
+			
+			document.getElementById('btn-collect').addEventListener('tap',function () {
+			     if(UserInfo.has_login()){
+			     	mui.web_query('input_favorite', {object_id:id,object_type:'deal'}, function(data){
+						plus.nativeUI.toast(data.info.status_err, {verticalAlign: 'center'});
+					}, function(status,status_err){
+						 switch(status){
+						    case 2:
+						        plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+						        break;
+						    default:
+						    		plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+						        break;
+					    }
+					}, 3);  
+			     }else{
+			     	plus.webview.show('login.html',"slide-in-bottom",300);
+			     }
+			})
+			
+			document.getElementById('btn-comment').addEventListener('tap',function () {
+			     if(UserInfo.has_login()){
+			     	plus.nativeUI.toast("您的等级目前过低，暂时没有评论资格", {verticalAlign: 'center'});
+			     }else{
+			     	plus.webview.show('login.html',"slide-in-bottom",300);
+			     }   
+			})
+			
+			function open_web(json_detail) {
+				if(!webview_web) {
+					setTimeout(function() {
+						open_web(json_detail);
+					}, 100);
+				}
+				
+				mui.fire(webview_web, 'open_url', {
+					title: json_detail.title,
+					url: json_detail.url
+				});
+	
+				setTimeout(function () {
+					webview_web.show("slide-in-right", 300);
+				},150);
+			}
+			
+			document.querySelector('.btn-reload').addEventListener('tap',function () {
+			    get_detail();
+			})
+			
+			//重写返回逻辑
+			mui.back = function() {
+				plus.webview.currentWebview().hide("auto", 300);
+				//动画结束后，恢复默认值
+				setTimeout(function() {
+					window.scrollTo(0, 0);
+//					vm.resetData();
+				}, 300);
+			}
+			
+		</script>
+	</body>
+</html>

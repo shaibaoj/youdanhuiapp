@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/app.css"/>
+		<link rel="stylesheet" type="text/css" href="css/lingyuanchou.css"/>
+	<link rel="stylesheet" type="text/css" href="css/u.css"/>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav ">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">活动进行中</h1>
+		</header>
+		<div class="mui-content app-content">
+		    <div class="content_area">
+			    <section class="tab_content tab_content1">
+			        <!-- 奖品图 -->
+			        <div class="pic_face">
+				        <div class="prize_pic">
+					        <img src="https://i.huim.com/app/15008603173398.png!/fw/440" width="100%" alt=""/>
+				        </div>
+			        </div>
+			        <!-- 奖品图 end -->
+			        <!-- 操作btn -->
+			        <div class="lottery_active">
+			            <p class="goods_title">春纪 大嘴巴薄荷冰沙修护啫喱80g</p>
+			            <p class="lyc_price">¥<span>0</span><del>¥99</del></p>
+			            <div class="active_state1 state1" style="display:block" lang="637">
+			                <a class="btn btn1" href="javascript:void(0)" onclick="return runLottery(637);">0元抽奖</a>
+			            </div>
+			            <!-- 已经抽奖  -->
+			            <div class="has_done" style="display:none">
+			                <p class="cj_number">你已获得<span class="num_count"></span>个抽奖号，<a href="/lingyuanchou/choujianghao?conid=637">查看抽奖号</a></p>
+			                <div class="share_box">
+			                    <span class="share_line border_b"></span><span class="share_title">分享得更多抽奖号</span><span class="share_line border_b"></span>
+			                </div>
+			                <div class="active_state2 state2">
+			                    <a class="btn" href="javascript:;" onclick="runShare('friends')"><i class="lyc_icon icon_friends"></i>分享给好友</a><a class="btn" href="javascript:;" onclick="runShare('timeline')"><i class="lyc_icon icon_timeline"></i>分享到朋友圈</a>
+			                </div>
+			            </div>
+			            <div class="goods_bottom cf">
+			                <div class="join_num mui-pull-left"><span class="ano_color">140</span>人已参与</div>
+			                <div class="timer mui-pull-right" data-second="607746"></div>
+			            </div>
+			            <!-- /已经抽奖 -->
+			        </div>
+			        <div class="tem_h"></div>
+			        <!-- 操作btn end -->
+			        <!-- 商品列表 -->
+			        <div class="shop_content">
+			            <div class="shop_tit"><img src="https://i.huim.com/h5/lingyuanchou/shop_tit.png" alt="" width="100%" /></div>
+			            <ul class="data_list cf">
+			
+			                
+			            </ul>
+			        </div>
+			
+			        <div class="shop_content1" style="padding:10px 10px 20px 15px;display:none; border-top:1px solid #e5e5e5;">
+			            <h4 style="font-size:15px;padding-bottom:5px;color:#4c4c4c">送500M流量相关说明：</h4>
+			            <p style="font-size:13px;">
+			               1、流量将于中奖结果公布后，充值到用户绑定手机，请确保手机是真实有效。<br />
+			   2、流量充值即时到账，实际到账时间以短信通知为主。<br />
+			   3、流量仅限当月使用，支持2G/3G/4G手机使用。<br />
+			   4、170开头的虚拟运营商号码无法参与本抽奖。<br />
+			   5、如充值未到账，请通过本APP-我的-意见反馈给我们。<br />
+			            </p>
+			        </div>
+			        <!-- 商品列表end -->
+			        <!-- 抽奖规则 -->
+			        <div class="rules_box" id="rules">
+			            <h4 class="com_top"><span class="rules_line"></span><span class="rules_title">0元抽奖规则</span><span class="rules_line"></span></h4>
+			            中奖号计算规则绝对透明公正，计算规则如下：<br />
+			            1、开奖日期之前最近一期的双色球最终公证开奖号码，取其中的红色球号码按照出球顺序排列得出数值A；<br />
+			            2、数值A（首位为0则去掉），除以截止至活动结束当天参加本次活动的人数（每个抽奖号为一个人数），得到的余数加10001，即为本次活动的最终获奖号码。<br />
+			            3、如果当天需要开多个奖，则用此号码依次-10，+10，-20，+20，以此类推......得出当天其他中奖号码。如果做减法后号码小于零或者做加法后大于参加本次活动的人数，则继续反方向执行（例如在-50后号码已经小于零则略过，继续执行+50），直到达到开奖人数。<br />
+			            4、开奖结果可在已结束中查看，我们也会给你APP发送消息通知，中奖用户收到消息通知后，需在3天内填写收货信息(逾期不予处理)，我们将在开奖后的3个工作日内寄出奖品。<br />
+			            <p class="ano_color">5、看不懂？没关系，参加就行啦。即时关注本App，中奖后我们会通知您。听说经常打开APP的人运气都比较好哦~~<br /></p>
+			            6、本次活动最终解释权归本App所有。<br />
+			        </div>
+			        <!-- 抽奖规则end -->
+			    </section>
+			</div>
+
+<div id="show_bindphone_pop" class="ui_popbox">
+    <a class="popbox_close" href="javascript:closePop('hide');" title="关闭">x</a>
+    <div class="popbox_content show_bindphone_cot">
+        <p class="title">抽奖号将会存到您的手机帐号中</p>
+        <input class="bphone_input border_all" name="bphone" id="bphone" value="" type="tel" maxlength="11" placeholder="请输入手机号" />
+        <p class="code_box cf">
+        <input class="code_input border_all" name="code" id="verifycode" value="" type="text" maxlength="6" placeholder="请填写验证码" />
+        <span class="get_code_box border_all"><a href="javascript:void(0);" class="get_code_btn" id="get_verifycode">发送验证码</a></span>
+        </p>
+        <a class="get_btn bind_btn" href="javascript:void(0);" onclick="bindPhone(637)">领取抽奖号</a>
+    </div>
+</div>
+<div id="ui_layoutbg" style="display:-block"></div>
+
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/app.js"></script><script src="js/cn.js"></script>
+		<script type="text/javascript">
+    		app_cn.set_txt('lingyuanchou_item');
+			mui.init()
+			var id = null;
+			
+			//监听自定义事件
+			document.addEventListener('get_detail', function(event) {
+				document.querySelector('.mui-content').classList.add("mui-hidden");
+				plus.nativeUI.showWaiting("加载中");
+				
+				view_goods = 0;
+				document.getElementById("goods_detail").innerHTML = '加载中，请稍候...';
+				document.getElementById("btn-view-goods").classList.remove("mui-active");
+				document.getElementById("btn-buy-goods").classList.add("mui-hidden");
+				id = event.detail.id;
+				if(!id) {
+					return;
+				}
+				mui.web_query('lottery', {id:id,pic_size:'400'}, function(data){
+					plus.nativeUI.closeWaiting();
+					if(data && data.data.item) {
+						vm.pic_url = data.data.item.pic_url;
+						vm.title = data.data.item.title;
+						vm.content = data.data.item.content;
+//						vm.volume = data.data.item.volume;
+//						vm.coupon_money = data.data.item.coupon_money;
+//						vm.buy_price = data.data.item.buy_price;
+//						vm.app_url = data.data.item.app_url;
+//						app_url = data.data.item.app_url;
+//						document.getElementById("btn-buy-goods").classList.remove("mui-hidden");
+					}
+					document.querySelector('.mui-content').classList.remove("mui-hidden");
+				}, function(tatus,status_err){
+					plus.nativeUI.closeWaiting();
+					 switch(status){
+					    case 2:
+					        plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+					        break;
+					    default:
+					    		plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+					        break;
+				    }
+				}, 3);
+			});
+			
+			document.getElementById('btn-collect').addEventListener('tap',function () {
+			     if(UserInfo.has_login()){
+			     	mui.web_query('choujiang', {lottery_id:id}, function(data){
+						plus.nativeUI.toast(data.info.status_err, {verticalAlign: 'center'});
+					}, function(status,status_err){
+						 switch(status){
+						    case 2:
+						        plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+						        break;
+						    default:
+						    		plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+						        break;
+					    }
+					}, 3);   
+			     }else{
+			     	plus.webview.show('login.html',"slide-in-bottom",300);
+			     }
+			})
+			
+			//重写返回逻辑
+			mui.back = function() {
+				plus.webview.currentWebview().hide("auto", 300);
+				//动画结束后，恢复默认值
+				setTimeout(function() {
+					window.scrollTo(0, 0);
+				}, 300);
+			}
+		</script>
+	</body>
+
+</html>

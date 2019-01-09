@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" href="css/app.css" />
+		<link rel="stylesheet" type="text/css" href="css/search.css"/>
+	<link rel="stylesheet" type="text/css" href="css/u.css"/>
+	</head>
+	<body>
+		<div class="sqt_index page menu_content">
+			<div class="sqt_header">
+				<div class="sqt_box">
+					<div class="search_box cf">
+						<form class="fl search_info" id="search_form" action="javascript:return true;">
+							<i class="icons icon_search"></i>
+							<input type="search" placeholder="输入您想买的宝贝名(如:电风扇)" id="search" autocomplete="off">
+							<i class="icons icon_clear" id="clear_text"></i>
+						</form>
+						<!--<div class="fr go_search" id="go_search">找优惠</div>-->
+						<!-- 搜索栏 -->
+						<div class="search_list" id="search_list_box">
+							<ul id="search_list">
+							</ul>
+							<div class="search_do border_t cf">
+								<div class="fl" id="delete_cookie">
+									<i class="icons icon_delete"></i>清除搜券记录
+								</div>
+								<span class="fr" id="close_search" onclick="close()">关闭</span>
+							</div>
+						</div>
+						<!-- /搜索栏 -->
+						<!-- 黏贴板 -->
+						<div class="copy_box" id="copy_box">
+							<i class="arrow_top"></i>
+							<p class="com_ell">你可能想找 : <span id="copy_info"></span></p><div class="close_box" id="close_box"><i class="icons icon_close2"></i></div>
+						</div>
+						<!-- /黏贴板 -->
+					</div>
+					<p class="sqt_number mui-hidden">共 500万 张优惠券，已帮亲们找到 1654323 张券</p>
+				</div>
+			</div>
+			<!-- /搜索栏 -->
+			<!-- 分类 -->
+			<div class="tickets">
+				<div class="sqt_common_top cf">
+					<span class="fl">亲们都在找券</span>
+					<div class="fr change " id="sqt_change"><i class="icons icon_change"></i><span>换一换</span></div>
+				</div>
+				<ul class="tickets_list cf" id="tickets_list"></ul>
+			</div>
+			<div class="goods">
+				<div class="sqt_common_top cf">
+					<span class="fl">商品券分类</span>
+				</div>
+				<ul class="cf" _hover-ignore="1">
+					<li>
+						<a href="javascript:;" data-cid="12"  data-cname="家居日用" class="" _hover-ignore="1">
+							<div class="cf type_box">
+								<div class="goods_type mui-pull-left">
+									<p class="goods_title">家居日用</p>
+									<p class="goods_desc">会囤会生活</p>
+								</div>
+								<img class="goods_img mui-pull-right" id="search_cid1" src="images/search/qjt_type1.png?v=2" alt="">
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;" data-cid="6"  data-cname="美妆个护" class="" _hover-ignore="1">
+							<div class="cf type_box">
+								<div class="goods_type mui-pull-left">
+									<p class="goods_title">美妆个护</p>
+									<p class="goods_desc">冻龄美少女</p>
+								</div>
+								<img class="goods_img mui-pull-right" id="search_cid2" src="images/search/qjt_type2.png?v=2" alt="">
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;" data-cid="8"  data-cname="食品酒水" class="">
+							<div class="cf type_box">
+								<div class="goods_type mui-pull-left">
+									<p class="goods_title">食品酒水</p>
+									<p class="goods_desc">不吃会狗带</p>
+								</div>
+								<img class="goods_img mui-pull-right" id="search_cid3" src="images/search/qjt_type3.png?v=2" alt="">
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;" data-cid="7"  data-cname="母婴玩具" class="" _hover-ignore="1">
+							<div class="cf type_box">
+								<div class="goods_type mui-pull-left">
+									<p class="goods_title">母婴玩具</p>
+									<p class="goods_desc">花少钱养好娃</p>
+								</div>
+								<img class="goods_img mui-pull-right" id="search_cid4" src="images/search/qjt_type4.png?v=2" alt="">
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;" data-cid="10"  data-cname="数码家电" class="">
+							<div class="cf type_box">
+								<div class="goods_type mui-pull-left">
+									<p class="goods_title">数码家电</p>
+									<p class="goods_desc">简化你的生活</p>
+								</div>
+								<img class="goods_img mui-pull-right" id="search_cid5" src="images/search/qjt_type5.png?v=2" alt="">
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;" data-cid="3"  data-cname="鞋包服饰" class="" _hover-ignore="1">
+							<div class="cf type_box">
+								<div class="goods_type mui-pull-left">
+									<p class="goods_title">鞋包服饰</p>
+									<p class="goods_desc">潮人靠搭配</p>
+								</div>
+								<img class="goods_img mui-pull-right" id="search_cid6" src="images/search/qjt_type6.png?v=2" alt="">
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!-- /分类 -->
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/config.js" ></script>
+		<script src="js/app.js" ></script><script src="js/cn.js" ></script>
+		<script>
+    		app_cn.set_txt('tab-search');
+			mui.init({
+				swipeBack: false
+			});
+			var webview_page = null;
+			var webview_list = null;
+			mui.plusReady(function () {
+			    search_page = mui.preload({
+					url:'search.html',
+			      	id:'search',
+					styles: {
+						"render": "always",
+						"popGesture": "hide",
+						"bounce": "vertical",
+						"bounceBackground": "#efeff4",
+//						"titleNView": titleNView
+					}
+				});
+				webview_list = mui.preload({
+					url:'list.html',
+			      	id:'list',
+					styles: {
+						"render": "always",
+						"popGesture": "hide",
+						"bounce": "vertical",
+						"bounceBackground": "#efeff4",
+//						"titleNView": titleNView
+					}
+				});
+				query_keylist();
+			})
+			document.getElementById('sqt_change').addEventListener('tap',function () {
+			      query_keylist();
+			})
+			function query_keylist(){
+				mui.ajax('https://suggest.taobao.com/sug?area=sug_hot&wireless=2&code=utf-8&nick=&sid=null&callback=&code=utf-8&_=', {
+					type:'GET',
+					dataType: 'json', //服务器返回json格式数据
+					timeout: 15000, //15秒超时
+					success: function(result) {
+						if (result.count >0 ) {
+		                    var len = result.querys.length;
+		                    var image = "";
+		                    for (var i = 0; i < len; i++) {
+		                        image += '<li><a href="#" data-key="'+result.querys[i]+'">'+result.querys[i]+'</a></li>';
+		                    }
+		                    document.getElementById("tickets_list").innerHTML = image;
+		                }
+						
+					},
+					error: function(xhr, type, errorThrown) {
+						
+					}
+				});
+			}
+			document.getElementById("search").addEventListener('tap', function() {
+				open_search('');
+			});
+			
+			function open_search(key){
+				//若详情页尚未预加载完成，则延时等待再执行
+				if(!search_page) {
+					setTimeout(function() {
+						open_search(key);
+					}, 100);
+				}
+				var aniShow = mui.os.plus ? "slide-in-right" : "fade-in";
+				mui.fire(search_page, 'query_init', {
+					key:key
+				});
+				setTimeout(function () {
+					search_page.show(aniShow, 300);
+				},150);
+			}
+			
+			mui('#tickets_list').on('tap', 'a', function(e) {
+				var key_item = this.getAttribute('data-key');
+				open_search(key_item);
+			});
+			
+			mui('.goods').on('tap', 'a', function(e) {
+				var cid = this.getAttribute('data-cid');
+				var cname = this.getAttribute('data-cname');
+				
+				open_list({
+					cid:cid,
+					cname:cname
+				});
+			});
+		
+			function open_list(json_detail){
+				if(!webview_list) {
+					setTimeout(function() {
+						open_list(json_detail);
+					}, 100);
+				}
+				var aniShow = mui.os.plus ? "slide-in-right" : "fade-in";
+				mui.fire(webview_list, 'query_init', {
+					cid:json_detail.cid,
+					title:json_detail.cname
+				});
+				setTimeout(function () {
+					webview_list.show(aniShow, 300);
+				},150);
+			}
+			
+		</script>
+	</body>
+</html>

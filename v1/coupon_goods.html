@@ -1,0 +1,504 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/app.css"/>
+		<link rel="stylesheet" type="text/css" href="css/coupon_goods.css"/>
+		<link rel="stylesheet" type="text/css" href="css/u.css"/>
+	</head>
+	<body>
+		<div class="mui-content app-content mui-hidden">
+			<div class="detail-wrapper img">
+            		<div class="img">
+                    <img :src="pic_url">
+                </div>
+                <div class="title-wrapper clearfix">
+                    <span class="tmall"></span>{{title}}                        
+                </div>
+	            <div class="recommend-wrapper">
+		            <div class="text">
+		                <span>小编推荐：</span>{{comment}}            
+		            </div>
+		        </div>
+		        <div class="goods-jq clearfix">
+			        <div class="goods-price mui-pull-left"><b><i>￥</i>{{buy_price}}</b>券后价</div>
+			        <div class="goods-quan shoufa-quan mui-pull-left"><span>券</span><b><i>￥</i>{{coupon_money}}</b></div>
+			        <div class="goods-num mui-pull-right"><i></i><b>{{volume}}</b> 人已买</div>
+			    </div>
+			    <div class="goods-tag">
+			        <span>天猫</span>
+			        <span>新品</span>
+			        <span>包邮</span>
+			    </div>
+			</div>
+			<div class="tuwen-tkl">
+			    <div class="pic-detail">
+			    	<ul class="mui-table-view">
+					<li id="btn-view-goods" class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">查看图文详情</a>
+						<div id='goods_detail' class="mui-collapse-content pic-detail-show">
+							加载中，请稍后……
+						</div>
+					</li>
+				</ul>
+			    </div>
+			</div>
+			<div class="app-bottom"></div>
+		</div>
+		<nav class="mui-bar mui-bar-footer app-deal-bar">
+		    <a class="mui-tab-item">
+		        <span class="mui-action-back mui-icon iconfont">返回</span>
+		    </a>
+		    <a id="btn-collect" class="mui-tab-item">
+		        <span class="mui-icon iconfont icon-mxsoucangweixuanzhong">收藏</span>
+		    </a>
+		    <a id="btn-share" class="mui-tab-item" href="#share_div">
+		        <span>分享</span>
+		    </a>
+		    <a id="btn-buy-goods" class="mui-tab-item mui-tab-item-buy">
+		        <span>前往购买</span>
+		    </a>
+		</nav>
+		
+		<div id="share_div" class="mui-popover mui-popover-action mui-popover-bottom">
+			<ul class="mui-table-view mui-grid-view mui-grid-9 share_menu">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<img class="mui-media-object" id="share_btn_kl" src="images/share/share_to_icon_copy.png">
+					<div class="mui-media-body">复制口令</div>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<img class="mui-media-object" id="share_btn_ewm" src="images/share/share_to_icon_sms.png">
+					<div class="mui-media-body">二维码图</div>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<img class="mui-media-object" id="share_btn_wx" src="images/share/share_to_icon_wx.png">
+					<div class="mui-media-body">微信</div>
+				</li>
+			</ul>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a href="#forward"><b>取消</b></a>
+				</li>
+			</ul>
+		</div>
+		
+		<script src="js/mui.min.js"></script>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/config.js" ></script>
+		<script src="js/app.js" ></script>
+		<script src="js/cn.js" ></script>
+		<script src="js/plusShare.js"></script>
+		<script type="text/javascript">
+    			app_cn.set_txt('coupon_goods');
+			mui.init({
+				swipeBack: true,
+			});
+			function getDefaultData() {
+				return {
+					pic_url: '',
+					title: '',
+					coupon_money: '',
+					buy_price: '',
+					volume:'',
+					app_url:'',
+					comment: ''
+				}
+			}
+
+			var vm = new Vue({
+				el: '.mui-content',
+				data: getDefaultData(),
+				methods: {
+					resetData: function() {//重置数据
+						Object.assign(this.$data, getDefaultData());
+					}
+				}
+			});
+			
+			var webview_web = null;
+			var id = null;
+			var app_url = null;	
+			var click_url = null;
+			var pid = '';
+			var view_goods = 0;
+			
+			var share_content = null;
+			
+			var price=null;
+    			var coupon_money=null;
+    			var buy_price=null;
+    			var activity_id=null;
+    			var title=null;
+    			var content=null;
+    			var share_url=null;
+    			var pic_url=null;
+
+			//监听自定义事件
+			document.addEventListener('get_detail', function(event) {
+				document.querySelector('.mui-content').classList.add("mui-hidden");
+				plus.nativeUI.showWaiting("加载中");
+				
+				view_goods = 0;
+				document.getElementById("goods_detail").innerHTML = '加载中，请稍候...';
+				document.getElementById("btn-view-goods").classList.remove("mui-active");
+				document.getElementById("btn-buy-goods").classList.add("mui-hidden");
+				id = event.detail.id;
+				if(!id) {
+					return;
+				}
+				app_url = event.detail.click_url;
+				click_url = event.detail.click_url;
+				
+				if(event.detail.query_cache ==1)
+				{
+					vm.pic_url = event.detail.pic_url;
+					vm.title = event.detail.title;
+					vm.comment = event.detail.comment;
+					vm.volume = event.detail.volume;
+					vm.coupon_money = event.detail.coupon_money;
+					vm.buy_price = event.detail.buy_price;
+					vm.app_url = event.detail.app_url;
+					app_url = event.detail.app_url;
+					pid = event.detail.pid;
+					mui.web_query('view_goods', {id:id,pid:pid}, function(data){},null, 3);
+					document.getElementById("btn-buy-goods").classList.remove("mui-hidden");
+					document.querySelector('.mui-content').classList.remove("mui-hidden");
+					plus.nativeUI.closeWaiting();
+					
+				 	price= event.detail.price;
+	    			 	coupon_money= event.detail.coupon_money;
+	    			 	buy_price = event.detail.buy_price;
+	    			 	activity_id = event.detail.activity_id;
+	    			 	title=event.detail.title;
+	    			 	content = event.detail.comment;
+	    			 	share_url=null;
+	    			 	pic_url = event.detail.pic_url;
+					
+				}else{
+
+					if(event.detail.pic_url){
+						vm.pic_url = event.detail.pic_url;
+						pic_url = event.detail.pic_url;
+					}
+					if(event.detail.title){
+						vm.title = event.detail.title.replace(/<[^>]+>/g,"");
+						title=event.detail.title.replace(/<[^>]+>/g,"");
+					}
+					if(event.detail.title){
+						vm.comment = event.detail.comment;
+						content = event.detail.comment;
+					}
+					if(event.detail.volume){
+						vm.volume = event.detail.volume;
+					}
+					if(event.detail.coupon_money){
+						vm.coupon_money = event.detail.coupon_money;
+						coupon_money= event.detail.coupon_money;
+					}
+					if(event.detail.buy_price){
+						vm.buy_price = event.detail.buy_price;
+						buy_price = event.detail.buy_price;
+					}
+					if(event.detail.app_url){
+						vm.app_url = event.detail.app_url;
+						app_url = event.detail.app_url;
+					}
+					if(event.detail.activity_id){
+						activity_id = event.detail.activity_id;
+					}
+					if(event.detail.pid){
+						pid = event.detail.pid;
+					}
+
+
+					mui.web_query('goods', {id:id,pic_size:'400'}, function(data){
+
+						plus.nativeUI.closeWaiting();
+						if(data && data.data.item) {
+
+							if(!event.detail.pic_url){
+								vm.pic_url = data.data.item.pic_url;
+								pic_url = data.data.item.pic_url;
+							}
+							if(!event.detail.comment){
+								vm.comment = data.data.item.comment;
+								content = data.data.item.comment;
+							}
+							if(!event.detail.title){
+								vm.title = data.data.item.title;
+								title = data.data.item.title;
+							}
+							if(!event.detail.volume){
+								vm.volume = data.data.item.volume;
+							}
+							if(!event.detail.coupon_money){
+								vm.coupon_money = data.data.item.coupon_money;
+								coupon_money = data.data.item.coupon_money;
+							}
+							if(!event.detail.buy_price){
+								vm.buy_price = data.data.item.buy_price;
+								buy_price = data.data.item.buy_price;
+							}
+							if(!event.detail.app_url){
+								vm.app_url = data.data.item.app_url;
+								app_url = data.data.item.app_url;
+							}
+							if(!event.detail.activity_id){
+								activity_id = data.data.item.activity_id;
+							}
+							click_url = data.data.item.taoke_url;
+							price = data.data.item.price;
+							if(!event.detail.pid||event.detail.pid==''){
+								pid = data.data.item.pid;
+							}
+
+							document.getElementById("btn-buy-goods").classList.remove("mui-hidden");
+						}
+						document.querySelector('.mui-content').classList.remove("mui-hidden");
+					}, function(tatus,status_err){
+						plus.nativeUI.closeWaiting();
+						 switch(status){
+						    case 2:
+						        plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+						        break;
+						    default:
+						    		plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+						        break;
+					    }
+					}, 3);
+				}
+			});
+			
+			mui.plusReady(function () {
+			    webview_web = mui.preload({
+				    url:'web.html',
+				    id:'web.html',
+				    styles:{},//窗口参数
+				    extras:{}//自定义扩展参数
+				});
+			});
+			document.getElementById('btn-buy-goods').addEventListener('tap',function () {
+				var json_detail = {
+					title:'粉丝福利购',
+					url:app_url,
+					click_url:click_url
+				};
+				call_client(json_detail);
+			})
+			
+			function call_client(json_detail){
+				mui.web_query('get_click_url', {id:id,pid:pid,url:json_detail.click_url}, function(data){
+					if(data && data.data.click_url) {
+						dateUtils.open_tb(data.data.click_url,function(){
+							open_web({
+								title: json_detail.title,
+								url: data.data.click_url
+							});
+						});
+					}
+				}, function(status,status_err){
+					dateUtils.open_tb(click_url,function(){
+						open_web(json_detail);
+					});
+				}, 1);
+			}
+			
+			document.getElementById('btn-collect').addEventListener('tap',function () {
+			     if(UserInfo.has_login()){
+			     	mui.web_query('input_favorite', {object_id:id,object_type:'goods'}, function(data){
+						plus.nativeUI.toast(data.info.status_err, {verticalAlign: 'center'});
+					}, function(status,status_err){
+						 switch(status){
+						    case 2:
+						        plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+						        break;
+						    default:
+						    		plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+						        break;
+					    }
+					}, 3);   
+			     }else{
+			     	plus.webview.show('login.html',"slide-in-bottom",300);
+			     }
+			})
+			
+			
+			function open_web(json_detail) {
+				if(!webview_web) {
+					setTimeout(function() {
+						open_web(json_detail);
+					}, 100);
+				}
+				
+				mui.fire(webview_web, 'open_url', {
+					title: json_detail.title,
+					url: json_detail.url
+				});
+	
+				setTimeout(function () {
+					webview_web.show("slide-in-right", 300);
+				},150);
+			}
+			
+			document.getElementById('btn-view-goods').addEventListener('tap',function () {
+			     if(view_goods==0){
+			     	view_goods = 1;
+			     	mui.ajax('https://hws.m.taobao.com/cache/mtop.wdetail.getItemDescx/4.1/?data=%7Bitem_num_id%3A' + id + '%7D&type=json&dataType=json', {
+						type:'GET',
+						dataType: 'json', //服务器返回json格式数据
+						timeout: 15000, //15秒超时
+						success: function(result) {
+							if (result.ret[0] == "SUCCESS::接口调用成功") {
+			                    var len = result.data.images.length;
+			                    var image = new Array();
+			                    for (var i = 0; i < len; i++) {
+			                        image[i] = '<img src="' + result.data.images[i] + '">';
+			                    }
+			                    document.getElementById("goods_detail").innerHTML = image;
+			                }
+						},
+						error: function(xhr, type, errorThrown) {
+							view_goods = 0;
+						}
+					});
+			     }
+			})
+			
+			function checkApp(){
+				plus.runtime.setBadgeNumber(8);
+				if(plus.runtime.isApplicationExist({pname:'com.taobao.taobao',action:'taobao://'})){
+					console.log("应用已安装");
+				}else{
+					console.log("应用未安装");
+				}
+			}
+						
+			//重写返回逻辑
+			mui.back = function() {
+				plus.webview.currentWebview().hide("auto", 300);
+				//动画结束后，恢复默认值
+				setTimeout(function() {
+					window.scrollTo(0, 0);
+//					vm.resetData();
+				}, 300);
+			}
+			
+			mui('body').on('shown', '.mui-popover', function(e) {
+				//console.log('shown', e.detail.id);//detail为当前popover元素
+			});
+			mui('body').on('hidden', '.mui-popover', function(e) {
+				//console.log('hidden', e.detail.id);//detail为当前popover元素
+			});
+			mui('body').on('tap', '.mui-popover-action li>a', function() {
+				var a = this,
+					parent;
+				//根据点击按钮，反推当前是哪个actionsheet
+				for (parent = a.parentNode; parent != document.body; parent = parent.parentNode) {
+					if (parent.classList.contains('mui-popover-action')) {
+						break;
+					}
+				}
+				//关闭actionsheet
+				mui('#' + parent.id).popover('toggle');
+			})
+			
+			document.getElementById('share_btn_kl').addEventListener('tap',function () {
+			    mui.web_query('share_content', {id:id,pid:pid,url:click_url}, function(data){
+					if(data && data.data.content) {
+//						console.log(data.data.content);
+						dateUtils.paste(data.data.content);
+						plus.nativeUI.toast('口令复制成功，可以分享给好友了', {verticalAlign: 'center'});
+						mui('#share_div').popover('toggle');
+					}
+				}, function(status,status_err){
+						mui('#share_div').popover('toggle');
+				}, 1);
+			})
+						
+			document.getElementById('share_btn_wx').addEventListener('tap',function () {
+			      mui.web_query('share_content', {id:id,pid:pid,url:click_url}, function(data){
+					if(data && data.data.content) {
+						plusShare({
+							"href": data.data.click_url,
+							"title": title,
+							"content": data.data.content,
+							"thumbs":[pic_url],
+							"pictures":[pic_url],
+						},null,function(){
+							dateUtils.paste(data.data.content);
+							openWeixin();
+							mui('#share_div').popover('toggle');
+						});
+						plus.nativeUI.toast('口令复制成功，可以分享给好友了', {verticalAlign: 'center'});
+					}
+				}, function(status,status_err){
+					
+				}, 1);
+			})
+			
+			document.getElementById('share_btn_ewm').addEventListener('tap',function () {
+			    mui.web_query_ok('/common/tao/piccode', {
+		    			price:price,
+    					coupon_money:coupon_money,
+    					buy_price:buy_price,
+    					num_iid:id,
+    					activity_id:activity_id,
+    					pid:pid,
+    					title:title,
+    					content:content,
+    					share_url:'',
+    					pic_url:pic_url
+			    }, function(data){
+			    	console.log(data.data.item.pic_url)
+					if(data && data.data.item && data.data.item.pic_url) {
+//						download_img(data.data.item.pic_url);
+						plus.runtime.openURL(data.data.item.pic_url);
+						mui('#share_div').popover('toggle');
+					}
+				}, function(status,status_err){
+						mui('#share_div').popover('toggle');
+				}, 1);
+			})
+			
+			 function download_img(imgUrl){
+			 	var downLoader = plus.downloader.createDownload(imgUrl, {
+				    method: 'GET',
+				    filename: '_downloads/image/'+new Date().getTime()+'.jpg'
+				}, function(download, status) {
+				    var fileName = download.filename;
+//				    console.log('文件名:' + fileName);
+//				    console.log('下载状态：' + status);
+				    plus.gallery.save(new Date().getTime()+'.jpg', function() {
+					    	plus.nativeUI.toast('二维码图片已经保存在相册', {verticalAlign: 'center'});
+					});
+				});
+				downLoader.start();
+			 }
+			
+			function openWeixin() {
+			    if ( plus.os.name == "Android" ) {
+			        plus.runtime.launchApplication( {pname:"com.tencent.mm"}
+			            , function ( e ) {
+//			                plus.nativeUI.confirm( "检查到您未安装\"微信\"，是否到商城搜索下载？", function(i){
+//			                    if ( i.index == 0 ) {
+//			                        androidMarket( "com.tencent.mm" );
+//			                    }
+//			                });
+			        });
+			    } else if ( plus.os.name == "iOS" ) {
+			        plus.runtime.launchApplication( {action:"weixin://RnUbAwvEilb1rU9g9yBU"}, function ( e ) {
+			            plus.nativeUI.confirm( "检查到您未安装\"微信\"，是否到商城搜索下载？", function(i){
+			                if ( i.index == 0 ) {
+			                    iosAppstore( "itunes.apple.com/cn/app/wechat/id414478124?mt=8" );
+			                }
+			            });
+			        });
+			    }
+			}
+		</script>
+	</body>
+</html>

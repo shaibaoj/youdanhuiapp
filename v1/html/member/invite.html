@@ -1,0 +1,259 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/app.css"/>
+		<link rel="stylesheet" href="../../css/invite_bindtel.css" />
+    		<link rel="stylesheet" href="../../css/invite.css" />
+		<link rel="stylesheet" href="../../css/u.css" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav ">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title" id="invite_title_txt">邀请奖励</h1>
+		</header>
+		<div class="mui-content mui-content-invite">
+		    <!-- 邀请好友送话费 -->
+			<div class="banner_box">
+			    <img id="invite_img" src="" style="width: 100%;">
+			    <a class="rule_btn" href="javascript:;" id="rule_btn">规则</a>
+			</div>
+			<div class="hide" id="is_bind_tel" data-bind="">
+			</div>
+			<!-- 活动 -->
+			<section class="act_contain" style="margin-top: -5px;">
+				<h3>邀请越多，奖励越多</h3>
+				<div class="act_box main_box">
+					<ul class="bill_list cf mui-hidden">
+						<li>
+							<i class="app_icon icon_bill1"></i>
+							<p>2个好友</p>
+						</li>
+						<li>
+							<i class="app_icon icon_bill2"></i>
+							<p>4个好友</p>
+						</li>
+						<li>
+							<i class="app_icon icon_bill3"></i>
+							<p>6个好友</p>
+						</li>
+						<li>
+							<i class="app_icon icon_bill4"></i>
+							<p>10个好友</p>
+						</li>
+					</ul>
+					<a href="javascript:;" class="share_btn show_share">
+						<span class="share_text ver_middle" id="yaoqing_btn_txt">邀请好友赢奖励</span>
+					</a>
+			        <!-- 没有话费领取 -->
+					<p class="act_tip">已成功邀请<span class="act_color" id="num">0</span>人</p>
+					<!-- 下面数据用js计算 -->
+					<p class="act_tip mui-hidden" id="tip2">再邀请<span class="act_color">0</span>人，即可获得<span class="act_color">0</span>元话费</p>
+			        <div class="btn_box mui-hidden">
+						<a href="javascript:;" class="get_none" id="get_none">领取10元话费</a>
+					</div>
+				</div>
+			</section>
+		<!-- /活动 -->
+			<!-- 邀请记录 -->
+			<section class="act_contain invite_box">
+				<h3>我的邀请记录</h3>
+				<div class="act_box">
+					<ul class="invite_list">
+						<li class="no_list">
+							<p>还没有邀请好友哦</p>
+						</li> 
+					</ul>
+				</div>
+			</section>
+			<!-- /邀请记录 -->
+			<!-- 规则 -->
+			<div class="com_mask rule_mask mui-hidden" id="rule_mask">
+			    <section class="rule_box">
+					<h3>活动规则</h3>
+					<ul id="rule_list" class="rule_list">
+						<li>1、凡是邀请有效用户达到指定数量，即可领取相奖励。</li>
+						<li>2、有效用户指在接受邀请(24小时内）下载APP后的30天内，通过APP成功下单的新用户。</li>
+						<li>3、同一手机号 /微信号/移动设备均视为一位有效用户。活动过程中如果发现任何通过不正当行为诈欺参与活动者一律取消活动参与资格及所有奖励。</li>
+						<li>4、活动奖励将自动发放到用户帐号内，随时可以进行相应领取和兑换。</li>
+						<li>5、活动期间，在法律允许的范围内，本APP有权对本次活动进行公开变动或调整。</li>
+						<li>6、本次活动最终解释权归本APP所有。</li>
+					</ul>
+					<i class="app_icon icon_close common_icon" onclick="closeMask()"></i>
+				</section>
+			</div>
+			<!-- /规则 -->
+			<!-- 分享 -->
+			<div class="com_mask mui-hidden" id="share_mask">
+			    <div class="ui_popbox share_box">
+			        <a class="popbox_close" onclick="closeMask()" title="关闭">x</a>
+			        <p class="title">邀请小伙伴一起赢奖励吧</p>
+			        <a href="javascript:;" class="btn-share" data-share="timeline">
+			            <div class="wx_timeline"></div><p>朋友圈</p>
+			        </a>
+			        <a href="javascript:;" class="btn-share" data-share="friends">
+			            <div class="wx_friends"></div><p>微信好友</p>
+			        </a>
+			    </div>
+			</div>
+			<!-- 分享 -->
+			
+			<!-- 绑定手机 -->
+			<div class="com_mask mui-hidden" id="bind_mask">
+			    <div class="ui_popbox">
+			        <a class="popbox_close" onclick="closeMask()" title="关闭">x</a>
+			        <div class="popbox_content show_bindphone_cot">
+			            <h4>邀请小伙伴一起赢奖励吧</h4>
+<!--			            <p class="title">话费将存入绑定的手机号中</p>
+-->			            <p id="invite_url"></p>
+			            <span class="get_code_box border_all">
+			            		<a href="javascript:void(0);" class="get_code_btn" id="get_activity_url">复制推广连接</a>
+			            </span>
+			            <p class="code_box cf"></p>
+			            <a class="get_btn bind_btn" href="javascript:void(0);" id="btn_brower_url">通过海报分享</a>
+			        </div>
+			    </div>
+			</div>
+			<!-- /绑定手机 -->
+
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../libs/arttmpl.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/app.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/cn.js" type="text/javascript" charset="utf-8"></script>
+		<script id="tpl-relation" type="text/html">	            
+	        {{each list as value i}}
+	        		<li>
+	        			<span class="invite_time">{{value.create_time_str}}</span>
+<!--	        			<span class="img"></span>-->
+					<span class="invite_name">{{value.member.user_name}}</span>
+					<span class="status_success">成功</span>
+				</li>
+		    {{/each}}
+		</script>
+		<script type="text/javascript">
+    		app_cn.set_txt('member/invite');
+			mui.init({
+				pullRefresh: {
+					container: '.mui-content',
+					down: {
+						style:'circle',
+						callback: pulldownRefresh
+					}
+				}
+			});
+			
+			var share_url = null;
+			var haibao_url = null;
+			mui.plusReady(function () {
+			    document.getElementById('rule_btn').addEventListener('tap',function () {
+				       document.getElementById('rule_mask').classList.remove("mui-hidden");
+				})
+			    
+			    document.querySelector(".show_share").addEventListener('tap',function () {
+//				      document.getElementById('share_mask').classList.remove("mui-hidden");
+				      document.getElementById('bind_mask').classList.remove("mui-hidden");
+				})
+			    
+			    mui('.share_box').on('tap', '.btn-share', function(e) {
+			    		closeMask();
+				});
+				
+				function get_url(){
+					mui.web_query('get_invite_url', {}, function(data){
+						if(data && data.data.url) {
+							share_url = data.data.url;
+							haibao_url = data.data.haibao_url;
+							document.getElementById("invite_url").innerHTML=share_url;
+						}
+					}, function(tatus,status_err){
+						
+					}, 3);
+				}
+				
+				document.getElementById('get_activity_url').addEventListener('tap',function () {
+				      dateUtils.paste(share_url);
+				})
+				
+				document.getElementById('btn_brower_url').addEventListener('tap',function () {
+				      plus.runtime.openURL(haibao_url);
+				})
+				
+				get_url();
+				view_invite();
+				view_invite_list();
+				get_app_detail();
+			})
+			
+			function pulldownRefresh() {
+				view_invite();
+				view_invite_list();
+				mui('.mui-content').pullRefresh().endPulldown();
+			}
+			
+			function view_invite(){
+				mui.web_query('get_info', {}, function(data){
+					if(data.data.user_data){
+						document.getElementById("num").innerHTML = data.data.user_data.invites;
+						mui.fire(plus.webview.getWebviewById('tab-member.html'), 'show_user', {});
+					}
+				}, function(status,status_err){
+	
+				}, 3);
+			}
+			
+			function view_invite_list(){
+				mui.web_query('user_relation', {}, function(data){
+					if(data && data.data.items.length > 0) {
+						var datas = {
+						    list: data.data.items
+						};
+						var html = template('tpl-relation', datas);
+						document.querySelector(".invite_list").innerHTML =html;
+					}
+				}, function(tatus,status_err){
+					
+				}, 3); 
+			}
+			
+			function get_app_detail(){
+				mui.web_query('get_app_detail', {}, function(data){
+					if(data && data.data.detail&& data.data.detail.invite_introduce) {
+						document.getElementById("rule_list").innerHTML=data.data.detail.invite_introduce;
+					}
+				}, function(tatus,status_err){
+					
+				}, 3);
+			}
+			
+			function closeMask() {
+				var emphasisText = document.querySelectorAll(".com_mask");
+				for( var i = 0 , j = emphasisText.length ; i < j ; i++ ){
+				    emphasisText[i].classList.add("mui-hidden");
+				}
+	        }
+			
+			document.addEventListener('init',function () {
+			      init();
+			})
+			
+			function init(){
+				view_invite();
+				view_invite_list();
+			}
+			
+			mui.back = function() {
+				plus.webview.currentWebview().hide("auto", 300);
+				//动画结束后，恢复默认值
+				setTimeout(function() {
+					window.scrollTo(0, 0);
+				}, 300);
+			}
+		</script>
+	</body>
+</html>

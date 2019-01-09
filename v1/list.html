@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/app.css"/>
+	<link rel="stylesheet" type="text/css" href="css/u.css"/>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav ">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 id="web-title" class="mui-title"></h1>
+		</header>
+		<div class="mui-content">
+		    
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="libs/arttmpl.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/config.js"></script>
+		<script src="js/app.js"></script><script src="js/cn.js"></script>
+		<script type="text/javascript">
+    		app_cn.set_txt('list');
+			mui.init();
+			
+	      	var searchlist_page = null;
+	      	var key = null;
+	      	var title = null;
+	      	
+	      	mui.plusReady(function () {
+	      	    var self = plus.webview.currentWebview();
+	      	    searchlist_page = plus.webview.create('search-list.html', 'search-list.html', {
+	      	     	top:'45px',bottom:'0px'
+	      	    });
+	      	    searchlist_page.hide();
+	      	    self.append(searchlist_page);
+	      	})
+	      	
+	      	document.addEventListener('query_init',function (event) {
+	      		cid = event.detail.cid;
+	      		title = event.detail.title;
+	      		if(cid){
+	      			document.getElementById("web-title").innerHTML=title;
+	      			query_key(cid);
+	      		}
+	      });
+	      
+	      function query_key(cid){
+	      	if(!searchlist_page) {
+				setTimeout(function() {
+					query_key(cid);
+				}, 100);
+			}
+	      	
+  			if(mui.os.ios){
+				plus.webview.show(searchlist_page);
+			}else{
+				plus.webview.show(searchlist_page,"fade-in",300);
+			}
+			
+			//触发子窗口查询事件
+			mui.fire(searchlist_page, 'query_key', {
+				cid: cid
+			});
+	     }
+			
+		//重写返回逻辑
+		mui.back = function() {
+			plus.webview.currentWebview().hide("auto", 300);
+			//动画结束后，恢复默认值
+			setTimeout(function() {
+				window.scrollTo(0, 0);
+			}, 300);
+		}
+	      
+		</script>
+	</body>
+
+</html>

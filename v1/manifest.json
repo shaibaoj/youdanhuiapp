@@ -1,0 +1,1283 @@
+{
+	"@platforms": [
+		"android",
+		"iPhone",
+		"iPad"
+	],
+	"id": "com.youdanhui.hui",/*应用的标识，创建应用时自动生成，勿手动修改*/
+	"name": "优单汇",/*应用名称，程序桌面图标名称*/
+	"version": {
+		"name": "1.0.123",/*应用版本名称*/
+		"code": "84"
+	},
+	"description": "优单汇-网购超值信息推荐专选，专注商品精选推荐.以及时、高效获得广大用户的认可比肩什么值得买，惠惠购物助手，口袋购物，折800，九块九包邮，美丽说，蘑菇街，北美省钱快报，楚楚街等电商导购推荐平台。\n",/*应用描述信息*/
+	"icons": {
+		"72": "icon.png"
+	},
+	"launch_path": "index.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+	"developer": {
+		"name": "",/*开发者名称*/
+		"email": "",/*开发者邮箱地址*/
+		"url": "https://www.haopintui.net"
+	},
+	"permissions": {
+
+		"Audio": {
+			"description": "访问麦克风"
+		},
+		"Cache": {
+			"description": "管理应用缓存"
+		},
+		"Camera": {
+			"description": "访问摄像头"
+		},
+		"Console": {
+			"description": "跟踪调试输出日志"
+		},
+
+		"Device": {
+			"description": "访问设备信息"
+		},
+		"Downloader": {
+			"description": "文件下载管理"
+		},
+		"Events": {
+			"description": "应用扩展事件"
+		},
+		"File": {
+			"description": "访问本地文件系统"
+		},
+		"Gallery": {
+			"description": "访问系统相册"
+		},
+		"Geolocation": {
+			"description": "访问位置信息"
+		},
+
+
+		"Orientation": {
+			"description": "访问方向感应器"
+		},
+
+		"Storage": {
+			"description": "管理应用本地数据"
+		},
+
+		"Uploader": {
+			"description": "管理文件上传任务"
+		},
+		"Runtime": {
+			"description": "访问运行期环境"
+		},
+		"XMLHttpRequest": {
+			"description": "跨域网络访问"
+		},
+		"Zip": {},
+		"Barcode": {
+			"description": "管理二维码扫描插件"
+		},
+
+		"Speech": {
+			"description": "管理语音识别插件"
+		},
+		"Webview": {
+			"description": "窗口管理"
+		},
+		"NativeUI": {
+			"description": "原生UI控件"
+		},
+		"Navigator": {
+			"description": "浏览器信息"
+		},
+		"NativeObj": {
+			"description": "原生对象"
+		},
+		"Statistic": {},
+
+
+		"Invocation": {},
+		"Push": {},
+		"OAuth": {},
+		"Share": {},
+		"Contacts": {}
+	},
+	"plus": {
+		"splashscreen": {
+			"autoclose": false,/*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
+			"waiting": false
+		},
+		"statusbar": {
+			"background": "#fff"
+		},
+		"runmode": "normal",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
+		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
+		"distribute": {
+			"plugins": {
+				"push": {
+					"igexin": {
+						"appid": "JfC3SSZWR199W0200D9V33",
+						"appkey": "iG6NINWcGy8ZaTIni8ubw1",
+						"appsecret": "O8deUB6Ubv5DJ0fTnYzgO1"
+					}
+				},
+				"maps": {},
+				"share": {
+					"weixin": {
+						"appid": "wx57017f765240a5e8",
+						"appsecret": "bdc9ed24bc2788413497726dd1fd2feb",
+						"description": "可选，微信分享"
+					}
+				},
+				"oauth": {
+					"weixin": {
+						"appid": "wx57017f765240a5e8",
+						"appsecret": "bdc9ed24bc2788413497726dd1fd2feb"
+					},
+					"qq": {
+						"appid": "qqqqq"
+					}
+				},
+				"statics": {
+					"umeng": {
+						"appkey_ios": "59591baa2ae85b6414000f01",
+						"channelid_ios": "59591baa2ae85b6414000f01",
+						"appkey_android": "59591baa2ae85b6414000f01",
+						"channelid_android": "59591baa2ae85b6414000f01"
+					}
+				}
+			},
+			"apple": {
+				"appid": "",/*iOS应用标识，苹果开发网站申请的appid，*/
+				"mobileprovision": "",/*iOS应用打包配置文件*/
+				"password": "",/*iOS应用打包个人证书导入密码*/
+				"p12": "",/*iOS应用打包个人证书，打包配置文件关联的个人证书*/
+				"devices": "universal",/*iOS应用支持的设备类型，可取值iphone/ipad/universal*/
+				"urltypes": [
+					{
+						"urlidentifier": "hui.youdanhui.com",
+						"urlschemes": [
+							"youdanhui"
+						]
+					}
+				],
+				"frameworks": []
+			},
+			"google": {
+				"packagename": "",/*Android应用包名，*/
+				"keystore": "",/*Android应用打包使用的密钥库文件*/
+				"password": "",/*Android应用打包使用密钥库中证书的密码*/
+				"aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
+				"schemes": [
+					"youdanhui"
+				],
+				"permissions": [
+					"<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>",
+					"<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+					"<uses-permission android:name=\"android.permission.GET_TASKS\"/>",
+					"<uses-permission android:name=\"android.permission.VIBRATE\"/>",
+					"<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+					"<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
+					"<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
+					"<uses-permission android:name=\"android.permission.SYSTEM_ALERT_WINDOW\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>",
+					"<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>",
+					"<uses-permission android:name=\"android.permission.CAMERA\"/>",
+					"<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
+					"<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+					"<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
+					"<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>",
+					"<uses-permission android:name=\"android.permission.INTERNET\"/>",
+					"<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
+					"<uses-permission android:name=\"android.permission.CALL_PHONE\"/>",
+					"<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
+					"<uses-feature android:name=\"android.hardware.camera\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
+					"<uses-permission android:name=\"android.permission.RECEIVE_USER_PRESENT\"/>",
+					"<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>",
+					"<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
+				]
+			},
+			"orientation": [
+				"portrait-primary",
+				"portrait-secondary"
+			],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
+			"icons": {
+				"ios": {
+					"prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
+					/*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
+					"iphone": {
+						"retina": "unpackage/res/icons/114x114.png",
+						"normal": "unpackage/res/icons/57x57.png",
+						"retina8": "unpackage/res/icons/180x180.png",
+						"retina7": "unpackage/res/icons/120x120.png",
+						"settings-retina": "unpackage/res/icons/58x58.png",
+						"settings-normal": "unpackage/res/icons/29x29.png",
+						"spotlight-retina": "unpackage/res/icons/58x58.png",
+						"spotlight-normal": "unpackage/res/icons/29x29.png",
+						"settings-retina8": "unpackage/res/icons/87x87.png",
+						"spotlight-retina7": "unpackage/res/icons/80x80.png",
+						"spotlight@3x": "unpackage/res/icons/120x120.png",
+						"notification@2x": "unpackage/res/icons/40x40.png",
+						"notification@3x": "unpackage/res/icons/60x60.png"
+					},
+					"ipad": {
+						"retina": "unpackage/res/icons/144x144.png",
+						"normal": "unpackage/res/icons/72x72.png",
+						"retina7": "unpackage/res/icons/152x152.png",
+						"normal7": "unpackage/res/icons/76x76.png",
+						"settings-retina": "unpackage/res/icons/58x58.png",
+						"settings-normal": "unpackage/res/icons/29x29.png",
+						"spotlight-retina": "unpackage/res/icons/100x100.png",
+						"spotlight-normal": "unpackage/res/icons/50x50.png",
+						"spotlight-normal7": "unpackage/res/icons/40x40.png",
+						"spotlight-retina7": "unpackage/res/icons/80x80.png",
+						"proapp@2x": "unpackage/res/icons/167x167.png",
+						"notification": "unpackage/res/icons/20x20.png",
+						"notification@2x": "unpackage/res/icons/40x40.png"
+					},
+					"appstore": "/Users/wu/Downloads/归档的副本/多逛逛1.png"
+				},
+				"android": {
+					"mdpi": "unpackage/res/icons/48x48.png", /*普通屏程序图标，分辨率：48x48*/
+					"ldpi": "unpackage/res/icons/48x48.png", /*大屏程序图标，分辨率：48x48*/
+					"hdpi": "unpackage/res/icons/72x72.png", /*高分屏程序图标，分辨率：72x72*/
+					"xhdpi": "unpackage/res/icons/96x96.png",/*720P高分屏程序图标，分辨率：96x96*/
+					"xxhdpi": "unpackage/res/icons/144x144.png",
+					"xxxhdpi": "unpackage/res/icons/192x192.png"
+				}
+			},
+			"splashscreen": {
+				"ios": {
+					"iphone": {
+						"default": "",
+						"retina35": "/Users/wu/Documents/os/haopintui/资料/资源文件/youdanhui/640*960.png",
+						"iphonex": "/Users/wu/Documents/os/haopintui/资料/资源文件/youdanhui/768*1024.png",
+						"iphonexl": "/Users/wu/Documents/os/haopintui/资料/资源文件/youdanhui/1024*748.png",
+						"retina55": "/Users/wu/Documents/os/haopintui/资料/资源文件/youdanhui/1242*2208.png",
+						"retina47": "/Users/wu/Documents/os/haopintui/资料/资源文件/youdanhui/750*1334.png",
+						"retina40": "/Users/wu/Documents/os/haopintui/资料/资源文件/youdanhui/640*1136.png",
+						"retina55l": "/Users/wu/Documents/os/haopintui/资料/资源文件/youdanhui/2208*1242.png"
+					},
+					"ipad": {
+						"portrait": "/Users/wu/Documents/os/haopintui/资料/资源文件/youdanhui/768*1004.png",
+						"landscape": "/Users/wu/Documents/os/haopintui/资料/资源文件/youdanhui/1024*748.png",
+						"portrait7": "/Users/wu/Documents/os/haopintui/资料/资源文件/youdanhui/768*1024.png",
+						"landscape7": "/Users/wu/Documents/os/haopintui/资料/资源文件/youdanhui/1024*768.png",
+						"portrait-retina": "/Users/wu/Documents/os/haopintui/资料/资源文件/youdanhui/1536*2008.png",
+						"landscape-retina": "/Users/wu/Documents/os/haopintui/资料/资源文件/youdanhui/2048*1496.png",
+						"portrait-retina7": "/Users/wu/Documents/os/haopintui/资料/资源文件/youdanhui/1536*2048.png",
+						"landscape-retina7": "/Users/wu/Documents/os/haopintui/资料/资源文件/youdanhui/2048*1536.png"
+					}
+				},
+				"android": {
+					"mdpi": "", /*普通屏启动图片，分辨率：240x282*/
+					"ldpi": ""
+				}
+			}
+		},"ads":{"rp":false,"splash":false,"push":false,"spot":false},"adid":""
+	},
+	"dependencies": {
+		"pages": {
+			"index.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"tab-webview-subpage-about.html",
+					"js/config.js",
+					"js/app.js",
+					"tab-home.html",
+					"css/app.css",
+					"fonts/iconfont/iconfont.ttf",
+					"js/update.js",
+					"tab-99.html",
+					"js/update1.js",
+					"js/update2.js",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png",
+					"js/push.js",
+					"js/common.js",
+					"css/style.css",
+					"fonts/iconfont/iconfont.css",
+					"css/custom.css",
+					"css/index.css",
+					null,
+					"tab-kuaibao.html"
+				],
+				"refer": [
+					"tab-webview-subpage-setting.html",
+					"tab-webview-subpage-chat.html",
+					"tab-webview-subpage-contact.html",
+					"tab-search.html",
+					"tab-setting.html",
+					"tab-member.html",
+					"search-q.html",
+					"login.html",
+					"search.html"
+				],
+				"priority": 0
+			},
+			"tab-webview-subpage-about.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"tab-webview-subpage-setting.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"tab-webview-subpage-chat.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"tab-webview-subpage-contact.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"tab-home.html": {
+				"href": "tab-home.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/mui.pullToRefresh.js",
+					"js/mui.pullToRefresh.material.js",
+					"js/config.js",
+					"js/app.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/app.css",
+					"js/common.js",
+					"libs/arttmpl.js",
+					null,
+					"images/home/yhkb.png",
+					"js/mui.lazyload.js",
+					"js/mui.lazyload.img.js",
+					"data:image/svg+xml;utf8,\u003csvg xmlns\u003d\u0027http://www.w3.org/2000/svg\u0027 width\u003d\u0027100%\u0027 height\u003d\u00271\u0027\u003e\u003crect fill\u003d\u0027#e7e6eb\u0027 x\u003d\u00270\u0027 y\u003d\u00270.5\u0027 width\u003d\u0027100%\u0027 height\u003d\u00270.5\u0027/\u003e\u003c/svg\u003e",
+					"images/test/shuijiao.jpg",
+					"images/test/yuantiao.jpg",
+					"images/test/cbd.jpg",
+					"images/test/muwu.jpg",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"css/home.css"
+				],
+				"priority": 0,
+				"refer": [
+					"coupon_goods.html",
+					"web.html",
+					"top.html",
+					"live.html",
+					"tab-99.html"
+				]
+			},
+			"tab-search.html": {
+				"href": "tab-search.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"css/search.css",
+					"images/search/sqt_bg2.png",
+					"js/app.js",
+					"js/common.js",
+					"js/config.js"
+				],
+				"priority": 1,
+				"refer": [
+					"list.html",
+					"search.html"
+				]
+			},
+			"forget_password.html": {
+				"href": "forget_password.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"js/app.js",
+					"css/app.css",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png"
+				],
+				"priority": 2,
+				"refer": []
+			},
+			"reg.html": {
+				"href": "reg.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"js/app.js",
+					"css/app.css",
+					"js/common.js",
+					"js/config.js",
+					null,
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png"
+				],
+				"priority": 3,
+				"refer": [
+					"tab-member.html"
+				]
+			},
+			"login.html": {
+				"href": "login.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"js/app.js",
+					"images/sinaweibo.png",
+					"images/weixin.png",
+					"images/qq.png",
+					"js/mui.enterfocus.js",
+					"js/common.js",
+					"css/app.css",
+					"js/config.js",
+					null,
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png"
+				],
+				"refer": [
+					"forget_password.html",
+					"reg.html",
+					"tab-member.html",
+					"bind.html"
+				],
+				"priority": 2
+			},
+			"tab-setting.html": {
+				"href": "tab-setting.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/mui.view.js",
+					"libs/easymob-webim-sdk/jquery-1.11.1.js",
+					"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+					"libs/easymob-webim-sdk/json2.js",
+					"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+					"js/feedback.js",
+					"js/feedback-page.js",
+					"js/app.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/feedback-page.css"
+				],
+				"refer": [
+					"login.html"
+				],
+				"priority": 2
+			},
+			"tab-kuaibao.html": {
+				"href": "tab-kuaibao.html",
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"data:image/svg+xml;utf8,\u003csvg xmlns\u003d\u0027http://www.w3.org/2000/svg\u0027 width\u003d\u0027100%\u0027 height\u003d\u00271\u0027\u003e\u003crect fill\u003d\u0027#e7e6eb\u0027 x\u003d\u00270\u0027 y\u003d\u00270.5\u0027 width\u003d\u0027100%\u0027 height\u003d\u00270.5\u0027/\u003e\u003c/svg\u003e",
+					"js/app.js",
+					"js/common.js",
+					"libs/arttmpl.js",
+					"css/app.css",
+					"js/config.js",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png",
+					"css/kuaibao.css"
+				],
+				"priority": 3,
+				"refer": [
+					"deal.html"
+				]
+			},
+			"tab-99.html": {
+				"href": "tab-99.html",
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"js/mui.pullToRefresh.js",
+					"libs/arttmpl.js",
+					"css/app.css",
+					"js/mui.pullToRefresh.material.js",
+					"js/app.js",
+					"js/common.js",
+					"js/config.js",
+					null,
+					"fonts/iconfont/iconfont.ttf",
+					"js/mui.lazyload.js",
+					"js/mui.lazyload.img.js",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png",
+					"css/99.css"
+				],
+				"priority": 4,
+				"refer": [
+					"coupon_goods.html"
+				]
+			},
+			"coupon_goods.html": {
+				"resources": [
+					"js/vue.min.js",
+					"js/app.js",
+					"js/common.js",
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css",
+					"js/config.js",
+					"css/coupon_goods.css",
+					"fonts/mui.ttf",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.woff",
+					null,
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png",
+					"js/cn.js"
+				],
+				"refer": [
+					"web.html",
+					"login.html"
+				],
+				"priority": 0
+			},
+			"tab-member.html": {
+				"resources": [
+					"fonts/mui-icons-extra.ttf",
+					"css/icons-extra.css",
+					"fonts/mui.ttf",
+					"css/member.css",
+					"images/member/user.png",
+					null,
+					"js/app.js",
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css",
+					"js/config.js",
+					"fonts/iconfont/iconfont.ttf",
+					"js/common.js",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png",
+					"css/style.css",
+					"fonts/iconfont/iconfont.css",
+					"css/custom.css"
+				],
+				"refer": [
+					"html/member/coupon.html",
+					"html/member/invite.html",
+					"html/member/message.html",
+					"search.html",
+					"coupon.html",
+					"setting.html",
+					"html/member/level.html",
+					"help.html",
+					"html/member/tb.html",
+					"html/member/agent.html",
+					"html/member/cash.html",
+					"html/member/order.html",
+					"html/member/point.html",
+					"html/member/member_setting.html",
+					"login.html",
+					"reg.html",
+					"html/member/gift.html",
+					"html/member/favorite.html",
+					"web.html"
+				],
+				"priority": 0
+			},
+			"deal.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/vue.min.js",
+					"css/deal.css",
+					"js/app.js",
+					"js/common.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"fonts/iconfont/iconfont.ttf",
+					"css/mui.min.css",
+					"js/config.js",
+					null,
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png"
+				],
+				"refer": [
+					"web.html",
+					"login.html"
+				],
+				"priority": 0
+			},
+			"search-list.html": {
+				"resources": [
+					"js/mui.pullToRefresh.js",
+					"libs/arttmpl.js",
+					"js/mui.min.js",
+					"js/mui.pullToRefresh.material.js",
+					"css/s.css",
+					"js/app.js",
+					"js/common.js",
+					"js/config.js",
+					"css/app.css",
+					"css/mui.min.css",
+					null,
+					"fonts/mui.ttf",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png"
+				],
+				"refer": [
+					"coupon_goods.html"
+				],
+				"priority": 0
+			},
+			"search.html": {
+				"resources": [
+					"search-list.html",
+					"libs/arttmpl.js",
+					"js/mui.min.js",
+					"js/app.js",
+					"js/common.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/config.js",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"web.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/app.js",
+					"js/config.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/member/message.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/app.css",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png",
+					"libs/arttmpl.js",
+					"js/common.js",
+					"js/config.js",
+					"js/app.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"coupon.html": {
+				"resources": [
+					"js/app.js",
+					"js/common.js",
+					"js/mui.min.js",
+					"js/config.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"setting.html": {
+				"resources": [
+					"js/feedback.js",
+					"css/feedback-page.css",
+					"js/feedback-page.js",
+					"js/mui.view.js",
+					"js/app.js",
+					"js/common.js",
+					"js/mui.min.js",
+					"js/update.js",
+					"js/config.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					null,
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png"
+				],
+				"refer": [
+					"login.html",
+					"tab-member.html",
+					"html/member/member_setting.html"
+				],
+				"priority": 0
+			},
+			"list.html": {
+				"resources": [
+					"search-list.html",
+					"js/common.js",
+					"libs/arttmpl.js",
+					"js/app.js",
+					"js/config.js",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/member/invite.html": {
+				"resources": [
+					"js/app.js",
+					"js/common.js",
+					"css/invite.css",
+					"js/mui.min.js",
+					"css/invite_bindtel.css",
+					"js/config.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"data:image/svg+xml;utf8,\u003csvg xmlns\u003d\u0027http://www.w3.org/2000/svg\u0027 width\u003d\u0027100%\u0027 height\u003d\u0027100%\u0027\u003e\u003crect x\u003d\u00270\u0027 y\u003d\u00270\u0027 width\u003d\u0027100%\u0027 height\u003d\u0027100%\u0027 style\u003d\u0027fill:none;stroke:#e7e6eb;stroke-width:1\u0027/\u003e\u003c/svg\u003e",
+					null,
+					"libs/arttmpl.js",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/member/tb.html": {
+				"resources": [
+					"js/app.js",
+					"js/common.js",
+					"js/config.js",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/member/agent.html": {
+				"resources": [
+					"js/app.js",
+					"js/common.js",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/config.js",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png",
+					"css/agent.css"
+				],
+				"refer": [
+					"html/member/order.html",
+					"html/member/cash.html",
+					"html/member/agent_user.html"
+				],
+				"priority": 0
+			},
+			"html/member/cash.html": {
+				"resources": [
+					"js/mui.pullToRefresh.js",
+					"js/app.js",
+					"js/common.js",
+					"libs/arttmpl.js",
+					"js/mui.min.js",
+					"js/mui.pullToRefresh.material.js",
+					"js/mui.lazyload.js",
+					"js/config.js",
+					"js/mui.lazyload.img.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/app.css",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png"
+				],
+				"refer": [
+					"f.html",
+					"html/member/cash_list.html"
+				],
+				"priority": 0
+			},
+			"f.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/app.css",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png",
+					"js/config.js",
+					"js/app.js",
+					"html/member/cash_list.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/member/order.html": {
+				"resources": [
+					"js/mui.pullToRefresh.js",
+					"libs/arttmpl.js",
+					"js/mui.pullToRefresh.material.js",
+					"js/mui.pullToRefresh.material.js",
+					"js/mui.lazyload.js",
+					"js/mui.lazyload.img.js",
+					"js/app.js",
+					"js/common.js",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/config.js",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/member/point.html": {
+				"resources": [
+					"js/mui.pullToRefresh.js",
+					"libs/arttmpl.js",
+					"js/mui.min.js",
+					"js/mui.pullToRefresh.material.js",
+					"js/mui.lazyload.js",
+					"js/mui.lazyload.img.js",
+					"js/app.js",
+					"js/common.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/config.js",
+					null,
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/member/member_setting.html": {
+				"resources": [
+					"js/app.js",
+					"js/common.js",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/config.js",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png"
+				],
+				"refer": [
+					"html/setting/qq.html",
+					"html/setting/email.html",
+					"html/setting/withdraw.html",
+					"html/setting/password.html"
+				],
+				"priority": 0
+			},
+			"html/setting/qq.html": {
+				"href": "html/setting/qq.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/app.css",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png",
+					"js/mui.min.js",
+					"js/common.js",
+					"js/config.js",
+					"js/app.js"
+				],
+				"priority": 5
+			},
+			"html/setting/email.html": {
+				"href": "html/setting/email.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/app.css",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png",
+					"js/mui.min.js",
+					"js/common.js",
+					"js/config.js",
+					"js/app.js"
+				],
+				"priority": 6
+			},
+			"html/setting/withdraw.html": {
+				"href": "html/setting/withdraw.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/app.css",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png",
+					"js/mui.min.js",
+					"js/common.js",
+					"js/config.js",
+					"js/app.js"
+				],
+				"priority": 7
+			},
+			"html/setting/password.html": {
+				"href": "html/setting/password.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/app.css",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png",
+					"js/mui.min.js",
+					"js/common.js",
+					"js/config.js",
+					"js/app.js"
+				],
+				"priority": 8
+			},
+			"html/member/gift_item.html": {
+				"href": "html/member/gift_item.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/app.css",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png",
+					"css/duihuan.css",
+					"js/mui.min.js",
+					"js/vue.min.js",
+					"js/common.js",
+					"js/config.js",
+					"js/app.js"
+				],
+				"priority": 8,
+				"refer": []
+			},
+			"html/member/gift.html": {
+				"href": "html/member/gift.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/app.css",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png",
+					"js/mui.min.js",
+					"libs/arttmpl.js",
+					"js/mui.pullToRefresh.js",
+					"js/mui.pullToRefresh.material.js",
+					"js/mui.lazyload.js",
+					"js/mui.lazyload.img.js",
+					"js/common.js",
+					"js/config.js",
+					"js/app.js",
+					"images/member/hongbao.png"
+				],
+				"refer": [
+					"html/member/gift_item.html",
+					"html/member/exchange_point.html"
+				],
+				"priority": 8
+			},
+			"html/member/favorite.html": {
+				"href": "html/member/favorite.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/app.css",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png",
+					"css/s.css",
+					"js/mui.min.js",
+					"libs/arttmpl.js",
+					"js/common.js",
+					"js/config.js",
+					"js/app.js"
+				],
+				"refer": [
+					"deal.html",
+					"coupon_goods.html"
+				],
+				"priority": 9
+			},
+			"html/member/feedback.html": {
+				"href": "html/member/feedback.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/app.css",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png",
+					"js/mui.min.js",
+					"js/common.js",
+					"js/config.js",
+					"js/app.js"
+				],
+				"priority": 11
+			},
+			"help.html": {
+				"href": "help.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/app.css",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png",
+					"js/mui.min.js",
+					"js/common.js",
+					"js/config.js",
+					"js/app.js"
+				],
+				"refer": [
+					"html/member/feedback.html"
+				],
+				"priority": 11
+			},
+			"html/member/cash_list.html": {
+				"href": "html/member/cash_list.html",
+				"resources": [
+					"js/mui.min.js",
+					"libs/arttmpl.js",
+					"js/common.js",
+					"js/config.js",
+					"js/app.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/app.css",
+					"fonts/iconfont/iconfont.eot",
+					"fonts/iconfont/iconfont.woff",
+					"fonts/iconfont/iconfont.ttf",
+					"fonts/iconfont/iconfont.svg",
+					"images/home/yhkb.png"
+				],
+				"priority": 13,
+				"refer": []
+			},
+			"bind.html": {
+				"resources": [
+					"css/app.css",
+					"css/mui.min.css",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"js/app.js",
+					"js/common.js",
+					"js/config.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"top.html": {
+				"resources": [
+					"js/app.js",
+					"js/common.js",
+					"libs/arttmpl.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"js/config.js",
+					"css/app.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"live.html": {
+				"resources": [
+					"js/app.js",
+					"css/live.css",
+					"js/common.js",
+					"libs/arttmpl.js",
+					"images/live/avatar/1.jpg",
+					"js/mui.min.js",
+					"fonts/iconfont/iconfont.ttf",
+					"images/live/bg.jpg",
+					"js/config.js",
+					"images/live/live.jpg",
+					"images/live/triangle.png",
+					"images/live/icon.png",
+					"fonts/mui.ttf",
+					"css/app.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/member/agent_user.html": {
+				"resources": [
+					"js/app.js",
+					"js/common.js",
+					"libs/arttmpl.js",
+					"js/mui.min.js",
+					"js/config.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/s.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/member/exchange_point.html": {
+				"resources": [
+					"js/app.js",
+					"js/common.js",
+					"js/mui.min.js",
+					"js/config.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"push.html",
+				"lingyuanchou_item.html",
+				"images/search/qjt_type6.png",
+				"images/search/qjt_type2.png",
+				"css/mall.css",
+				"images/iconfont-tianjia.png",
+				"html/setting/img.html",
+				"images/search/qjt_type4.png",
+				"images/goods/blank.png",
+				"css/lingyuanchou.css",
+				"images/search/qjt_type5.png",
+				"images/live/barrage.png",
+				"images/search/qjt_type3.png",
+				"js/mui.js",
+				"images/live/hongbao.png",
+				"css/mui.css",
+				"images/search/qjt_type1.png",
+				"lingyuanchou.html",
+				"images/loading.gif",
+				"mall.html",
+				"html/member/baoliao.html",
+				"fonts/iconfont/iconfont.js"
+			]
+		}
+	},
+	"unpackage": [
+		"css/mui.css",
+		"js/mui.js"
+	]
+}

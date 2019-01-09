@@ -1,0 +1,469 @@
+/* 邀请好友送话费 */
+body{
+	font-size:14px;
+	line-height:1;
+	color:#4d4d4d;
+	background-color:#ff672d;
+	padding-bottom:30px;
+}
+body .act_color{
+	color:#ff672d;
+}
+.app_icon{
+	background-image:url(https://appimg.huim.com/zhuanti/sendbill/shf_ico.png?1);
+	background-size:431px auto;
+}
+.common_icon{
+	background-image:url(https://appimg.huim.com/zhuanti/h5_common_ico.png);
+	background-size:65px auto;
+}
+.banner_box,.rule_btn{
+	position:relative;
+	border-radius:30px;
+}
+a.rule_btn{
+	position:absolute;
+	top:15px;
+	right:10px;
+	width:60px;
+	line-height:25px;
+	text-align:center;
+	color:#ffead5;
+	font-size:13px;
+	border-radius:30px;
+	background:#ff6a20;
+}
+.rule_btn:before{
+	border:1px solid #ffead5;
+	border-radius:30px;
+}
+.act_contain{
+	position:relative;
+	width:90%;
+	margin:0 auto;
+	padding-bottom:8px;
+	border-radius:8px;
+}
+.act_box{
+	width:95%;
+	margin:0 auto;
+	background-color:#fff;
+	border-radius:8px;
+}
+.main_box{
+	padding:27px 0 26px;
+}
+.act_contain h3{
+	text-align:center;
+	font-size:18px;
+	color:#fff;
+	line-height:50px;
+}
+.bill_list li{
+	width:25%;
+	text-align:center;
+	float:left;
+	list-style:none;
+}
+.bill_list li:last-child i{
+	width:61px;
+}
+.icon_bill2{
+	background-position:-83px 0;
+}
+.icon_bill3{
+	background-position:-165px 0;
+}
+.icon_bill4{
+	background-position:-245px 0;
+}
+.bill_list .app_icon{
+	width:54px;
+	height:45px;
+}
+.bill_list p{
+	margin-top:8px;
+	font-size:12px;
+}
+a.share_btn{
+	display:block;
+	text-align:center;
+	width:86%;
+	height:55px;
+	line-height:51px;
+	margin:20px auto 30px;
+	border-radius:30px;
+	color:#fff;
+	background:url(https://res1.huopinjie.com/app/images/invite/shf_btn.png) center center/100% 100%;
+}
+.share_text{
+	font-size:20px;
+}
+.icon_arrow{
+	width:10px;
+	height:18px;
+	margin-left:10px;
+	background-position:-420px 0;
+} 
+.act_tip{
+	text-align:center;
+	font-size:16px;
+	line-height:27px;
+}
+.btn_box{
+	width:86%;
+	margin:15px auto 0;
+	line-height:40px;
+}
+.btn_box a{
+	display:block;
+	text-align:center;
+	border-radius:30px;
+	font-size:16px;
+}
+a.get_none{
+	background-color:#d6d6d6;
+	color:#fff;
+}
+a.get_bill{
+	width:42%;
+	margin-right:5%;
+	position:relative;
+}
+a.share_once{
+	width:53%;
+	background-color:#ff8929;
+	color:#fff;
+}
+a.get_bill,a.share_once{
+	display:inline-block;
+}
+a.get_bill:active,a.get_all:active{
+	background-color:#fff6f2;
+}
+.get_all{
+	position:relative;
+}
+.get_bill:before,.get_all:before{
+	border:1px solid #ff672d;
+	border-radius:60px;
+}
+/* 邀请记录 */
+.invite_box{
+	margin-top:15px;
+}
+.invite_list{
+	padding:8px 15px;
+}
+.invite_list li{
+	line-height:41px;
+	list-style: none;
+}
+.invite_time{
+	font-size:12px;
+}
+.invite_list img{
+	width:26px;
+	height:26px;
+	border-radius:50%;
+	margin:0 6px 0 13px;
+}
+.invite_name{
+	width:120px;
+	display:inline-block;
+	vertical-align:middle;
+}
+.status_success{
+	color:#ff672d;
+}
+.status_wait{
+	color:#a6a4b2;
+}
+.invite_list .no_list{
+	text-align:center;
+	font-size:16px;
+	line-height:115px;
+	list-style:none;
+}
+/* 规则 */
+.rule_box{
+	position:relative;
+	display:inline-block;
+	width:90%;
+	margin:0 auto;
+	background:#fff;
+	border-radius:10px;
+	vertical-align:middle;
+}
+.rule_box h3{
+	text-align:center;
+	font-size:17px;
+	line-height:50px;
+	color:#fff;
+	background-color:#ff672d;
+	border-top-right-radius:8px;
+	border-top-left-radius:8px;
+}
+.icon_close{
+	position:absolute;
+	top:15px;
+	right:15px;
+	width:20px;
+	height:20px;
+	background-position:0 -140px;
+}
+.rule_list{
+	text-align:left;
+	padding:12px 20px;
+}
+.rule_list li{
+	line-height:1.7;
+	list-style: none;
+}
+.rule_mask{
+	text-align:center;
+}
+.com_mask{
+	/*display:none;*/
+}
+/* 提交成功 */
+.success_mask{
+	text-align:center;
+}
+.success_box{
+	display:inline-block;
+	padding:25px 0;
+	width:86%;
+	margin:0 auto; 
+	vertical-align:middle;
+	background-color:#ff672d;
+	border-radius:10px;
+	color:#fff;
+}
+.icon_success{
+	width:55px;
+	height:55px;
+	background-position:0 -50px;
+}
+.success_status{
+	margin:10px 0 15px;
+	font-size:24px;
+}
+.success_box .com_btn{
+	margin-top:28px;
+	width:100px;
+	line-height:35px;
+	background:#fff;
+	font-size:15px;
+}
+
+/* 微信送话费 */
+.package{
+	width:90%;
+	padding-bottom:16px;
+	margin:0 auto;
+	background-color:#ffcf35;
+	background-size:100px 100px;
+	border-radius:15px;
+	background-image: linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+	background-image: -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, rgba(255, 255, 255, .2)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.75, rgba(255, 255, 255, .2)), color-stop(.75, transparent), to(transparent));
+}
+.package h3{
+	font-size:18px;
+	text-align:center;
+	line-height:50px;
+	color:#ff5311;
+}
+.package_box{
+	width:80%;
+	margin:0 auto;
+	padding:25px 15px;
+	background-color:#fff;
+	border-radius:5px;
+}
+.head_pic{
+	width:50px;
+	height:50px;
+	margin-right:12px;
+	border-radius:50%;
+	display:inline-block;
+	vertical-align:top;
+}
+.package_tip{
+	position:relative;
+	display:inline-block;
+	width:calc(100% - 66px);
+	border:1px solid #ffdacc;
+	background:#ffeee7;
+	font-size:15px;
+	padding:8px 10px 8px 15px;
+	box-sizing:border-box;
+	color:#333;
+	line-height:1.7;
+	border-radius:5px;
+}
+.icon_mp{
+	position:absolute;
+	top:15px;
+	left:-7px;
+	width:8px;
+	height:15px;
+	background-position:-422px -22px;
+}
+.package_box .share_btn{
+	font-size:19px;
+	width:95%;
+	margin:25px auto 0;
+	background-image:url(https://appimg.huim.com/zhuanti/sendbill/shf_btn2.png);
+}
+i.package_pic{
+	display:block;
+	margin:0 auto 20px;
+	width:243px;
+	height:92px;
+	background-position:0 -110px;
+}
+.get_tip{
+	color:#333;
+	text-align:center;
+	line-height:1.5;
+}
+.get_step{
+	width:90%;
+	margin:0 auto;
+	color:#fff;
+}
+.get_step h4{
+	font-size:16px;
+	margin:29px auto 8px;
+}
+.step_list li{
+	line-height:30px;
+}
+.step_list span{
+	display:inline-block;
+	margin-right:8px;
+	width:19px;
+	height:19px;
+	background:#fff;
+	border-radius:50%;
+	text-align:center;
+	line-height:20px;
+	color:#ff672d;
+}
+.package_success{
+	display:none;
+}
+.rule_mask:before,.success_mask:before{
+	display:inline-block;
+	content:'';
+	width:0;
+	height:100%;
+	vertical-align: middle;
+}
+/* 新人话费礼包 */
+.new_lw{
+	text-align:center;
+}
+.new_lw .get_miss{
+	background-image:url(https://appimg.huim.com/zhuanti/sendbill/shf_btn3.png);
+}
+.new_pic{
+	width:139px;
+	height:86px;
+	background-position:-290px -115px;
+}
+.new_tip{
+	margin:22px auto 10px; 
+	font-size:16px;
+	color:#333;
+	text-align:left;
+	line-height:1.5;
+}
+/* 绑定手机 */
+.popbox_content h4{
+	margin-bottom:11px;
+	font-size:18px;
+	color:#333;
+}
+.popbox_content .title{
+	color:#757380;
+}
+.popbox_content h4,.popbox_content .title{
+	text-align:center;
+}
+.ui_popbox{
+	height:auto;
+}
+.show_bindphone_cot{
+	margin-bottom:15px;
+}
+/* 分享 */
+.wx_friends,.wx_timeline{
+	width:65px;
+	height:65px;
+	background-image:url(https://appimg.huim.com/zhuanti/h5_common_ico.png);
+	background-repeat:no-repeat;
+	background-size:65px auto;
+}
+.wx_friends{
+	background-position:0 -70px;
+}
+.share_box{
+	height:auto;
+	padding-bottom:25px;
+}
+.share_box a{
+	display:inline-block;
+	width:65px;
+	margin-left:18%;
+	text-align:center;
+}
+.share_box p{
+	margin-top:10px;
+}
+.share_box .title{
+	margin:25px 0;
+	text-align:center;
+	font-size:18px;
+	color:#333;
+}
+
+.com_mask{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.6);z-index:99}
+
+.ui_popbox .popbox_close{
+	top: 10px;
+    right: 10px;
+}
+.ui_popbox{
+    width:300px;
+    height:240px;
+    margin:-120px 0 0 -150px;
+    background-color:#fff;
+}
+
+.ui_popbox{ 
+    background:#fff; 
+    position:fixed; 
+    top:50%; 
+    left:50%; 
+    z-index:1001; 
+    -moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius: 8px;
+}
+
+.ui_popbox .popbox_close{
+    position:absolute;
+    display:inline-block;
+    z-index:101;
+    top:5px;
+    right:5px;
+    width:20px; 
+    height:20px; 
+    line-height:99em; 
+    overflow:hidden; 
+    outline:none;
+    background:url("http://appimg.huim.com/lingyuanchou/popclose_btn.png?abc=123123") no-repeat;
+	background-size:cover;
+}

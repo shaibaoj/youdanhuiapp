@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/app.css"/>
+		<link rel="stylesheet" href="../../css/u.css" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav ">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">设置提现</h1>
+		</header>
+		<div class="mui-content">
+		    <div id="content-password" class="mui-content-padded">
+				<p>请一定输入正确的支*付*宝帐号</p>
+				<form class="mui-input-group">
+					<div class="mui-input-row">
+						<input id='payname' type="text" class="mui-input">
+					</div>
+				</form>
+				<div class="mui-content-padded">
+					<button id='btn-change' class="mui-btn mui-btn-block mui-btn-danger" disabled="disabled">提交</button>
+				</div>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/app.js" type="text/javascript" charset="utf-8"></script><script src="../../js/cn.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+    		app_cn.set_txt('setting/withdraw');
+			mui.init()
+			mui.plusReady(function () {
+			    get_info();
+			})
+			
+			document.getElementById("payname").addEventListener('input',function(){
+				change_input();
+			});
+			
+			function change_input(){
+				var paynameInput = document.getElementById("payname");
+				if(paynameInput.value.length>0){
+					document.getElementById("btn-change").disabled="";
+				}else{
+					document.getElementById("btn-change").disabled="disabled";
+				}
+			}
+			
+			function init_input(){
+				document.getElementById("payname").value="";
+				document.getElementById("btn-change").disabled="disabled";
+			}
+			
+			function get_info(){
+				mui.web_query('get_info', {}, function(data){
+					data_info = data.data.user;
+					if(data_info){
+						document.getElementById("payname").innerHTML = data_info.payname;
+					}
+				}, function(status,status_err){
+
+				}, 3);
+			}
+			
+			document.addEventListener('get_info',function () {
+			    get_info();
+			})
+			
+			document.getElementById('btn-change').addEventListener('tap',function () {
+				var paynameInput = document.getElementById("payname");
+			    mui.web_query('change_pay', {payname:paynameInput.value}, function(data){
+					plus.nativeUI.toast(data.info.status_err);
+					var wc = plus.webview.currentWebview();
+					wc.hide('slide-out-bottom');
+					get_info();
+					mui.fire(plus.webview.getWebviewById('html/member/member_setting.html'), 'get_info', {});
+				}, function(status,status_err){
+					switch(status){
+					    case 2:
+					        plus.nativeUI.toast(status_err);
+					        break;
+					    default:
+					    		plus.nativeUI.toast(status_err);
+					        break;
+				    }
+				}, 3);
+			})
+			
+			mui.back = function() {
+				plus.webview.currentWebview().hide("auto", 300);
+				get_info();
+				//动画结束后，恢复默认值
+				setTimeout(function() {
+					window.scrollTo(0, 0);
+				}, 300);
+			}
+		</script>
+	</body>
+
+</html>

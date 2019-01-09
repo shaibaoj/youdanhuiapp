@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/app.css"/>
+	<link rel="stylesheet" type="text/css" href="css/u.css"/>
+		<style type="text/css">
+			.mui-table-view {
+				margin-top: 20px;
+				/*font-size: 16px;*/
+			}
+			.update {
+				font-style: normal;
+				color: #999999;
+				/*margin-right: 25px;*/
+				font-size: 15px
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav ">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">设置</h1>
+		</header>
+		<div class="mui-content">
+		    <!--<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell mui-media">
+					<a class="mui-navigate-right" href="#account">
+						<img class="mui-media-object mui-pull-left head-img" id="head-img" src="">
+						<div class="mui-media-body">
+							个人设置
+							<p class='mui-ellipsis'>账号:</p>
+						</div>
+					</a>
+				</li>
+			</ul>-->
+			<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell">
+					<a href="html/member/member_setting.html" class="mui-navigate-right" data-user='user'>个人设置</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell">
+					<a href="" class="mui-navigate-right">推送设置</a>
+				</li>
+				<li class="mui-table-view-cell">
+					签到提醒
+					<div class="mui-switch mui-active mui-switch-mini">
+						<div class="mui-switch-handle"></div>
+					</div>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell mui-hidden">
+					<a href="" class="mui-navigate-right">关于</a>
+				</li>
+				<li id="btn-update-li" class="mui-table-view-cell mui-hidden">
+					<a id="btn-update" href="" class="mui-navigate-right">检查更新 <i class="mui-pull-right update"></i></a>
+				</li>
+			</ul>
+			<ul id="ul-logout" class="mui-table-view mui-hidden">
+				<li class="mui-table-view-cell" style="text-align: center;">
+					<a id="btn-logout">退出登录</a>
+				</li>
+			</ul>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/app.js" type="text/javascript" charset="utf-8"></script><script src="js/cn.js" ></script>
+		<script src="js/update.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+    		app_cn.set_txt('setting');
+			mui.init()
+			
+			mui.plusReady(function () {
+				
+				if(plus.os.name == "Android"){
+					document.getElementById("btn-update-li").classList.remove("mui-hidden");
+				}
+
+			    plus.runtime.getProperty(plus.runtime.appid,function(inf){
+//					app_config.version_name=inf.version;
+			    		document.querySelector('.update').innerHTML='V'+inf.version;
+				});
+			    init_ui();
+			})
+			
+			document.addEventListener('init',function () {
+			     init_ui();
+			})
+			
+			function init_ui(){
+				if(UserInfo.has_login()){
+					document.getElementById("ul-logout").classList.remove("mui-hidden");
+				}else{
+					document.getElementById("ul-logout").classList.add("mui-hidden");
+				}
+			}
+			
+			document.getElementById('btn-logout').addEventListener('tap',function () {
+			     UserInfo.clear();
+			     mui.fire(plus.webview.getWebviewById('tab-member.html'), 'show_user', {});
+				 mui.currentWebview.hide();
+				 init_ui();
+			})
+			
+			document.getElementById('btn-update').addEventListener('tap',function () {
+			     update(function(){
+			     	plus.nativeUI.toast("当前版本已经最新！",{duration:"long"});
+			     });
+			})
+			
+			mui('.mui-content').on('tap', 'a', function() {
+				var targetTab = this.getAttribute("href");
+				if(!targetTab){
+					return;
+				}
+				var data_user = this.getAttribute("data-user");
+				if(data_user=='user'
+					&&!UserInfo.has_login()){
+					plus.webview.show('login.html',"slide-in-bottom",300);
+				}else{
+					mui.openWindow({
+						url: targetTab,
+						id: targetTab,
+						show: {
+							aniShow: 'slide-in-right'
+						},
+						waiting: {
+							autoShow: false
+						}
+					});
+					mui.fire(plus.webview.getWebviewById('html/member/member_setting.html'), 'get_info', {});
+				}
+			});
+			
+			mui.back = function() {
+				plus.webview.currentWebview().hide("auto", 300);
+				//动画结束后，恢复默认值
+				setTimeout(function() {
+					window.scrollTo(0, 0);
+				}, 300);
+			}
+		</script>
+	</body>
+</html>

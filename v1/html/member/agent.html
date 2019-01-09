@@ -1,0 +1,307 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/app.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/agent.css"/>
+		<link rel="stylesheet" href="../../css/u.css" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav ">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title" id="agent_txt">合伙人</h1>
+		    <a id="btn_user_tongji" class="mui-icon mui-pull-right btn-reload mui-hidden"><span>推广统计</span></a>
+		</header>
+		<div class="mui-content">
+			<div id="apply_content" class="mui-hidden">
+				<div class="mui-content-padded">
+					<p>申请为合伙人，加入推广团队，共同推广，共享收益</p>
+				</div>
+			    <form id='login-form' class="mui-input-group">
+					<div class="mui-input-row">
+						<label>账号</label>
+						<span id="user_name"></span>
+					</div>
+					<div class="mui-input-row">
+						<label>qq</label>
+						<input id='qq' type="number" class="mui-input-clear mui-input" placeholder="qq号码">
+					</div>
+					<div class="mui-input-row">
+						<label>微信号码</label>
+						<input id='weixin' type="text" class="mui-input-clear mui-input" placeholder="微信号码">
+					</div>
+				</form>
+				<div class="mui-content-padded">
+					<button id='btn-apply' class="mui-btn mui-btn-block mui-btn-danger" data-loading-text="提交中">立即申请</button>
+				</div>
+				<div class="mui-content-padded">
+					<p id="agent_introduce"></p>
+				</div>
+			</div>
+			<div id="agent_detail" class="mui-hidden">
+				<div class="agent_account">
+					<p class="title">帐号余额</p>
+					<a id="btn_tixian" class="mui-navigate-right">
+						<span id="money_available"><em>￥</em>0</span>
+						<span id="mobile-text" class="mui-pull-right"></span>
+					</a>
+				</div>
+				<ul class="order-act">
+			        <li>
+				        <span class="p">
+					        	<span class="sub">本月结算预估收入</span>
+					        	<span id="month_money" class="number" style="">0</span>
+				        	</span>
+			        </li>
+			        <li>
+				        <span class="p">
+			        			<span class="sub">上月结算预估收入</span>
+			        			<span id="last_month_money" class="number">0</span>
+			        		</span>
+			        </li>
+			    </ul>
+			    <ul class="mui-table-view">
+			        <li class="mui-table-view-cell">
+						<a class="mui-navigate-right" href="order.html" data-user='user'>
+							订单明细
+							<span id="mobile-text" class="mui-pull-right"></span>
+						</a>
+					</li>
+				</ul>
+				<ul class="order-act">
+			        <li>
+				        	<span class="p">
+					        	<span id="btn_today" class="sub selected">今天</span>
+				        	</span>
+			        </li>
+			        <li>
+				        <span class="p">
+			        			<span id="btn_yesterday" class="sub">昨天</span>
+			        		</span>
+			        </li>
+			    </ul>
+			    <div id="today_report" class="">
+			    		<p class="report_title">结算预估收入:￥<span id="day_money">0</span></p>
+			    		<ul class="order-act">
+				        <li>
+					        <span class="p">
+						        	<span class="sub">付款笔数</span>
+						        	<span id="day_order_count" class="number" style="">0</span>
+					        	</span>
+				        </li>
+				        <li>
+					        <span class="p">
+						        	<span class="sub">成交预估收入</span>
+						        	<span id="day_order_money" class="number" style="">0</span>
+					        	</span>
+				        </li>
+				    </ul>
+			    </div>
+			    <div id="yesterday_report" class="mui-hidden">
+			    		<p class="report_title">结算预估收入:￥<span id="last_day_money">0</span></p>
+			    		<ul class="order-act">
+				        <li>
+					        <span class="p">
+						        	<span class="sub">付款笔数</span>
+						        	<span id="last_day_order_count" class="number" style="">0</span>
+					        	</span>
+				        </li>
+				        <li>
+					        <span class="p">
+						        	<span class="sub">成交预估收入</span>
+						        	<span id="last_day_order_money" class="number" style="">0</span>
+					        	</span>
+				        </li>
+				    </ul>
+			    </div>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/app.js" type="text/javascript" charset="utf-8"></script><script src="../../js/cn.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+    		app_cn.set_txt('member/agent');
+			mui.init()//重写返回逻辑
+			
+			mui.plusReady(function () {
+			    show_user();
+			    
+			    document.addEventListener('init',function () {
+				    show_user();
+				    check_agent();
+				})
+			    check_agent();
+			    get_app_detail();
+			})
+			
+			function check_agent(){
+				if(UserInfo.has_login()){
+				   	mui.web_query('check_user_cms_agent', {}, function(data){
+						if(data.data.agent_status==1){
+							document.getElementById("agent_detail").classList.remove("mui-hidden");
+							document.getElementById("btn_user_tongji").classList.remove("mui-hidden");
+							query_report();
+						}
+						else {
+							document.getElementById("apply_content").classList.remove("mui-hidden");
+							if(data.data.agent_status==2){
+								
+							}
+						}
+					}, null, 3); 
+			    }
+			}
+			
+			function show_user(){
+				if(UserInfo.has_login()){
+				   	document.getElementById("user_name").innerHTML = UserInfo.username();
+			    }else{
+			    		
+			    }
+			}
+			
+			document.getElementById('btn-apply').addEventListener('tap',function () {
+			     if(UserInfo.has_login()){
+			     	var _this = this;
+			    		mui(this).button('loading');
+			     	var qq = document.getElementById("qq").value;
+			     	var weixin = document.getElementById("weixin").value;
+			     	mui.web_query('input_user_cms_agent', {
+			     		qq:qq,
+			     		weixin:weixin
+			     	}, function(data){
+						plus.nativeUI.toast(data.info.status_err, {verticalAlign: 'center'});
+						mui(_this).button('reset');
+					}, function(status,status_err){
+						 mui(_this).button('reset');
+						 switch(status){
+						    case 2:
+						        plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+						        break;
+						    default:
+						    		plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+						        break;
+					    }
+					}, 3);   
+			     }else{
+			     	plus.webview.show('login.html',"slide-in-bottom",300);
+			     }
+			})
+			
+			function get_app_detail(){
+				mui.web_query('get_app_detail', {}, function(data){
+					if(data && data.data.detail&& data.data.detail.agent_introduce) {
+						document.getElementById("agent_introduce").innerHTML=data.data.detail.agent_introduce;
+					}
+				}, function(tatus,status_err){
+					
+				}, 3);
+			}
+			
+			document.getElementById('btn_tixian').addEventListener('tap',function () {
+			     mui.openWindow({
+					url: 'cash.html',
+					id: 'html/member/cash.html',
+					show: {
+						aniShow: 'pop-in'
+					},
+					waiting: {
+						autoShow: false
+					}
+				});
+			})
+			
+			mui('.mui-table-view').on('tap', 'a', function() {
+				var targetTab = this.getAttribute("href");
+				if(!targetTab){
+					return;
+				}
+				var data_user = this.getAttribute("data-user");
+				if(data_user=='user'
+					&&!UserInfo.has_login()){
+					plus.webview.show('login.html',"slide-in-bottom",300);
+				}
+				else if(data_user=='tb'){
+					dateUtils.open_tb(targetTab,function(){
+						
+					});	
+				}else{
+					mui.openWindow({
+						url: targetTab,
+						id: targetTab,
+						show: {
+							aniShow: 'pop-in'
+						},
+						waiting: {
+							autoShow: false
+						}
+					});
+				}
+			});
+			
+			function query_report(){
+				mui.web_query('report', {}, function(data){
+					if(data.data&&data.data.report){
+						document.getElementById("money_available").innerHTML = "<em>￥</em>"+data.data.report.money_available;
+						document.getElementById("month_money").innerHTML = data.data.report.month_money;
+						document.getElementById("last_month_money").innerHTML = data.data.report.last_month_money;
+						document.getElementById("day_money").innerHTML = data.data.report.day_money;
+						document.getElementById("last_day_money").innerHTML = data.data.report.last_day_money;
+						
+						document.getElementById("day_order_money").innerHTML = data.data.report.day_order_money;
+						document.getElementById("day_order_count").innerHTML = data.data.report.day_order_count;
+						document.getElementById("last_day_order_money").innerHTML = data.data.report.last_day_order_money;
+						document.getElementById("last_day_order_count").innerHTML = data.data.report.last_day_order_count;
+					}
+				}, null, 3); 
+			}
+			
+			document.getElementById('btn_today').addEventListener('tap',function () {
+				document.getElementById("btn_today").classList.add("selected");
+				document.getElementById("btn_yesterday").classList.remove("selected");
+		        document.getElementById("today_report").classList.remove("mui-hidden");
+		        document.getElementById("yesterday_report").classList.add("mui-hidden");
+			})
+			
+			document.getElementById('btn_yesterday').addEventListener('tap',function () {
+				document.getElementById("btn_today").classList.remove("selected");
+				document.getElementById("btn_yesterday").classList.add("selected");
+				
+		        document.getElementById("today_report").classList.add("mui-hidden");
+		        document.getElementById("yesterday_report").classList.remove("mui-hidden");
+			})
+			
+			document.getElementById('btn_user_tongji').addEventListener('tap',function () {
+			      mui.openWindow({
+					url: 'agent_user.html',
+					id: 'html/member/agent_user.html',
+					show: {
+						aniShow: 'pop-in'
+					},
+					waiting: {
+						autoShow: false
+					}
+				});  
+			})
+			
+			function init_(){
+				document.getElementById("qq").value="";
+				document.getElementById("weixin").value="";
+			}
+			
+			mui.back = function() {
+				init_();
+				plus.webview.currentWebview().hide("auto", 300);
+				//动画结束后，恢复默认值
+				setTimeout(function() {
+					window.scrollTo(0, 0);
+				}, 300);
+			}
+		</script>
+	</body>
+
+</html>

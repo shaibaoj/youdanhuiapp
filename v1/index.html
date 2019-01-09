@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="css/app.css"/>
+    <link rel="stylesheet" href="css/index.css" />
+	<link rel="stylesheet" type="text/css" href="css/u.css"/>
+</head>
+<body>
+	<header id="header-home" class="mui-bar mui-bar-nav ">
+		<a class="mui-icon mui-pull-left">
+			<img id="icon_logo" src="">
+		</a>
+		<div class="mui-search">
+	    		<input id="search-key" type="search" class="mui-title mui-input-clear" placeholder="搜宝贝">
+	    </div>
+		<a id="btn-check-in" class="mui-icon customiconfont icon-qiandao mui-pull-right"></a>
+	</header>
+	<header id="header-99" class="mui-bar mui-bar-nav  mui-hidden">
+		<a class="mui-icon iconfont icon-tubiao17 mui-pull-left"></a>
+	    <h1 class="mui-title" id="jiu_txt">9块9</h1>
+	</header>
+	<header  id="header-kuaibao" class="mui-bar mui-bar-nav  mui-hidden">
+	    <h1 class="mui-title" id="kuaibao_txt">优惠线报</h1>
+	</header>
+	<header  id="header-search" class="mui-bar mui-bar-nav  mui-hidden">
+	    <h1 class="mui-title" id="search_txt">搜优惠</h1>
+	</header>
+	<nav class="mui-bar mui-bar-tab mui-bar-footer">
+		<a id="defaultTab" class="mui-tab-item mui-active entry_link" href="tab-home.html">
+			<span class="mui-icon customiconfont icon-jingxuan" id="footer_home_icon"></span>
+			<span class="mui-tab-label" id="footer_home_txt">精选</span>
+		</a>
+		<a class="mui-tab-item" href="tab-kuaibao.html">
+			<span class="mui-icon customiconfont icon-youhui"  id="footer_kuaibao_icon"><!--<span class="mui-badge">9</span>--></span>
+			<span class="mui-tab-label" id="footer_kuaibao_txt">优惠线报</span>
+		</a>
+		<a class="mui-tab-item" href="tab-search.html">
+			<span class="mui-icon customiconfont icon-youhuiquan"  id="foot_search_icon"></span>
+			<span class="mui-tab-label" id="foot_search_txt">搜优惠</span>
+		</a>
+		<a class="mui-tab-item" href="tab-99.html">
+			<span class="mui-icon customiconfont icon-jiubaoyou"  id="foot_99_icon"></span>
+			<span class="mui-tab-label" id="foot_99_txt">9块9</span>
+		</a>
+		<a class="mui-tab-item" href="tab-member.html">
+			<span class="mui-icon customiconfont icon-wode-on"  id="foot_member_icon"></span>
+			<span class="mui-tab-label" id="foot_member_txt">我的</span>
+		</a>
+	</nav>
+	<script src="js/mui.min.js"></script>
+	<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/config.js" ></script>
+	<script src="js/app.js" ></script><script src="js/cn.js" ></script>
+	<script src="js/update.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script src="js/push.js" type="text/javascript" charset="utf-8"></script>-->
+    <script type="text/javascript" charset="utf-8">
+    		app_cn.set_txt('index');
+      	mui.init();
+      	mui.os.plus && !mui.os.stream && mui.plusReady(update);
+		var search_page = null; //详情页webview
+      	var subpages = [
+      		{
+      			id:'tab-home.html',
+      			url:'tab-home.html',
+      			style:{top:'45px',bottom:'51px',render:'always'}
+      		},
+      		{
+      			id:'tab-kuaibao.html',
+      			url:'tab-kuaibao.html',
+      			style:{top:'45px',bottom:'51px'}
+      		},
+      		{
+      			id:'tab-search.html',
+      			url:'tab-search.html',
+      			style:{top:'44px',bottom:'51px'}
+      		},
+      		{
+      			id:'tab-99.html',
+      			url:'tab-99.html',
+      			style:{top:'44px',bottom:'51px'}
+      		},
+      		{
+      			id:'tab-member.html',
+      			url:'tab-member.html',
+      			style:{top:'0px',bottom:'51px'}
+      		}
+      	];
+      	
+      	var webview_page = null;
+		var aniShow = {};
+		 //创建子页面，首个选项卡页面显示，其它均隐藏；
+		mui.plusReady(function() {
+			app.set_status_bar(app_config.status_bar_color);
+			checkArguments();
+//			plus.nativeUI.showWaiting("加载中");
+			var self = plus.webview.currentWebview();
+			for (var i = 0; i < 5; i++) {
+				var temp = {};
+				var sub = plus.webview.create(subpages[i]['url'], subpages[i]['id'], subpages[i]['style']);
+				if (i > 0) {
+					sub.hide();
+				}else{
+					temp[subpages[i]['id']] = "true";
+					mui.extend(aniShow,temp);
+				}
+				self.append(sub);
+			}
+			
+			search_page = mui.preload({
+				url:'search.html',
+		      	id:'search',
+				styles: {
+					"render": "always",
+					"popGesture": "hide",
+					"bounce": "vertical",
+					"bounceBackground": "#efeff4",
+//					"titleNView": titleNView
+				}
+			});
+			app.online();
+			query_config();
+		});
+		 //当前激活选项
+		var activeTab = subpages[0]['url'];
+//		var title = document.getElementById("title");		
+		 //选项卡点击事件
+		mui('.mui-bar-tab').on('tap', 'a', function(e) {
+			var targetTab = this.getAttribute('href');
+			if (targetTab == activeTab) {
+				scroll_top(targetTab);
+				return;
+			}
+			show_header(targetTab);
+			
+			//更换标题
+//			title.innerHTML = this.querySelector('.mui-tab-label').innerHTML;
+			//显示目标选项卡
+			//若为iOS平台或非首次显示，则直接显示
+			if(mui.os.ios||aniShow[targetTab]){
+				plus.webview.show(targetTab);
+			}else{
+				//否则，使用fade-in动画，且保存变量
+				var temp = {};
+				temp[targetTab] = "true";
+				mui.extend(aniShow,temp);
+				plus.webview.show(targetTab,"fade-in",300);
+			}
+			//隐藏当前;
+			plus.webview.hide(activeTab);
+			//更改当前活跃的选项卡
+			activeTab = targetTab;
+		});
+		
+		function scroll_top(targetTab){
+			var webview_page = plus.webview.getWebviewById(targetTab);
+			if(webview_page){
+				mui.fire(webview_page, 'scroll_top', {
+					
+				});
+			}
+		}
+		
+		function show_header(targetTab) {
+			mui(".mui-bar-nav").each(function () {
+			 	this.classList.add("mui-hidden");
+			});
+			if(targetTab=='tab-home.html'){
+				document.getElementById("header-home").classList.remove("mui-hidden");
+			}
+			else if(targetTab=='tab-kuaibao.html'){
+				document.getElementById("header-kuaibao").classList.remove("mui-hidden");
+			}
+			else if(targetTab=='tab-99.html'){
+				document.getElementById("header-99").classList.remove("mui-hidden");
+			}
+			else if(targetTab=='tab-search.html'){
+				document.getElementById("header-search").classList.remove("mui-hidden");
+			}
+		}
+		
+		document.getElementById("search-key").addEventListener('tap', function() {
+			open_search();
+		});
+		document.querySelector(".icon-tubiao17").addEventListener('tap', function() {
+			open_search();
+		});
+		
+		function open_search(){
+			//若详情页尚未预加载完成，则延时等待再执行
+			if(!search_page) {
+				setTimeout(function() {
+					open_search();
+				}, 100);
+			}
+			var aniShow = mui.os.plus ? "slide-in-right" : "fade-in";
+			mui.fire(search_page, 'query_init', {
+				
+			});
+			setTimeout(function () {
+				search_page.show(aniShow, 300);
+			},150);
+		}
+		
+		document.getElementById('btn-check-in').addEventListener('tap',function () {
+		     if(UserInfo.has_login()){
+		     	mui.web_query('check_in', {}, function(data){
+					plus.nativeUI.toast(data.info.status_err, {verticalAlign: 'center'});
+				}, function(status,status_err){
+					 switch(status){
+					    case 2:
+					        plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+					        break;
+					    default:
+					    		plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+					        break;
+				    }
+				}, 3);   
+		     }else{
+		     	plus.webview.show('login.html',"slide-in-bottom",300);
+		     }
+		})
+		
+		 //自定义事件，模拟点击“首页选项卡”
+		document.addEventListener('gohome', function() {
+			var defaultTab = document.getElementById("defaultTab");
+			//模拟首页点击
+			mui.trigger(defaultTab, 'tap');
+			//切换选项卡高亮
+			var current = document.querySelector(".mui-bar-tab>.mui-tab-item.mui-active");
+			if (defaultTab !== current) {
+				current.classList.remove('mui-active');
+				defaultTab.classList.add('mui-active');
+			}
+		});
+		
+		mui('.apphome').on('tap', '.entry_link', function() {
+			open_href(this);
+		});
+		
+		function query_config(){
+			mui.web_query('config', {}, function(data){
+				if(data.data.config){
+					document.getElementById("icon_logo").src = data.data.config.icon_url+'/24';
+				}
+			}, function(status,status_err){
+
+			}, 3);
+		}
+		
+		function checkArguments(){
+//			console.log("Shortcut-plus.runtime.launcher: "+plus.runtime.launcher);
+			if(plus.runtime.launcher=='shortcut'){
+				try{
+					var cmd = JSON.parse(plus.runtime.arguments);
+					console.log("Shortcut-plus.runtime.arguments: "+plus.runtime.arguments)
+					var type=cmd&&cmd.type;
+					switch(type){
+						case 'share':
+							openWebview('plus/share.html');
+						break;
+						case 'about':
+							openWebview('about.html','zoom-fade-out',true);
+						break;
+						default:
+						break;
+					}
+				}catch(e){
+					console.log("Shortcut-exception: "+e);
+				}
+			}
+		}
+		// 处理从后台恢复
+		document.addEventListener('newintent',function(){
+		    checkArguments();
+		},false);
+    </script>
+</body>
+</html>

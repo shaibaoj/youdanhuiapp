@@ -1,0 +1,229 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/app.css"/>
+		<link rel="stylesheet" type="text/css" href="css/ss.css"/>
+	<link rel="stylesheet" type="text/css" href="css/u.css"/>
+	</head>
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav ">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <input id="search-key" type="search" class="mui-title mui-input-clear" placeholder="" value="">
+			<a id="btn-buy-search" class="mui-icon iconfont icon-tubiao17 mui-pull-right"></a>
+		</header>
+		<div class="mui-content">
+		    <nav class="mui-bar mui-bar-search mui-hidden">
+			    <a class="mui-tab-item mui-tab-item-selected" data-s="1" id="btn-tab-yhq">
+			        精选券
+			    </a>
+			    <a class="mui-tab-item" data-s="2">
+			        全网券
+			    </a>
+			    <a class="mui-tab-item" data-s="3">
+			        所有商品
+			    </a>
+			</nav>
+			<!-- 分类 -->
+			<div class="tickets">
+				<div class="sqt_common_top cf">
+					<span class="fl">亲们都在找券</span>
+					<div class="fr change " id="sqt_change"><i class="icons icon_change"></i><span>换一换</span></div>
+				</div>
+				<ul class="tickets_list cf" id="tickets_list"></ul>
+			</div>
+			
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="libs/arttmpl.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/config.js"></script>
+		<script src="js/app.js"></script><script src="js/cn.js"></script>
+		<script type="text/javascript">
+    			app_cn.set_txt('search');
+			mui.init();
+			
+	      	var searchlist_page = null;
+	      	var searchlist_page_quan = null;
+	      	var searchlist_page_all = null;
+	      	
+	      	mui.plusReady(function () {
+	      	    var self = plus.webview.currentWebview();
+	      	    searchlist_page = plus.webview.create('search-list.html', 'search-list.html', {
+	      	     	top:'75px',bottom:'0px'
+	      	    });
+	      	    searchlist_page.hide();
+	      	    self.append(searchlist_page);
+	      	    
+	      	    searchlist_page_quan = plus.webview.create('search-list2.html', 'search-list2.html', {
+	      	     	top:'75px',bottom:'0px'
+	      	    });
+	      	    searchlist_page_quan.hide();
+	      	    self.append(searchlist_page_quan);
+	      	    
+	      	    searchlist_page_all = plus.webview.create('search-list3.html', 'search-list3.html', {
+	      	     	top:'75px',bottom:'0px'
+	      	    });
+	      	    searchlist_page_all.hide();
+	      	    self.append(searchlist_page_all);
+	      	    
+	      	    query_keylist();
+	      	})
+	      	
+	      	document.getElementById('sqt_change').addEventListener('tap',function () {
+			      query_keylist();
+			})
+			function query_keylist(){
+				mui.ajax('https://suggest.taobao.com/sug?area=sug_hot&wireless=2&code=utf-8&nick=&sid=null&callback=&code=utf-8&_=', {
+					type:'GET',
+					dataType: 'json', //服务器返回json格式数据
+					timeout: 15000, //15秒超时
+					success: function(result) {
+						if (result.count >0 ) {
+		                    var len = result.querys.length;
+		                    var image = "";
+		                    for (var i = 0; i < len; i++) {
+		                        image += '<li><a href="#" data-key="'+result.querys[i]+'">'+result.querys[i]+'</a></li>';
+		                    }
+		                    document.getElementById("tickets_list").innerHTML = image;
+		                }
+						
+					},
+					error: function(xhr, type, errorThrown) {
+						
+					}
+				});
+			}
+	      	
+	      	var show_pos = 0;
+	      	var key = null;
+	      	
+	      	function set_show_pos(value){
+	      		show_pos = value;
+	      	}
+	      	
+	      	function hide_page(){
+	      		plus.webview.hide(searchlist_page);
+				plus.webview.hide(searchlist_page_quan);
+  				plus.webview.hide(searchlist_page_all);
+	      	}
+	      	
+	      	document.addEventListener('query_init',function (event) {
+	      		key = event.detail.key;
+	      		set_show_pos(0);
+	      		if(key){
+	      			document.getElementById("search-key").value=key;
+	      			
+	      			hide_menu();
+	      			document.getElementById("btn-tab-yhq").classList.add("mui-tab-item-selected");
+	      			document.querySelector(".mui-bar-search").classList.remove("mui-hidden");
+	      			set_show_pos(1);
+	      			hide_page();
+	      			query_key(key);
+	      		}else{
+	      			hide_page();
+      				
+      				document.querySelector(".mui-bar-search").classList.add("mui-hidden");
+
+	      			document.getElementById("search-key").value="";
+//	      			document.getElementById("search-key").focus();
+	      			setTimeout(function () {
+				try{
+				    document.getElementById('search-key').focus();
+				    var input = document.getElementById("search-key");
+				input.blur();
+				input.focus();
+//  alert(document.getElementById('header').innerHTML)
+  } catch(e){
+  }
+			},150);
+	      			query_history_key();
+	      		}
+	      });
+	      
+	      mui('#tickets_list').on('tap', 'a', function(e) {
+			var key_item = this.getAttribute('data-key');
+			key = key_item;
+	      	set_show_pos(0);
+	      	document.getElementById("search-key").value=key;
+	      			
+  			hide_menu();
+  			document.getElementById("btn-tab-yhq").classList.add("mui-tab-item-selected");
+  			document.querySelector(".mui-bar-search").classList.remove("mui-hidden");
+  			set_show_pos(1);
+  			hide_page();
+  			query_key(key);	
+		});
+	      
+	      function query_history_key(){
+	      	
+	      }
+	      
+	      function query_key(key){
+	      	var searchlist_page_sel = searchlist_page;
+	      	if(show_pos==2){
+	      		searchlist_page_sel = searchlist_page_quan;
+	      	}
+	      	else if(show_pos==3){
+	      		searchlist_page_sel = searchlist_page_all;
+	      	}
+	      	if(!searchlist_page_sel) {
+				setTimeout(function() {
+					query_key(key);
+				}, 100);
+			}
+	      	
+  			if(mui.os.ios){
+				plus.webview.show(searchlist_page_sel);
+			}else{
+				plus.webview.show(searchlist_page_sel,"fade-in",300);
+			}
+			document.querySelector(".mui-bar-search").classList.remove("mui-hidden");
+
+			//触发子窗口查询事件
+			mui.fire(searchlist_page_sel, 'query_key', {
+				key: key
+			});
+	      }
+	      
+	      document.getElementById('btn-buy-search').addEventListener('tap',function () {
+	      		var key = document.getElementById("search-key").value;
+	      		if(!key){
+	      			return;
+	      		}
+	            query_key(key);
+	      })
+	      
+	      function hide_menu(){
+	      	mui(".mui-bar-search a").each(function () {
+			 this.classList.remove("mui-tab-item-selected");
+			});
+	      }
+	      
+	      mui('.mui-bar-search').on('tap', 'a', function() {
+	      	hide_menu();
+	      	this.classList.add("mui-tab-item-selected");
+			show_pos = this.getAttribute('data-s');
+			var key = document.getElementById("search-key").value;
+      		if(!key){
+      			return;
+      		}
+            query_key(key);
+		 });
+			
+			//重写返回逻辑
+			mui.back = function() {
+				plus.webview.currentWebview().hide("auto", 300);
+				//动画结束后，恢复默认值
+				setTimeout(function() {
+					window.scrollTo(0, 0);
+				}, 300);
+			}
+	      
+		</script>
+	</body>
+
+</html>

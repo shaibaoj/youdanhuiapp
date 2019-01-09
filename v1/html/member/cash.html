@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/app.css"/>
+		<link rel="stylesheet" href="../../css/u.css" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav ">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">提现</h1>
+		    <a id="btn-cash-link" class="mui-icon mui-pull-right btn-reload"><span>提现记录</span></a>
+		</header>
+		<div class="mui-content">
+			<div class="mui-content-padded">
+				<p>已经结算的现金可以提现到指定帐号</p>
+			</div>
+			<form id='login-form' class="mui-input-group">
+				<div class="mui-input-row">
+					<label>金额</label>
+					<input id='money' type="text" class="mui-input-clear mui-input" placeholder="提现金额">
+				</div>
+				<div class="mui-input-row">
+					<label>提现帐号</label>
+					<input id='payname' type="text" class="mui-input-clear mui-input" placeholder="">
+				</div>
+			</form>
+			<div class="mui-content-padded">
+				<button id='btn-apply' class="mui-btn mui-btn-block app-btn" data-loading-text="提交中" >立即申请</button>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../libs/arttmpl.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/mui.pullToRefresh.js"></script>
+		<script src="../../js/mui.pullToRefresh.material.js"></script>
+		<script src="../../js/mui.lazyload.js"></script>
+		<script src="../../js/mui.lazyload.img.js"></script>
+		<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/app.js" type="text/javascript" charset="utf-8"></script><script src="../../js/cn.js" type="text/javascript" charset="utf-8"></script>
+		<script id="tpl-entity" type="text/html">	            
+	        {{each list as value i}}
+	        <li class="mui-table-view-cell">
+		            <div class="mui-table">
+		                <div class="mui-table-cell mui-col-xs-10">
+		                    <h4 class="mui-ellipsis-2">{{value.money}}元</h4>
+		                    <h5>{{value.create_date}}</h5>
+		                    <p class="mui-h6 mui-ellipsis">{{value.memo}}</p>
+		                </div>
+		                <div class="mui-table-cell mui-col-xs-2 mui-text-right">
+		                    <span class="mui-h5">{{value.status_name}}</span>
+		                    
+		                </div>
+		            </div>
+		       </li>
+		    {{/each}}
+		</script>
+		<script type="text/javascript">
+    		app_cn.set_txt('member/cash');
+			mui.init()//重写返回逻辑
+			
+			var webview_detail = null; //详情页webview
+			
+			mui.plusReady(function () {
+			    webview_detail = mui.preload({
+				    url:'../../f.html',
+				    id:'cash_list.html',
+				    styles:{},//窗口参数
+				    extras:{}//自定义扩展参数
+				});
+			})
+			document.getElementById('btn-cash-link').addEventListener('tap',function () {
+				var detail_json = {
+					title:'提现记录',
+					url:'html/member/cash_list.html',
+				};
+				open_detail(detail_json);
+			})
+			
+			function open_detail(detail_json) {
+				if(!webview_detail) {
+					setTimeout(function() {
+						open_detail(detail_json);
+					}, 100);
+				}
+				mui.fire(webview_detail, 'open_url', {
+					title: detail_json.title,
+					url:detail_json.url,
+				});
+				
+				setTimeout(function () {
+					webview_detail.show("slide-in-right", 300);
+				},150);
+			}
+			
+			document.getElementById('btn-apply').addEventListener('tap',function () {
+				var _this = this;
+			   	mui(this).button('loading');
+			    var money = document.getElementById("money");
+			    var paynameInput = document.getElementById("payname");
+			    mui.web_query('input_payment_money', {
+				    	payname:paynameInput.value,
+				    	input_payment_money:money.value
+			    }, function(data){
+					plus.nativeUI.toast(data.info.status_err);
+					mui(_this).button('reset');
+				}, function(status,status_err){
+					mui(_this).button('reset');
+					switch(status){
+					    case 2:
+					        plus.nativeUI.toast(status_err);
+					        break;
+					    default:
+					    		plus.nativeUI.toast(status_err);
+					        break;
+				    }
+				}, 3);   
+			})
+			
+			function init_(){
+				document.getElementById("payname").value="";
+				document.getElementById("money").value="";
+			}
+			
+			mui.back = function() {
+				init_();
+				plus.webview.currentWebview().hide("auto", 300);
+				//动画结束后，恢复默认值
+				setTimeout(function() {
+					window.scrollTo(0, 0);
+				}, 300);
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="css/app.css"/>
+		<!--<link rel="stylesheet" type="text/css" href="css/s.css"/>-->
+	<link rel="stylesheet" type="text/css" href="css/u.css"/>
+	</head>
+	<body>
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul class="mui-table-view coupon-items mui-grid-view">
+					
+				</ul>
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="libs/arttmpl.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.pullToRefresh.js"></script>
+		<script src="js/mui.pullToRefresh.material.js"></script>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/config.js"></script>
+		<script src="js/app.js"></script><script src="js/cn.js"></script>
+		<script id="tpl-goods" type="text/html">	            
+	        {{each list as value i}}
+	        <li class="mui-table-view-cell mui-media mui-col-xs-6">
+		        <a href="javascript:;" data-id="{{value.num_iid}}" 
+		        	data-query_cache="{{value.query_cache}}" 
+    				data-comment="{{value.comment}}" 
+    				data-volume="{{value.volume}}" 
+    				data-coupon_money="{{value.coupon_money}}" 
+    				data-buy_price="{{value.buy_price}}" 
+    				data-app_url="{{value.app_url}}" 
+    				data-pid="{{value.pid}}" 
+    				data-click_url="{{value.click_url}}" 
+		        	data-pic="{{value.pic_url}}" data-title="{{value.title}}" data-price="{{value.buy_price}}">
+		            <div class='mui-media-object'>
+				        <div class="img-container">
+				        		{{if value.coupon_money}}<span class="coupon-wrapper">券 <i>￥</i><b>{{value.coupon_money}}</b></span>{{/if}}
+				            	<img class="" src="{{value.pic_url}}">
+				            	{{if value.tip_name}}<span class="new_icon top_icon">{{value.tip_name}}</span>{{/if}}
+				        </div>
+				    </div>
+		            <div class="mui-media-body">{{value.title}}</div>
+		            <div class="quan_item_price cf">
+			           <div class="mui-pull-left">
+				           	{{if value.coupon_money}}券后{{/if}}
+				           	<span class="pir">¥</span>
+				           	<span class="num">{{value.buy_price}}</span>
+			           </div>
+			           {{if value.volume}}
+			           <span class="list mui-pull-right">已售{{value.volume}}件</span>
+			           {{/if}}
+			       </div>
+		        </a>
+	        </li>
+		    {{/each}}
+		</script>
+		<script>
+    		app_cn.set_txt('search-list');
+			mui.init({
+				swipeBack: false,
+				pullRefresh: {
+					container: '#pullrefresh',
+					up: {
+						contentinit: '稍等，精彩即将开始',
+			            contentdown: '优质宝贝一波波来袭',
+	                    contentrefresh: '正在加载...',
+	                    contentnomore: '没有更多数据了',
+						callback: pullupRefresh
+					}
+				}
+			});
+			
+			var key = null;
+			var cid = null;
+			var ipage = 1;
+			var webview_detail = null; //详情页webview
+			var titleNView = { //详情页原生导航配置
+				backgroundColor: '#f7f7f7', //导航栏背景色
+				titleText: '', //导航栏标题
+				titleColor: '#000000', //文字颜色
+				type: 'transparent', //透明渐变样式
+				autoBackButton: true, //自动绘制返回箭头
+				splitLine: { //底部分割线
+					color: '#cccccc'
+				}
+			};
+			mui.plusReady(function () {
+			    //预加载详情页
+				webview_detail = mui.preload({
+					url: 'coupon_goods.html',
+					id: 'news_coupon_goods',
+					styles: {
+						"render": "always",
+						"popGesture": "hide",
+						"bounce": "vertical",
+						"bounceBackground": "#efeff4",
+						"titleNView": titleNView
+					}
+				});
+			});
+			
+			var count = 0;
+			/**
+			 * 上拉加载具体业务实现
+			 */
+			function pullupRefresh() {
+				var self = this;
+				ipage++;
+				mui.web_query('search', {q:key?key:'',cid:cid?cid:'',pic_size:'300',page:ipage,yun:'2'}, function(data){
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh(false);
+					if(data && data.data.items.length > 0) {
+						var datas = {
+						    list: data.data.items
+						};
+						var html = template('tpl-goods', datas);
+						document.querySelector('.coupon-items').insertAdjacentHTML("beforeEnd",html);
+					}else{
+						mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
+					}
+				}, function(tatus,status_err){
+					 switch(status){
+					    case 2:
+					        plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+					        break;
+					    default:
+					    		plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+					        break;
+				    }
+				}, 3);
+			}
+			
+			function query_goods(json_detail){
+				plus.nativeUI.showWaiting("加载中");
+				document.querySelector('.coupon-items').innerHTML="";
+
+				mui.web_query('search', {q:json_detail.key?json_detail.key:'',cid:json_detail.cid?json_detail.cid:'',pic_size:'300',page:ipage,yun:'2'}, function(data){
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh(false);
+					if(data && data.data.items.length > 0) {
+						var datas = {
+						    list: data.data.items
+						};
+						var html = template('tpl-goods', datas);
+						document.querySelector('.coupon-items').insertAdjacentHTML("beforeEnd",html);
+					}else{
+						mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
+					}
+					plus.nativeUI.closeWaiting();
+				}, function(tatus,status_err){
+					plus.nativeUI.closeWaiting();
+					 switch(status){
+					    case 2:
+					        plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+					        break;
+					    default:
+					    		plus.nativeUI.toast(status_err, {verticalAlign: 'center'});
+					        break;
+				    }
+				}, 3);
+				
+			}
+			
+			document.addEventListener('query_key', function(event) {
+				key = event.detail.key;
+				cid = event.detail.cid;
+//				ipage = event.detail.ipage;
+				if(!key&&!cid) {
+					return;
+				}
+				ipage = 1;
+				query_goods({
+					key:key,
+//					ipage:ipage,
+					cid:cid
+				});
+				mui('#pullrefresh').pullRefresh().scrollTo(0, 0, 1000);//滚动到顶部
+				window.scrollTo(0, 1000);
+
+			});
+			
+			//TODO 后续应该封装一个v-tap指令，实现tap监听
+			mui('.mui-content').on('tap', '[data-id]', function() {
+				var id = this.getAttribute('data-id');
+				var title = this.getAttribute("data-title").trim();
+				var pic = this.getAttribute("data-pic").trim();
+				var click_url = this.getAttribute("data-click_url").trim();
+				var comment = this.getAttribute("data-comment").trim();
+				var volume = this.getAttribute("data-volume").trim();
+				var coupon_money = this.getAttribute("data-coupon_money").trim();
+				var buy_price = this.getAttribute("data-buy_price").trim();
+				var app_url = this.getAttribute("data-app_url").trim();
+				var query_cache = this.getAttribute("data-query_cache").trim();
+				var pid = this.getAttribute("data-pid").trim();
+				var json_detail = {
+					id:id,
+					title:title,
+					pic_url:pic,
+					click_url:click_url,
+					comment:comment,
+					volume:volume,
+					coupon_money:coupon_money,
+					buy_price:buy_price,
+					app_url:app_url,
+					query_cache:query_cache,
+					pid:pid,
+				};
+				open_detail(json_detail);
+			});
+			
+			function open_detail(json_detail) {
+				//若详情页尚未预加载完成，则延时等待再执行
+				if(!webview_detail) {
+					setTimeout(function() {
+						open_detail(json_detail);
+					}, 100);
+				}
+				//触发子窗口变更新闻详情
+				mui.fire(webview_detail, 'get_detail', {
+					id: json_detail.id,
+					title:json_detail.title,
+					click_url:json_detail.click_url,
+					pic_url:json_detail.pic_url,
+					comment:json_detail.comment,
+					volume:json_detail.volume,
+					coupon_money:json_detail.coupon_money,
+					buy_price:json_detail.buy_price,
+					app_url:json_detail.app_url,
+					query_cache:json_detail.query_cache,
+					pid:json_detail.pid,
+				});
+	
+				//更改详情页原生导航条信息
+				titleNView.titleText = json_detail.title;
+				webview_detail.setStyle({
+					"titleNView": titleNView
+				});
+				setTimeout(function () {
+					webview_detail.show("slide-in-right", 300);
+				},150);
+			}
+			
+		</script>
+	</body>
+
+</html>

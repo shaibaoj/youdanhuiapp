@@ -1,0 +1,53 @@
+/*:root {
+	--header-bg:#fff;
+	--header-border:#999;
+	--header-title-color:#999;
+	--main-bg: rgb(255, 255, 255);
+	--main-color:#666;
+	--main-link-color:#fe4a65;
+	--footer-bg:#fff;
+	--btn-bg:#ffa42e;
+	--logo-border-color: rebeccapurple;
+	--header-height: 68px;
+	--content-padding: 10px 20px;
+	--base-line-height: 1.428571429;
+	--transition-duration: .35s;
+	--external-link: "external link";
+	--margin-top: calc(2vh + 20px);
+}*/
+:root {
+	--header-bg:#f54e54;
+	--header-border:#fff;
+	--header-title-color:#fff;
+	--main-bg: rgb(255, 255, 255);
+	--main-color:#666;
+	--main-link-color:#fe4a65;
+	--footer-bg:#fff;
+	--footer-color:#666;
+	--btn-bg:#ffa42e;
+}
+/*:root {
+	--header-bg:#5eb95e;
+	--header-border:#fff;
+	--header-title-color:#fff;
+	--main-bg: rgb(255, 255, 255);
+	--main-color:#666;
+	--main-link-color:#5eb95e;
+	--footer-bg:#fff;
+	--footer-color:#000;
+	--btn-bg:#208d4e;
+}*/
+
+ /* #f54e54  默认
+  * 
+  * 
+  * 
+  * 
+  * 
+  * 
+  * 
+  * 
+  * 
+  * 
+  * 
+  * 默认*/

@@ -1,0 +1,133 @@
+
+.apphome {
+	position: relative;
+	padding-bottom: 1px;
+}
+
+.entry_nav {
+	padding: 12px 4px 0px;
+	margin-bottom: 1px;
+	background-color: #fff;
+}
+
+.entry_nav .entry_link {
+	float: left;
+	display: block;
+	width: 20%;
+	box-sizing: border-box;
+	text-align: center;
+	font-size: 12px;
+	color: #ffffff;
+}
+
+.entry_nav .entry_link img {
+	display: inline-block;
+	/*width: 100%;*/
+	width:auto;
+}
+
+.entry_nav .custom_icon img {
+	display: inline-block;
+	/*width: 100%;*/
+	width:auto;
+	max-width: 38px;
+}
+.entry_nav .entry_link span {
+	display: block;
+	text-align: center;
+	padding-top: 3px;
+	color: #46454d;
+	padding-bottom: 12px;
+}
+
+.apphome .small, .apphome .big {
+	display: none;
+}
+
+@media only screen and (max-width: 375px) and (min-width:320px) {
+	.apphome .small {
+		display: block;
+	}
+}
+
+@media only screen and (min-width: 376px) {
+	.apphome .big {
+		display: block;
+	}
+}
+
+.shops {
+	overflow: hidden;
+}
+
+.shops a {
+	float: left;
+	width: 50%;
+	border-right: 1px solid #f2f4f5;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.shops a:last-child {
+	border-right: 1px solid #fff;
+}
+
+.shops a img {
+	width: 100%;
+	height: auto;
+}
+
+.yhkb-wrap {
+    height: 16px;
+    line-height: 16px;
+    overflow:hidden;
+    margin: 5px 10px 10px;
+    position:relative;
+    font-size: .8rem;
+}
+.yhkb-wrap span.yhkb_icon {
+    float:left;
+    height:14.4px;
+    width: 60px;
+    position:absolute;
+    left:0;
+    top: 0;
+    background: url(../images/home/yhkb.png) left center no-repeat;
+    background-size: 100%;
+}
+.yhkb-wrap .yhkb-list {
+    margin-left: 73px;
+    position:relative;
+    border-left: 1px solid #ccc;
+    padding-left: 4px;
+}
+.yhkb-wrap .yhkb-list li {
+    height: 16px;
+    display:block;
+    overflow:hidden;
+    position: relative;
+    padding-left: 10px;
+}
+.yhkb-wrap .yhkb-list li span{
+    color:#fe4c67;
+    margin-right: 3px;
+}
+.yhkb-wrap .yhkb-list li a {
+    color:#222;
+}
+
+.items_box{
+	text-align:center;
+}
+.items_box .line{
+	display:inline-block;
+	height:1px;
+	width:7px;
+	background-color:#46454d;
+	vertical-align:middle;
+}
+.items_title{
+	display:inline-block;
+	margin:9px 6px;
+	color:#46454d;
+}

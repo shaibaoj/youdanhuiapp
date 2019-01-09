@@ -1,0 +1,727 @@
+﻿/* index */
+body{
+    background:#fff;
+    line-height:1.4;
+}
+.today_tag{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 98px;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    background: -webkit-linear-gradient(left,#ffd119,#ffbc3c);
+    background: linear-gradient(to right,#ffd119,#ffbc3c);
+    border-bottom-right-radius: 10px;
+}
+.top_box{
+    padding:12px 10px;
+    line-height:21px;
+    font-size:15px;
+    color: #46454D
+}
+.lyc .app_icon{
+    vertical-align:-2px;
+}
+.lyc_icon{
+    display:inline-block;
+    vertical-align:middle;
+    background-image:url(https://appimg.huim.com/images/lingyuanchou/lyc_ico.png?1);
+    background-repeat:no-repeat;
+    background-size:66px auto;
+}
+i.icon_lw{
+    width:15px;
+    height:15px;
+    margin-right:3px;
+    background-position:0 -290px;
+    background-image: url(https://appimg.huim.com/images/activity/signin_ico.png);
+    background-size: 79px auto;
+    vertical-align: -2px;
+}
+.top_box span{
+    color:#757380;
+}
+.tem_h{
+    height:10px;
+    background-color:#f7f9fa;
+}
+.lyc_list li{
+    padding:5px 0;
+}
+.lyc_list li:last-child .lyc_info {
+    background:none;
+}
+.lyc_list a{
+    display:block;
+    position:relative;
+    overflow:hidden;
+}
+.lyc_list img{
+    width:130px;
+    height:130px;
+    float:left;
+}
+.lyc_info{
+    display:inline-block;
+    width:calc(100% - 130px);
+    padding:5px 10px 14px 6px;
+    box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    vertical-align:middle;
+}
+.lyc_title{
+    font-size: 15px;
+    color: #333;
+}
+.lyc_time{
+    margin-top:4px;
+    font-size: 12px;
+    color: #A6A4B2;
+}
+.lyc_box{
+    margin-top:23px;
+    color:#F54E54;
+}
+.lyc_price{
+    font-size:12px;
+}
+.lyc_price span{
+    margin-right:3px;
+    font-size:26px;
+}
+.lyc_price del{
+    font-size: 13px;
+    color: #A6A4B2;
+}
+.lyc_timer .timer{
+    padding:2px 10px;
+    margin-top:5px;
+    font-size:11px;
+    background: #FFF2F3;
+    border-radius: 21px;
+}
+.lyc_btn_box{
+    padding-top:6px;
+}
+.lyc_btn{
+    width:70px;
+    margin-top:5px;
+    line-height:28px;
+    font-size:12px;
+}
+.btn_list{
+    margin:20px 10px 0;
+    font-size:15px;
+}
+.btn_list a{
+    width:48%;
+    margin-right:2%;
+    line-height:44px;
+    border-radius:5px;
+}
+.btn_list .before{
+    margin-right:0;
+    position:relative;
+    color:#F54E54;
+}
+.lyc_number{
+    font-size:11px;
+    text-align:right;
+}
+.btn_list .before:before{
+    border-radius:10px;
+    border:1px solid #F54E54;
+}
+@media only screen and (max-width: 320px) and (min-width:300px){
+    .lyc_list img{
+        width:120px;
+        height:120px;
+    }
+    .lyc_info{
+        width:calc(100% - 120px);
+    }
+    .lyc_timer .timer{
+        padding:2px 3px;
+    }
+}
+.lyc_bottom{
+    margin-top:20px;
+    text-align: center;
+    font-size:15px;
+}
+.lyc_bottom .com_btn{
+    border-radius:5px;
+    width:182px;
+    line-height:42px;
+    border:1px solid #F54E54;
+
+}
+.lyc_bottom .com_btn:active{
+    background-color:#fff4f4;
+}
+.lyc_after .timer{
+    background-color:#E6F9F1;
+    color:#18CC80;
+}
+.lyc_after .lyc_btn{
+    background: #04C171;
+} 
+/* = tab nav
+----------------------------------------------------------------------*/
+.nav_tab { 
+    position:relative; 
+    height:43px;
+    width:100%;
+    z-index:90; 
+    background:#414c59;
+}
+
+.nav_tab .nav_list{ 
+    width:100%;
+    height:100%; 
+    position:absolute; 
+    left:0; 
+    top:0;
+    overflow-x:hidden; 
+}
+
+.nav_tab .nav_list ul { 
+    position:absolute; 
+    width:100%; 
+    left:0; 
+    height:100%; 
+    z-index: 1; 
+    line-height:43px; 
+    display: flex; 
+}
+
+.nav_list li {
+     display:inline-block; 
+     float:left; 
+     width:33.33%; 
+     color:#c6c6c6; 
+     text-align:center; 
+     vertical-align:middle; 
+     line-height:43px;
+}
+.nav_tab .nav_list li.nav_current {
+    position:relative; 
+    color: #fff;
+}
+.nav_tab .indicate {
+    width:33.33%; 
+    background:#f55d62; 
+    position:absolute; 
+    height:100%; 
+    z-index:0; 
+    left:33.33%; 
+    top:0;
+}
+.nav_tab .indicate:before { 
+    content:' '; 
+    position: absolute; 
+    left: 50%; 
+    bottom: -20px; 
+    display: block; 
+    width: 0;
+    height: 0; 
+    font-size: 0; 
+    line-height: 0; 
+    border-color: #f55d62 transparent transparent transparent; 
+    border-style: solid dashed dashed dashed; 
+    border-width: 10px; 
+    margin-left: -11px; 
+}
+.nav_tab .indicate { 
+    width:33.33%; left:0; 
+    -webkit-transition:left 0.3s ease-out; 
+}
+.nav_tab .indicate.tab1 { left:0;}
+.nav_tab .indicate.tab2 { left:33.33%; }
+.nav_tab .indicate.tab3 { left:66.66%; }
+
+/* = 进行中
+----------------------------------------------------------------------*/
+.prize_pic{
+    text-align:center;
+}
+.prize_pic img{
+    width:220px;
+}
+.goods_title{
+    font-size:18px;
+    color:#333;
+}
+.lottery_active{
+    padding:20px;
+}
+.lyc_price{
+    color:#F54E54;
+}
+.lottery_active .btn{
+    display:block; 
+    margin-top:20px;
+    font-size:18px; 
+    line-height:45px; 
+    color: #fff;
+    text-align: center; 
+    border-radius:5px;
+    background: #F54E54;
+}
+.lottery_active a.btn:active{
+    background-color:#f7393f;
+}
+.active_state1 .wxshare_btn{
+    display:inline-block;
+    vertical-align:middle;
+}
+.active_state2{
+    width:100%;    
+    -moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box; 
+}
+.active_state2 .btn{
+    display:inline-block;
+    width:48.5%;
+    margin-right:3%;
+    margin-top:0;
+    font-size:17px;
+    color:#fff;
+    -moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box; 
+	background-color:#1AAD19;
+}
+.active_state2 .btn:last-child{
+    margin-right:0;
+}
+.active_state2 a.btn:active{
+    background-color:#189817;
+}
+.active_state2 a span{
+    display:inline-block;
+    vertical-align:middle;
+}
+.goods_bottom{
+    margin-top:16px;
+    color: #757380;
+    font-size:14px;
+}
+.rules_box{
+    padding:20px;
+    color: #757380;
+    font-size:13px;
+    line-height:22px
+}
+h4.com_top{
+    margin-bottom:10px;
+    text-align:center;
+    font-size:16px;
+}
+h4.com_top span{
+    display:inline-block;
+    vertical-align:middle;
+}
+.rules_title{
+    margin:0 3px;
+    color: #46454D;
+}
+.rules_line{
+    width:8px;
+    height:1px;
+    background-color: #757380;
+}
+.has_done{
+    margin-top:20px;
+    font-size:14px;
+}
+.cj_number{
+    font-size:14px;
+    color:#46454D;
+    background: #FFF2F2;
+    line-height:40px;
+    text-align:center;
+}
+.cj_number a{
+    color:#517ad1;
+}
+.share_box{
+    display:flex;
+    margin:20px auto 15px;
+}
+.share_line{
+    flex:1;
+    height:1px;
+    margin-top:10px;
+    background-color:#fff;
+}
+.share_title{
+    width:134px;
+    margin:0 18px;
+    color: #46454D;
+    font-size:16px;
+    text-align:center;
+}
+.icon_friends{
+    width:23px;
+    height:20px;
+    background-position:0 -61px;
+}
+.icon_timeline{
+    width:20px;
+    height:20px;
+    background-position:0 -86px;
+}
+.icon_timeline,.icon_friends{
+    vertical-align:sub;
+    margin-right:4px;
+}
+/* 预告 */
+.lottery_active .btn4,.lottery_active a.btn4:active{
+    background: #04C171;
+}
+/* = 商品列表
+----------------------------------------------------------------------*/
+.shop_content{
+    display:none;
+    height:100%;
+    background-color:#8a4545;
+}
+.shop_content .shop_tit{
+    padding:18px 10px; 
+    text-align:center;
+}
+.shop_content .data_list{
+  margin: 0 5px 10px 10px
+}
+.shop_content li{
+    float:left;
+    width:50%;
+}
+.shop_content li a{
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin: 0 5px 5px 0px;
+    padding:5px;
+    background-color:#fff;
+}
+.shop_content .data_list .goods_img{
+    display:block;
+    position:relative;
+    padding:50% 0;
+    width:100%;
+    height:0;
+}
+.shop_content .data_list .goods_img img{
+    display:inline-block;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+}
+.shop_content .data_list .goods_tit{
+    display:block;
+    padding-top:5px;
+    width:100%;
+    color:#333;
+    font-size:13px;
+    word-break:keep-all;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow: hidden;
+}
+.shop_content .data_list .goods_price{
+    display:block;
+    width:100%;
+    color:#ff4046;
+    font-size:15px;
+    word-break:keep-all;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow: hidden;
+}
+
+/* = 已开奖
+----------------------------------------------------------------------*/
+.lyc_before .lyc_btn_box{
+    padding:0;
+}
+.lyc_before .lyc_btn{
+    margin:0;
+} 
+.lyc_before .lyc_box{
+    margin-top:47px;
+}
+.lyc_before .lyc_btn{
+    width:94px;
+}
+.lyc_before .lyc_info{
+    padding-bottom:10px;
+}
+/* = 开奖结果页
+----------------------------------------------------------------------*/
+.lottery_result{
+    padding:20px;
+    font-size:14px;
+    line-height:1.5;
+}
+.lottery_result .result_tit{
+    display:block;
+    padding-bottom:5px;
+    font-size:16px;
+    color: #757380;
+}
+.lottery_result i{
+    display:inline-block;
+    background-color:#f55d62;
+    color:#fff;
+    width:22px;
+    height:22px;
+    text-align:center;
+    line-height:22px;
+    font-style:normal;
+    border-radius:100%;
+}
+.lottery_result .address{
+    color:#3366cc;
+    line-height:12px;
+    display:inline-block;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='1'><rect fill='#3366cc' x='0' y='0.5' width='100%' height='0.5'/></svg>");
+    background-position:0 100%;
+    background-repeat: no-repeat;
+}
+.lottery_result .helpinfo{
+    display:inline-block;
+    margin-top:10px;
+    color:#666;
+    font-size:13px;
+}
+.result_area{
+    width:85%;
+    padding:8px 0 5px;
+    margin:8px 0;
+    border-top:1px solid #f55d62;
+    border-bottom:1px solid #f55d62;
+}
+.result_table{
+    font-size:16px;
+    color:#f55d62;
+    line-height:1.7;
+}
+.result_table th{
+    width:20%;
+    font-size:12px;
+    text-align:left;
+}
+
+
+/* = 分享到微信抽奖
+----------------------------------------------------------------------*/
+.wxchoujiang_wrap .btn{
+    height:45px;
+    line-height:46px;
+    font-size:20px;
+}
+.app_download_btn{
+    display:block;
+    margin-top:20px;
+}
+.invite_from{
+    padding:15px 0;
+    height:30px;
+    text-align:center;
+    color:#333;
+    font-size:16px;
+}
+.invite_from .wx_portrait{
+    display:inline-block;
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background-color:#fff;
+    vertical-align:2px;
+}
+.invite_from .wx_portrait img{
+    display:inline-block;
+    height:100%;
+    width:100%;
+    border-radius:50%;
+}
+.invite_from .wx_nickname{
+    font-size:15px;
+    padding:0 4px 0 6px;
+}
+.invite{
+    width:82%;
+    margin:0 auto;
+    border-radius:10px;
+    background-color:#fff;
+}
+.prize_time{
+    font-size:18px;
+    background: #FFEBE2;
+    line-height:44px;
+    text-align:center;
+    border-radius: 10px 10px 0 0;
+}
+.invite .goods_title {
+    font-size:16px;
+}
+.invite_goods_info{
+    padding:6px 20px 18px;
+}
+.invite .join_num{
+    margin-top:12px;
+    font-size:14px;
+}
+.prize_end{
+    background: #E7E7E7;
+    color: #989898;
+}
+.invite .lottery_active {
+    padding-top:0;
+}
+.invite  .lottery_active .btn{
+    margin-top:0;
+    border-radius:45px;
+    box-shadow:0 4px #F6253D;
+}
+.icon_right{
+    width:10px;
+    height:16px;
+    margin-left:4px;
+    background-position:-56px -109px;
+}
+/* = 弹窗输入手机号
+----------------------------------------*/
+#show_enterphone_pop,#show_seedetail_pop{
+    display:none;
+    width:300px;
+    height:190px;
+    margin:-95px 0 0 -150px;
+    background-color:#fff;
+}
+.show_enterphone_cot{
+    margin:25px 30px;
+    text-align:center;
+}
+.show_enterphone_cot .title{
+    color:#333;
+    font-size:16px;
+}
+.show_enterphone_cot .phone_input{
+    display:block;
+    width:100%;
+    margin:5px 0 10px 0;
+    height:40px;
+    text-indent:10px;
+    color:#46454d;
+    font-size:15px;
+    background-color:#fff;
+    border-radius:0;
+}
+.show_enterphone_cot .get_btn{
+    font-size:16px; 
+    display:block; 
+    line-height:40px; 
+    color: #fff; 
+    text-align: center; 
+    border-radius:3px;
+    background-color:#f55d62;
+}
+#show_seedetail_pop .title{
+    padding:18px 0 30px 0;
+}
+/* = 抽奖先绑定手机号
+----------------------------------------*/
+#show_bindphone_pop{
+    display:none;
+    width:300px;
+    height:240px;
+    margin:-120px 0 0 -150px;
+    background-color:#fff;
+}
+.show_bindphone_cot{
+    margin:25px 20px;
+}
+.show_bindphone_cot .title{
+    color:#333;
+    font-size:16px;
+    text-align:center;
+}
+.show_bindphone_cot .bphone_input{
+    display:block;
+    width:100%;
+    margin:5px 0 10px 0;
+    height:45px;
+    text-indent:10px;
+    color:#46454d;
+    font-size:15px;
+    background-color:#fff;
+    border-radius:0;
+}
+.show_bindphone_cot .code_box{
+    margin:5px 0 15px 0;
+
+}
+.show_bindphone_cot .code_input{
+    float:left;
+    display:block;
+    width:45%;    
+    height:45px;
+    text-indent:10px;
+    color:#46454d;
+    font-size:15px;
+    background-color:#fff;
+    border-radius:0;
+}
+.show_bindphone_cot .get_code_box{
+    float:right;
+    display:block;
+    width:50%;
+    height:45px;
+    line-height:45px;
+    text-align:center;
+    color:#666666;
+    font-size:15px;
+}
+.show_bindphone_cot .get_code_btn{
+    display:block;
+    margin:1px;
+    height:43px;
+    font-size:15px;
+    background-image: -moz-linear-gradient( 90deg, rgb(235,235,235) 0%, rgb(255,255,255) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(235,235,235) 0%, rgb(255,255,255) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(235,235,235) 0%, rgb(255,255,255) 100%);
+}
+.show_bindphone_cot .get_code_btn:active{
+    background-image: -moz-linear-gradient( 90deg, rgb(220,220,220) 0%, rgb(250,250,250) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(220,220,220) 0%, rgb(250,250,250) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(220,220,220) 0%, rgb(250,250,250) 100%);
+}
+
+.show_bindphone_cot a.get_code_btn.waiting{
+    background-color:#fcfcfc;
+    background-image:none;
+}
+.show_bindphone_cot .get_btn{
+    font-size:17px; 
+    display:block; 
+    line-height:43px; 
+    color: #fff; 
+    text-align: center; 
+    border-radius:3px;
+    background-color:#f55d62;
+}
+.show_bindphone_cot a.get_btn:active{
+    background-color:#f2494e;
+}

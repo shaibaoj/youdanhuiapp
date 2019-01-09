@@ -1,0 +1,196 @@
+{
+  "forget_password.html": {
+    "href": "forget_password.html",
+    "resources": [],
+    "priority": 0
+  },
+  "html/member/message.html": {
+    "href": "html/member/message.html",
+    "resources": [],
+    "priority": 2
+  },
+  "html/setting/qq.html": {
+    "href": "html/setting/qq.html",
+    "resources": [],
+    "priority": 5
+  },
+  "html/setting/email.html": {
+    "href": "html/setting/email.html",
+    "resources": [],
+    "priority": 6
+  },
+  "html/setting/withdraw.html": {
+    "href": "html/setting/withdraw.html",
+    "resources": [],
+    "priority": 7
+  },
+  "html/setting/password.html": {
+    "href": "html/setting/password.html",
+    "resources": [],
+    "priority": 8
+  },
+  "html/member/member_setting.html": {
+    "href": "html/member/member_setting.html",
+    "resources": [],
+    "refer": [],
+    "priority": 5
+  },
+  "setting.html": {
+    "href": "setting.html",
+    "resources": [],
+    "refer": [],
+    "priority": 3
+  },
+  "html/member/invite.html": {
+    "href": "html/member/invite.html",
+    "resources": [],
+    "priority": 4
+  },
+  "html/member/agent.html": {
+    "href": "html/member/agent.html",
+    "resources": [],
+    "priority": 5
+  },
+  "reg.html": {
+    "href": "reg.html",
+    "resources": [],
+    "refer": [],
+    "priority": 6
+  },
+  "html/member/gift_item.html": {
+    "href": "html/member/gift_item.html",
+    "resources": [],
+    "priority": 8
+  },
+  "html/member/gift.html": {
+    "href": "html/member/gift.html",
+    "resources": [],
+    "refer": [],
+    "priority": 8
+  },
+  "web.html": {
+    "href": "web.html",
+    "resources": [],
+    "priority": 10
+  },
+  "deal.html": {
+    "href": "deal.html",
+    "resources": [],
+    "refer": [],
+    "priority": 9
+  },
+  "coupon_goods.html": {
+    "href": "coupon_goods.html",
+    "resources": [],
+    "refer": [],
+    "priority": 10
+  },
+  "html/member/favorite.html": {
+    "href": "html/member/favorite.html",
+    "resources": [],
+    "refer": [],
+    "priority": 9
+  },
+  "html/member/tb.html": {
+    "href": "html/member/tb.html",
+    "resources": [],
+    "priority": 10
+  },
+  "html/member/feedback.html": {
+    "href": "html/member/feedback.html",
+    "resources": [],
+    "priority": 11
+  },
+  "help.html": {
+    "href": "help.html",
+    "resources": [],
+    "refer": [],
+    "priority": 11
+  },
+  "html/member/order.html": {
+    "href": "html/member/order.html",
+    "resources": [],
+    "priority": 12
+  },
+  "html/member/cash_list.html": {
+    "href": "html/member/cash_list.html",
+    "resources": [],
+    "priority": 13
+  },
+  "f.html": {
+    "href": "f.html",
+    "resources": [],
+    "priority": 14
+  },
+  "html/member/cash.html": {
+    "href": "html/member/cash.html",
+    "resources": [],
+    "refer": [],
+    "priority": 13
+  },
+  "html/member/point.html": {
+    "href": "html/member/point.html",
+    "resources": [],
+    "priority": 14
+  },
+  "tab-member.html": {
+    "href": "tab-member.html",
+    "resources": [],
+    "refer": [],
+    "priority": 1
+  },
+  "login.html": {
+    "href": "login.html",
+    "resources": [],
+    "refer": [],
+    "priority": 0
+  },
+  "tab-kuaibao.html": {
+    "href": "tab-kuaibao.html",
+    "resources": [],
+    "refer": [],
+    "priority": 1
+  },
+  "search-list.html": {
+    "href": "search-list.html",
+    "resources": [],
+    "refer": [],
+    "priority": 2
+  },
+  "search.html": {
+    "href": "search.html",
+    "resources": [],
+    "refer": [],
+    "priority": 2
+  },
+  "list.html": {
+    "href": "list.html",
+    "resources": [],
+    "refer": [],
+    "priority": 3
+  },
+  "tab-search.html": {
+    "href": "tab-search.html",
+    "resources": [],
+    "refer": [],
+    "priority": 2
+  },
+  "tab-99.html": {
+    "href": "tab-99.html",
+    "resources": [],
+    "refer": [],
+    "priority": 4
+  },
+  "tab-home.html": {
+    "href": "tab-home.html",
+    "resources": [],
+    "refer": [],
+    "priority": 6
+  },
+  "index.html": {
+    "href": "index.html",
+    "resources": [],
+    "refer": [],
+    "priority": 0
+  }
+}

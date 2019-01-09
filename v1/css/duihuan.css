@@ -1,0 +1,246 @@
+﻿body {
+    background-color:#f7f9fa;
+}
+.asset_area{
+    padding:0 10px;    
+    height:60px;
+    line-height:60px;
+    background-color:#f7f9fa;
+}
+.asset_area span{
+    padding:8px 0;
+    color:#c2c0cc;
+    font-size:14px;
+}
+.asset_area .asset_jf{
+    padding-right:10px;
+    margin-right:10px;
+}
+.asset_area span strong{
+    padding-left:2px;
+    color:#ffa436;
+    font-size:20px;
+    vertical-align:-1px;
+}
+.asset_area .annal_btn{
+    float:right;
+    display:inline-block;
+    font-size:15px;
+    color:#999;
+}
+.asset_area .annal_btn i{
+    padding-left:3px;
+    font-family: "SimSun";
+    font-style:normal;
+    font-size:18px;
+}
+/* = 礼物
+------------------------------------------------------------*/
+.gift_content{
+    padding-top:10px;
+    background-color:#f0f1f2;
+}
+.gift_content ul{
+    padding-left:5px;
+    overflow:hidden;
+}
+.gift_content li{
+    position:relative;
+    float:left;
+    width:50%;
+    padding-right:5px;
+    margin-bottom:5px;
+    overflow:hidden;
+    box-sizing:border-box;
+}
+.gift_content li a{
+    display:block;
+    padding-bottom:10px;
+    background:#fff;
+}
+.gift_content .g_img img{
+    display:block;
+    width:100%;
+}
+.gift_content .g_title{
+    padding:5px 5px 0px 5px;
+    color:#333;
+    font-size:16px;
+    line-height:18px;
+    margin-bottom:5px;
+    overflow:hidden;
+    word-break:keep-all;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+.gift_content .g_price{
+    padding:0 5px;
+    color:#ffa436;
+    font-size:14px;
+    overflow:hidden;
+    word-break:keep-all;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+.gift_boot{
+    padding:30px 0;
+    text-align:center;
+}
+
+/* = 礼物详情
+------------------------------------------------------------*/
+.gift_pic{
+    text-align:center;
+    background-color:#fff;
+    padding:5px 0;
+}
+.gift_pic img{
+    width:200px;
+    height:200px;
+}
+.gift_tit{
+    font-size:20px;
+    color:#8a4545;
+    text-align:center;
+    line-height:30px;
+}
+.exchage_info{
+    font-size:15px;
+    background-color:#f0f1f2;
+}
+.exchage_filter{
+    margin:0 10px;
+    padding:13px 5px;
+}
+.exchage_filter p{
+    line-height:25px;
+}
+.filter_god span{
+    font-size:16px;
+    color:#ffa436;
+}
+.filter_num span{
+    font-size:16px;
+    color:#f55d62;
+}
+.filter_num font{
+    font-size:15px;
+    color:#999;
+}
+.exchage_doc{
+    padding:10px 5px 10px 15px;
+}
+.doc_tit{
+    padding-bottom:5px;
+    font-size:16px;
+    font-weight:700;
+    color:#333;
+}
+.doc_cot{
+    font-size:15px;
+    color:#666;
+    line-height:25px;
+}
+.doc_cot a{
+    color:#5390fb;
+}
+.exchage_btn{
+    padding:15px;
+    height:80px;
+}
+.exchage_btn .btn{ 
+    font-size:16px; 
+    display:block; 
+    line-height:40px; 
+    color: #fff; 
+    text-align: center; 
+    border-radius:3px;
+}
+.exchage_btn a.btn1{
+    background-color:#f55d62;
+}
+.exchage_btn a.btn1:active{
+    background-color:#f2494e;
+}
+.exchage_btn .btn2{ 
+    background-color:#999999;
+}
+/* = 完善信息
+----------------------------------------*/
+#show_complete_pop{
+    display:none;
+    width:300px;
+    height:180px;
+    margin:-120px 0 0 -150px;
+    background-color:#fff;
+}
+.show_complete_cot{
+    margin:25px 10px;
+}
+.show_complete_cot .title{
+    color:#333;
+    font-size:16px;
+    text-align:left;
+}
+.show_complete_cot .title1{
+    padding-top:5px;
+    font-size:14px;
+    color:#666;
+    line-height:20px;
+}
+.show_complete_cot .giftdetail_box{
+    display:none;
+}
+#show_complete_pop .get_btn{
+    position:absolute;
+    bottom:20px;
+    width:270px;
+    margin-left:15px;
+    display:block;
+    font-size:16px; 
+    display:block; 
+    line-height:40px; 
+    color: #fff; 
+    text-align: center; 
+    border-radius:3px;
+    background-color:#f55d62;
+}
+#show_complete_pop a.get_btn:active{
+    background-color:#f2494e;
+}
+
+/* = 确定信息
+----------------------------------------*/
+#show_confirm_pop{
+    display:none;
+    width:300px;
+    height:180px;
+    margin:-120px 0 0 -150px;
+    background-color:#fff;
+}
+.show_confirm_cot{
+    margin:25px 20px;
+}
+.show_confirm_cot .title{
+    padding-top:25px;
+    color:#333;
+    font-size:16px;
+    text-align:center;
+}
+#show_confirm_pop .get_btn{
+    position:absolute;
+    bottom:20px;
+    width:270px;
+    margin-left:15px;
+    display:block;
+    font-size:16px; 
+    display:block; 
+    line-height:40px; 
+    color: #fff; 
+    text-align: center; 
+    border-radius:3px;
+    background-color:#f55d62;
+}
+#show_confirm_pop a.get_btn:active{
+    background-color:#f2494e;
+}

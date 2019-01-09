@@ -1,0 +1,135 @@
+
+.mui-bar-tab .mui-tab-item.mui-active {
+  color: #f54e54;
+}
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active{
+	color: #f54e54;
+    border-bottom: 1px solid #f54e54;
+}
+.mui-slider .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+    border-bottom: 1px solid #f54e54;
+}
+.mui-bar-nav .mui-title{
+	color:#ffffff;
+}
+
+.mui-bar-nav{
+	background-color:#dd524d;
+	box-shadow: 0 0px 1px #ffffff;
+}
+.mui-bar-nav .mui-icon{
+	color: #ffffff;
+}
+
+.mui-bar{
+	color: #dd524d;
+}
+.mui-search input[type='search']
+{
+    color: #ffffff;
+}
+.mui-search .mui-placeholder
+{
+	color: #ffffff;
+}
+.mui-search input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #ffffff;
+}
+
+.mui-btn-negative,
+.mui-btn-danger,
+.mui-btn-red
+{
+    border: 1px solid #dd524d;
+    background-color: #dd524d;
+}
+
+.mui-bar-footer{
+	background-color:#fff;
+}
+
+
+.quan_item_price{
+    color:#f24f60;
+}
+
+.app-btn{
+	background-color:#ffa42e;
+	  border: 0px solid  #ffa42e;
+}
+
+.detail-wrapper .recommend-wrapper {
+    color: #ff6a6a;
+}
+.detail-wrapper  .goods-jq .goods-price b {
+    color: #fe0000;
+}
+.detail-wrapper  .goods-jq .shoufa-quan b {
+    color:#ff6a00;
+    border: #ff6a00) 1px solid;
+}
+
+.detail-wrapper  .goods-jq .goods-num b {
+    color: #ff6a00;
+}
+.detail-wrapper .goods-tag {
+    color:#fe4a65;
+}
+
+.detail-wrapper .goods-tag span {
+    border-color: #fe4a65;
+}
+
+
+.detail-wrapper  .goods-jq .shoufa-quan span {
+    background:#fe4a65;
+}
+.detail-wrapper  .goods-jq .shoufa-quan b {
+    color:#ff6a00;
+    border: #fe4a65) 1px solid;
+}
+.mui-bar-footer .mui-tab-item-buy {
+	background-color:#fe4a65;
+}
+
+.list-wrap .list-info h4 em{
+	color:#f54e54;
+}
+.list-wrap .list-info-tips{
+    color:#a6a4b2;
+}
+
+.mui-bar-footer .mui-tab-item
+{
+	color: #666;
+}
+.mui-bar-footer .mui-tab-item-buy {
+	background-color:#fe4a65;
+	color:#FFFFFF;
+}
+
+.mui-content-invite{
+	background-color: #ff672d;
+}
+.act_contain{
+	background-color: #6d55ff;
+}
+
+.img-container .coupon-wrapper{
+	background-color:#fe4a65;
+}
+.img-container .top_icon{
+	background-color:#fe4a65;
+}
+.search_box{
+	box-shadow: 0 0 1px #fe4a65;
+}
+
+.mui-bar-search .mui-tab-item {
+  color: #666;
+}
+
+.mui-bar-search .mui-tab-item-selected{
+	color: #f54e54;
+	border-bottom: 1px solid #f54e54;
+}

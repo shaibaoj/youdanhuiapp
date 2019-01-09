@@ -1,0 +1,770 @@
+{
+  "index.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "fonts/mui.ttf",
+      "tab-webview-subpage-about.html",
+      "js/config.js",
+      "js/app.js",
+      "css/app.css",
+      "tab-home.html",
+      "fonts/iconfont/iconfont.ttf",
+      "js/update.js",
+      "tab-99.html",
+      "js/update1.js",
+      "js/update2.js",
+      "fonts/iconfont/iconfont.woff",
+      "js/push.js",
+      "js/common.js",
+      "css/style.css",
+      "fonts/iconfont/iconfont.css",
+      "css/custom.css",
+      "css/index.css"
+    ],
+    "refer": [
+      "tab-webview-subpage-about.html",
+      "tab-webview-subpage-setting.html",
+      "tab-webview-subpage-chat.html",
+      "tab-webview-subpage-contact.html",
+      "tab-home.html",
+      "tab-search.html",
+      "tab-setting.html",
+      "tab-kuaibao.html",
+      "tab-99.html",
+      "tab-member.html",
+      "search-q.html",
+      "login.html",
+      "search.html"
+    ]
+  },
+  "tab-webview-subpage-about.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "tab-webview-subpage-setting.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "tab-webview-subpage-chat.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "tab-webview-subpage-contact.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "tab-home.html": {
+    "href": "tab-home.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/mui.pullToRefresh.js",
+      "js/mui.pullToRefresh.material.js",
+      "js/config.js",
+      "js/app.js",
+      "css/mui.min.css",
+      "css/app.css",
+      "js/common.js",
+      "libs/arttmpl.js",
+      "fonts/mui.ttf",
+      "images/home/yhkb.png",
+      "js/mui.lazyload.js",
+      "js/mui.lazyload.img.js",
+      "data:image/svg+xml;utf8,\u003csvg xmlns\u003d\u0027http://www.w3.org/2000/svg\u0027 width\u003d\u0027100%\u0027 height\u003d\u00271\u0027\u003e\u003crect fill\u003d\u0027#e7e6eb\u0027 x\u003d\u00270\u0027 y\u003d\u00270.5\u0027 width\u003d\u0027100%\u0027 height\u003d\u00270.5\u0027/\u003e\u003c/svg\u003e",
+      "images/test/shuijiao.jpg",
+      "images/test/yuantiao.jpg",
+      "images/test/cbd.jpg",
+      "images/test/muwu.jpg",
+      "css/home.css"
+    ],
+    "refer": [
+      "coupon_goods.html",
+      "web.html",
+      "top.html",
+      "live.html",
+      "tab-99.html"
+    ],
+    "priority": 0
+  },
+  "tab-search.html": {
+    "href": "tab-search.html",
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "css/search.css",
+      "images/search/sqt_bg2.png",
+      "js/app.js",
+      "js/common.js",
+      "js/config.js"
+    ],
+    "refer": [
+      "list.html",
+      "search.html"
+    ],
+    "priority": 0
+  },
+  "forget_password.html": {
+    "href": "forget_password.html",
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "js/app.js",
+      "css/app.css",
+      "fonts/mui.ttf"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "reg.html": {
+    "href": "reg.html",
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "js/app.js",
+      "css/app.css",
+      "fonts/mui.ttf",
+      "js/common.js",
+      "js/config.js"
+    ],
+    "refer": [
+      "tab-member.html"
+    ],
+    "priority": 0
+  },
+  "login.html": {
+    "href": "login.html",
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "js/app.js",
+      "images/sinaweibo.png",
+      "images/weixin.png",
+      "images/qq.png",
+      "js/mui.enterfocus.js",
+      "js/common.js",
+      "css/app.css",
+      "fonts/mui.ttf",
+      "js/config.js"
+    ],
+    "refer": [
+      "forget_password.html",
+      "reg.html",
+      "tab-member.html",
+      "bind.html"
+    ],
+    "priority": 0
+  },
+  "tab-setting.html": {
+    "href": "tab-setting.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/mui.view.js",
+      "libs/easymob-webim-sdk/jquery-1.11.1.js",
+      "libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+      "libs/easymob-webim-sdk/json2.js",
+      "libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+      "js/feedback.js",
+      "js/feedback-page.js",
+      "js/app.js",
+      "css/mui.min.css",
+      "css/feedback-page.css"
+    ],
+    "refer": [
+      "login.html"
+    ],
+    "priority": 0
+  },
+  "tab-kuaibao.html": {
+    "href": "tab-kuaibao.html",
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "data:image/svg+xml;utf8,\u003csvg xmlns\u003d\u0027http://www.w3.org/2000/svg\u0027 width\u003d\u0027100%\u0027 height\u003d\u00271\u0027\u003e\u003crect fill\u003d\u0027#e7e6eb\u0027 x\u003d\u00270\u0027 y\u003d\u00270.5\u0027 width\u003d\u0027100%\u0027 height\u003d\u00270.5\u0027/\u003e\u003c/svg\u003e",
+      "js/app.js",
+      "js/common.js",
+      "libs/arttmpl.js",
+      "css/app.css",
+      "fonts/mui.ttf",
+      "js/config.js",
+      "css/kuaibao.css"
+    ],
+    "refer": [
+      "deal.html"
+    ],
+    "priority": 0
+  },
+  "tab-99.html": {
+    "href": "tab-99.html",
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "js/mui.pullToRefresh.js",
+      "libs/arttmpl.js",
+      "css/app.css",
+      "js/mui.pullToRefresh.material.js",
+      "js/app.js",
+      "js/common.js",
+      "js/config.js",
+      "fonts/iconfont/iconfont.ttf",
+      "js/mui.lazyload.js",
+      "js/mui.lazyload.img.js",
+      "fonts/iconfont/iconfont.woff",
+      "css/99.css"
+    ],
+    "refer": [
+      "coupon_goods.html"
+    ],
+    "priority": 0
+  },
+  "coupon_goods.html": {
+    "resources": [
+      "js/vue.min.js",
+      "js/app.js",
+      "js/common.js",
+      "js/mui.min.js",
+      "css/app.css",
+      "css/mui.min.css",
+      "js/config.js",
+      "css/coupon_goods.css",
+      "fonts/mui.ttf",
+      "fonts/iconfont/iconfont.ttf",
+      "fonts/iconfont/iconfont.woff",
+      "fonts/iconfont/iconfont.svg",
+      "js/cn.js"
+    ],
+    "refer": [
+      "web.html",
+      "login.html"
+    ]
+  },
+  "tab-member.html": {
+    "resources": [
+      "fonts/mui-icons-extra.ttf",
+      "css/icons-extra.css",
+      "fonts/mui.ttf",
+      "css/member.css",
+      "images/member/user.png",
+      "js/app.js",
+      "js/mui.min.js",
+      "css/app.css",
+      "css/mui.min.css",
+      "js/config.js",
+      "fonts/iconfont/iconfont.ttf",
+      "js/common.js",
+      "fonts/iconfont/iconfont.woff",
+      "css/style.css",
+      "fonts/iconfont/iconfont.css",
+      "css/custom.css"
+    ],
+    "refer": [
+      "html/member/coupon.html",
+      "html/member/invite.html",
+      "html/member/message.html",
+      "search.html",
+      "coupon.html",
+      "setting.html",
+      "html/member/level.html",
+      "help.html",
+      "html/member/tb.html",
+      "html/member/agent.html",
+      "html/member/cash.html",
+      "html/member/order.html",
+      "html/member/point.html",
+      "html/member/member_setting.html",
+      "login.html",
+      "reg.html",
+      "html/member/gift.html",
+      "html/member/favorite.html",
+      "web.html"
+    ]
+  },
+  "deal.html": {
+    "resources": [
+      "js/mui.min.js",
+      "js/vue.min.js",
+      "css/deal.css",
+      "js/app.js",
+      "js/common.js",
+      "css/app.css",
+      "fonts/mui.ttf",
+      "fonts/iconfont/iconfont.ttf",
+      "css/mui.min.css",
+      "js/config.js",
+      "fonts/iconfont/iconfont.woff"
+    ],
+    "refer": [
+      "web.html",
+      "login.html"
+    ]
+  },
+  "search-list.html": {
+    "resources": [
+      "js/mui.pullToRefresh.js",
+      "libs/arttmpl.js",
+      "js/mui.min.js",
+      "js/mui.pullToRefresh.material.js",
+      "css/s.css",
+      "js/app.js",
+      "js/common.js",
+      "js/config.js",
+      "css/app.css",
+      "css/mui.min.css",
+      "fonts/mui.ttf"
+    ],
+    "refer": [
+      "coupon_goods.html"
+    ]
+  },
+  "search.html": {
+    "resources": [
+      "search-list.html",
+      "libs/arttmpl.js",
+      "js/mui.min.js",
+      "js/app.js",
+      "js/common.js",
+      "css/app.css",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/config.js"
+    ],
+    "refer": [
+      "search-list.html"
+    ]
+  },
+  "web.html": {
+    "resources": [
+      "js/mui.min.js",
+      "js/app.js",
+      "js/config.js",
+      "css/app.css",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "html/member/message.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "css/app.css",
+      "libs/arttmpl.js",
+      "js/common.js",
+      "js/config.js",
+      "js/app.js"
+    ],
+    "refer": []
+  },
+  "coupon.html": {
+    "resources": [
+      "js/app.js",
+      "js/common.js",
+      "js/mui.min.js",
+      "js/config.js"
+    ],
+    "refer": []
+  },
+  "setting.html": {
+    "resources": [
+      "js/feedback.js",
+      "css/feedback-page.css",
+      "js/feedback-page.js",
+      "js/mui.view.js",
+      "js/app.js",
+      "js/common.js",
+      "js/mui.min.js",
+      "js/update.js",
+      "js/config.js",
+      "css/app.css",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "login.html",
+      "tab-member.html",
+      "html/member/member_setting.html"
+    ]
+  },
+  "list.html": {
+    "resources": [
+      "search-list.html",
+      "js/common.js",
+      "libs/arttmpl.js",
+      "js/app.js",
+      "js/config.js",
+      "js/mui.min.js",
+      "css/app.css",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "search-list.html"
+    ]
+  },
+  "html/member/invite.html": {
+    "resources": [
+      "js/app.js",
+      "js/common.js",
+      "css/invite.css",
+      "js/mui.min.js",
+      "css/invite_bindtel.css",
+      "js/config.js",
+      "css/app.css",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "data:image/svg+xml;utf8,\u003csvg xmlns\u003d\u0027http://www.w3.org/2000/svg\u0027 width\u003d\u0027100%\u0027 height\u003d\u0027100%\u0027\u003e\u003crect x\u003d\u00270\u0027 y\u003d\u00270\u0027 width\u003d\u0027100%\u0027 height\u003d\u0027100%\u0027 style\u003d\u0027fill:none;stroke:#e7e6eb;stroke-width:1\u0027/\u003e\u003c/svg\u003e",
+      "libs/arttmpl.js"
+    ],
+    "refer": []
+  },
+  "html/member/tb.html": {
+    "resources": [
+      "js/app.js",
+      "js/common.js",
+      "js/config.js",
+      "js/mui.min.js",
+      "css/app.css",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "html/member/agent.html": {
+    "resources": [
+      "js/app.js",
+      "js/common.js",
+      "js/mui.min.js",
+      "css/app.css",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/config.js",
+      "fonts/iconfont/iconfont.ttf",
+      "css/agent.css"
+    ],
+    "refer": [
+      "html/member/order.html",
+      "html/member/cash.html",
+      "html/member/agent_user.html"
+    ]
+  },
+  "html/member/cash.html": {
+    "refer": [
+      "f.html",
+      "html/member/cash_list.html"
+    ],
+    "resources": [
+      "js/mui.pullToRefresh.js",
+      "js/app.js",
+      "js/common.js",
+      "libs/arttmpl.js",
+      "js/mui.min.js",
+      "js/mui.pullToRefresh.material.js",
+      "js/mui.lazyload.js",
+      "js/config.js",
+      "js/mui.lazyload.img.js",
+      "css/mui.min.css",
+      "css/app.css",
+      "fonts/mui.ttf"
+    ]
+  },
+  "f.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "css/app.css",
+      "js/config.js",
+      "js/app.js",
+      "html/member/cash_list.html",
+      "fonts/mui.ttf"
+    ],
+    "refer": [
+      "html/member/cash_list.html"
+    ]
+  },
+  "html/member/order.html": {
+    "resources": [
+      "js/mui.pullToRefresh.js",
+      "libs/arttmpl.js",
+      "js/mui.pullToRefresh.material.js",
+      "js/mui.pullToRefresh.material.js",
+      "js/mui.lazyload.js",
+      "js/mui.lazyload.img.js",
+      "js/app.js",
+      "js/common.js",
+      "js/mui.min.js",
+      "css/app.css",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/config.js"
+    ],
+    "refer": []
+  },
+  "html/member/point.html": {
+    "resources": [
+      "js/mui.pullToRefresh.js",
+      "libs/arttmpl.js",
+      "js/mui.min.js",
+      "js/mui.pullToRefresh.material.js",
+      "js/mui.lazyload.js",
+      "js/mui.lazyload.img.js",
+      "js/app.js",
+      "js/common.js",
+      "css/app.css",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/config.js"
+    ],
+    "refer": []
+  },
+  "html/member/member_setting.html": {
+    "resources": [
+      "js/app.js",
+      "js/common.js",
+      "js/mui.min.js",
+      "css/app.css",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/config.js"
+    ],
+    "refer": [
+      "html/setting/qq.html",
+      "html/setting/email.html",
+      "html/setting/withdraw.html",
+      "html/setting/password.html"
+    ]
+  },
+  "html/setting/qq.html": {
+    "href": "html/setting/qq.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/app.css",
+      "js/mui.min.js",
+      "js/common.js",
+      "js/config.js",
+      "js/app.js"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "html/setting/email.html": {
+    "href": "html/setting/email.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/app.css",
+      "js/mui.min.js",
+      "js/common.js",
+      "js/config.js",
+      "js/app.js"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "html/setting/withdraw.html": {
+    "href": "html/setting/withdraw.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/app.css",
+      "js/mui.min.js",
+      "js/common.js",
+      "js/config.js",
+      "js/app.js"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "html/setting/password.html": {
+    "href": "html/setting/password.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/app.css",
+      "js/mui.min.js",
+      "js/common.js",
+      "js/config.js",
+      "js/app.js"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "html/member/gift_item.html": {
+    "href": "html/member/gift_item.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/app.css",
+      "css/duihuan.css",
+      "js/mui.min.js",
+      "js/vue.min.js",
+      "js/common.js",
+      "js/config.js",
+      "js/app.js"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "html/member/gift.html": {
+    "href": "html/member/gift.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/app.css",
+      "js/mui.min.js",
+      "libs/arttmpl.js",
+      "js/mui.pullToRefresh.js",
+      "js/mui.pullToRefresh.material.js",
+      "js/mui.lazyload.js",
+      "js/mui.lazyload.img.js",
+      "js/common.js",
+      "js/config.js",
+      "js/app.js",
+      "fonts/mui.ttf",
+      "images/member/hongbao.png"
+    ],
+    "refer": [
+      "html/member/gift_item.html",
+      "html/member/exchange_point.html"
+    ],
+    "priority": 0
+  },
+  "html/member/favorite.html": {
+    "href": "html/member/favorite.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/app.css",
+      "css/s.css",
+      "js/mui.min.js",
+      "libs/arttmpl.js",
+      "js/common.js",
+      "js/config.js",
+      "js/app.js"
+    ],
+    "refer": [
+      "deal.html",
+      "coupon_goods.html"
+    ],
+    "priority": 0
+  },
+  "html/member/feedback.html": {
+    "href": "html/member/feedback.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/app.css",
+      "js/mui.min.js",
+      "js/common.js",
+      "js/config.js",
+      "js/app.js"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "help.html": {
+    "href": "help.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/app.css",
+      "js/mui.min.js",
+      "js/common.js",
+      "js/config.js",
+      "js/app.js"
+    ],
+    "refer": [
+      "html/member/feedback.html"
+    ],
+    "priority": 0
+  },
+  "html/member/cash_list.html": {
+    "href": "html/member/cash_list.html",
+    "resources": [
+      "js/mui.min.js",
+      "libs/arttmpl.js",
+      "js/common.js",
+      "js/config.js",
+      "js/app.js",
+      "css/mui.min.css",
+      "css/app.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "bind.html": {
+    "resources": [
+      "css/app.css",
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "js/app.js",
+      "js/common.js",
+      "js/config.js"
+    ],
+    "refer": []
+  },
+  "top.html": {
+    "resources": [
+      "js/app.js",
+      "js/common.js",
+      "libs/arttmpl.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "js/config.js",
+      "css/app.css",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "live.html": {
+    "resources": [
+      "js/app.js",
+      "css/live.css",
+      "js/common.js",
+      "libs/arttmpl.js",
+      "images/live/avatar/1.jpg",
+      "js/mui.min.js",
+      "fonts/iconfont/iconfont.ttf",
+      "images/live/bg.jpg",
+      "js/config.js",
+      "images/live/live.jpg",
+      "images/live/triangle.png",
+      "images/live/icon.png",
+      "fonts/mui.ttf",
+      "css/app.css",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "html/member/agent_user.html": {
+    "resources": [
+      "js/app.js",
+      "js/common.js",
+      "libs/arttmpl.js",
+      "js/mui.min.js",
+      "js/config.js",
+      "css/app.css",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/s.css"
+    ],
+    "refer": []
+  },
+  "html/member/exchange_point.html": {
+    "resources": [
+      "js/app.js",
+      "js/common.js",
+      "js/mui.min.js",
+      "js/config.js",
+      "css/app.css",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  }
+}

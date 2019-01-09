@@ -1,0 +1,20 @@
+.mui-search-app{
+	color: #FFFFFF;
+}
+.mui-search-app .mui-placeholder{
+	color: #FFFFFF
+}
+.mui-search-app .mui-placeholder .mui-icon{
+	color: #FFFFFF
+}
+.app-search-input{
+	font-size: 16px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 29px;
+    text-align: center;
+    border: 0;
+    border-radius: 6px;
+    background-color: rgba(0,0,0,.1);
+    margin: 6px 0;
+}
